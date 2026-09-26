@@ -60,12 +60,12 @@ const CryptoTransactionsCard: React.FC<CryptoTransactionsCardProps> = ({
                   key={transaction.id}
                   className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
                 >
-                  <TableCell className="ps-5">
+                  <TableCell className="ps-5" label={t("crypto.transactions.hash")} >
                     <code className="font-mono text-theme-xs text-gray-600 dark:text-gray-300">
                       {transaction.txHash.slice(0, 14)}…
                     </code>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("crypto.transactions.asset")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {t(`crypto.assets.${transaction.asset}`)}
                     </span>
@@ -73,24 +73,24 @@ const CryptoTransactionsCard: React.FC<CryptoTransactionsCardProps> = ({
                       {transaction.network}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("crypto.transactions.amount")}>
                     <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {transaction.amount > 0
                         ? transaction.amount.toLocaleString(i18n.language)
                         : t("crypto.transactions.pendingAmount")}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("crypto.transactions.confirmations")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {transaction.confirmations} / {transaction.requiredConfirmations}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("crypto.transactions.date")}>
                     <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                       {formatDateTime(transaction.createdAt, i18n.language)}
                     </span>
                   </TableCell>
-                  <TableCell className="pe-5 text-end">
+                  <TableCell className="pe-5 text-end" label={t("crypto.transactions.status")} >
                     <Badge color={statusColor[transaction.status]} size="sm">
                       {t(`status.cryptoTransaction.${transaction.status}`)}
                     </Badge>

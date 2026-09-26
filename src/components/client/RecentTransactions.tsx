@@ -61,7 +61,7 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({ transactions })
                   key={transaction.id}
                   className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
                 >
-                  <TableCell className="ps-5">
+                  <TableCell className="ps-5" label={t("client.transactions.reference")} >
                     <span className="font-medium text-gray-800 dark:text-white/90">
                       {transaction.reference}
                     </span>
@@ -69,22 +69,22 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({ transactions })
                       {transaction.description}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("client.transactions.type")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {t(`transactions.types.${transaction.type}`)}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("client.transactions.amount")}>
                     <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {formatCurrency(transaction.amount, transaction.currency, i18n.language)}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("client.transactions.date")}>
                     <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                       {formatDateTime(transaction.createdAt, i18n.language)}
                     </span>
                   </TableCell>
-                  <TableCell className="pe-5 text-end">
+                  <TableCell className="pe-5 text-end" label={t("client.transactions.status")} >
                     <Badge color={badgeColor[transaction.status]} size="sm">
                       {t(`status.transaction.${transaction.status}`)}
                     </Badge>

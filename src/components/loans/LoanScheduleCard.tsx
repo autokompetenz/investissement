@@ -98,32 +98,32 @@ const LoanScheduleCard: React.FC<LoanScheduleCardProps> = ({ loan }) => {
                 key={item.index}
                 className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
               >
-                <TableCell className="ps-5">
+                <TableCell className="ps-5" label={t("loans.schedule.index")} >
                   <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                     {item.index}
                   </span>
                 </TableCell>
-                <TableCell>
+                <TableCell label={t("loans.schedule.dueDate")}>
                   <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                     {formatDate(item.dueDate, i18n.language)}
                   </span>
                 </TableCell>
-                <TableCell>
+                <TableCell label={t("loans.schedule.principal")}>
                   <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                     {money(item.principal)}
                   </span>
                 </TableCell>
-                <TableCell>
+                <TableCell label={t("loans.schedule.interest")}>
                   <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                     {money(item.interest)}
                   </span>
                 </TableCell>
-                <TableCell>
+                <TableCell label={t("loans.schedule.installment")}>
                   <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                     {money(item.installment)}
                   </span>
                 </TableCell>
-                <TableCell className="pe-5 text-end">
+                <TableCell className="pe-5 text-end" label={t("loans.schedule.status")} >
                   <Badge color={instalmentColor[item.status]} size="sm">
                     {t(`loans.schedule.statuses.${item.status}`)}
                   </Badge>

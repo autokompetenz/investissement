@@ -465,9 +465,10 @@
       "detailsPlaceholder": "Holder name, bank, anything useful to identify the account",
       "submit": "Send my request",
       "reserved": "Blocked by a pending request",
-      "reservedHint": "{count, plural, one {# withdrawal pending} other {# withdrawals pending}}",
       "spendable": "Available to request",
-      "notice": "The money leaves your account only when the administration marks the withdrawal as completed, with the reference of the transaction recorded."
+      "notice": "The money leaves your account only when the administration marks the withdrawal as completed, with the reference of the transaction recorded.",
+      "reservedHint_one": "{count} withdrawal pending",
+      "reservedHint_other": "{count} withdrawals pending"
     },
     "history": {
       "title": "My withdrawals",
@@ -490,13 +491,14 @@
       "amountHint": "Please enter a valid amount.",
       "amountPreview": "You are asking for {amount}.",
       "duration": "Duration",
-      "durationOption": "{count, plural, one {# month} other {# months}}",
       "purpose": "Purpose",
       "purposePlaceholder": "Ex: working capital, equipment purchase",
       "additionalInfo": "Additional information",
       "additionalInfoPlaceholder": "Anything that helps the administration assess the request",
       "submit": "Submit my request",
-      "notice": "No rate is shown before the decision: the conditions of a loan are part of the approval, and they must comply with the applicable legal framework."
+      "notice": "No rate is shown before the decision: the conditions of a loan are part of the approval, and they must comply with the applicable legal framework.",
+      "durationOption_one": "{count} month",
+      "durationOption_other": "{count} months"
     },
     "details": {
       "requested": "Requested",
@@ -585,7 +587,6 @@
       "missing": "Missing",
       "enrolledAt": "Enrolled on",
       "recoveryCodes": "Recovery codes",
-      "remainingCodes": "{count, plural, one {# code left} other {# codes left}}",
       "disable": "Disable the second factor",
       "disableWarning": "Disabling the second factor weakens the protection of an administration account. The action is logged.",
       "missingWarning": "This administration account has no second factor. Enrol now: the next sign-in will ask for a code.",
@@ -601,7 +602,9 @@
       "step3": "Confirm with a code",
       "showDemoCode": "Show the current code",
       "demoCodeHint": "Demo helper: generates the code from the secret on this machine, to try the flow without an authenticator.",
-      "confirm": "Confirm and activate"
+      "confirm": "Confirm and activate",
+      "remainingCodes_one": "{count} code left",
+      "remainingCodes_other": "{count} codes left"
     },
     "accounts": {
       "title": "Administration accounts",
@@ -680,7 +683,6 @@
       "minimum": "Minimum amount",
       "maximum": "Maximum amount",
       "duration": "Duration",
-      "months": "{count, plural, one {# month} other {# months}}",
       "rate": "Target rate",
       "indicative": "indicative",
       "contractual": "contractual",
@@ -697,7 +699,9 @@
       "rateGuaranteedText": "{rate} % per year, contractual for the whole duration.",
       "rateIndicativeText": "{rate} % per year is an objective, not a guarantee. The actual performance depends on the project.",
       "rateDisclaimer": "This yield is indicative and not guaranteed. Read the risks before investing.",
-      "rateDisclaimerTitle": "Indicative yield"
+      "rateDisclaimerTitle": "Indicative yield",
+      "months_one": "{count} month",
+      "months_other": "{count} months"
     },
     "details": {
       "conditions": "Conditions",
@@ -758,9 +762,10 @@
     },
     "topups": {
       "title": "Top-ups",
-      "count": "{count, plural, one {# increase} other {# increases}}",
       "emptyTitle": "No increase yet",
-      "emptyText": "Your increases on this investment will be listed here."
+      "emptyText": "Your increases on this investment will be listed here.",
+      "count_one": "{count} increase",
+      "count_other": "{count} increases"
     },
     "positions": {
       "emptyTitle": "No investment yet",
@@ -846,7 +851,8 @@
       "totalInvested": "Total invested",
       "deposits": "Deposits",
       "withdrawals": "Withdrawals",
-      "activeInvestmentsHint": "{count, plural, one {# active investment} other {# active investments}}"
+      "activeInvestmentsHint_one": "{count} active investment",
+      "activeInvestmentsHint_other": "{count} active investments"
     },
     "quickActions": {
       "title": "Quick actions",
@@ -899,12 +905,13 @@
       "pendingVerification": "Pending verification",
       "suspendedClients": "{count} suspended",
       "operationVolume": "Operation volume",
-      "operationsCount": "{count, plural, one {# operation in progress} other {# operations in progress}}",
       "pendingInvestments": "Investments pending",
       "pendingDeposits": "Deposits pending",
       "pendingWithdrawals": "Withdrawals pending",
       "pendingLoans": "Loans pending",
-      "pendingCards": "Card requests"
+      "pendingCards": "Card requests",
+      "operationsCount_one": "{count} operation in progress",
+      "operationsCount_other": "{count} operations in progress"
     },
     "activityLog": {
       "title": "Activity log",

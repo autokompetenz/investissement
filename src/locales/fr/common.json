@@ -465,9 +465,10 @@
       "detailsPlaceholder": "Titulaire, banque, toute information utile pour identifier le compte",
       "submit": "Envoyer ma demande",
       "reserved": "Bloqué par une demande en attente",
-      "reservedHint": "{count, plural, one {# retrait en attente} other {# retraits en attente}}",
       "spendable": "Disponible pour demande",
-      "notice": "L'argent ne quitte votre compte que lorsque l'administration marque le retrait comme terminé, avec la référence de la transaction enregistrée."
+      "notice": "L'argent ne quitte votre compte que lorsque l'administration marque le retrait comme terminé, avec la référence de la transaction enregistrée.",
+      "reservedHint_one": "{count} retrait en attente",
+      "reservedHint_other": "{count} retraits en attente"
     },
     "history": {
       "title": "Mes retraits",
@@ -490,13 +491,14 @@
       "amountHint": "Veuillez saisir un montant valide.",
       "amountPreview": "Vous demandez {amount}.",
       "duration": "Durée",
-      "durationOption": "{count, plural, one {# mois} other {# mois}}",
       "purpose": "Motif",
       "purposePlaceholder": "Ex : besoin en fonds de roulement, achat de matériel",
       "additionalInfo": "Informations complémentaires",
       "additionalInfoPlaceholder": "Tout élément aidant l'administration à évaluer la demande",
       "submit": "Envoyer ma demande",
-      "notice": "Aucun taux n'est affiché avant la décision : les conditions d'un prêt font partie de l'approbation et doivent respecter le cadre juridique applicable."
+      "notice": "Aucun taux n'est affiché avant la décision : les conditions d'un prêt font partie de l'approbation et doivent respecter le cadre juridique applicable.",
+      "durationOption_one": "{count} mois",
+      "durationOption_other": "{count} mois"
     },
     "details": {
       "requested": "Demandé",
@@ -585,7 +587,6 @@
       "missing": "Absente",
       "enrolledAt": "Activée le",
       "recoveryCodes": "Codes de secours",
-      "remainingCodes": "{count, plural, one {# code restant} other {# codes restants}}",
       "disable": "Désactiver le second facteur",
       "disableWarning": "Désactiver le second facteur affaiblit la protection d'un compte d'administration. L'action est journalisée.",
       "missingWarning": "Ce compte d'administration n'a pas de second facteur. Activez-le maintenant : la prochaine connexion demandera un code.",
@@ -601,7 +602,9 @@
       "step3": "Confirmez avec un code",
       "showDemoCode": "Afficher le code actuel",
       "demoCodeHint": "Aide démo : génère le code à partir du secret sur cette machine, pour essayer le flux sans authentificateur.",
-      "confirm": "Confirmer et activer"
+      "confirm": "Confirmer et activer",
+      "remainingCodes_one": "{count} code restant",
+      "remainingCodes_other": "{count} codes restants"
     },
     "accounts": {
       "title": "Comptes d'administration",
@@ -680,7 +683,6 @@
       "minimum": "Montant minimum",
       "maximum": "Montant maximum",
       "duration": "Durée",
-      "months": "{count, plural, one {# mois} other {# mois}}",
       "rate": "Rendement cible",
       "indicative": "indicatif",
       "contractual": "contractuel",
@@ -697,7 +699,9 @@
       "rateGuaranteedText": "{rate} % par an, contractuel sur toute la durée.",
       "rateIndicativeText": "{rate} % par an est un objectif, pas une garantie. La performance réelle dépend du projet.",
       "rateDisclaimer": "Ce rendement est indicatif et non garanti. Lisez les risques avant d'investir.",
-      "rateDisclaimerTitle": "Rendement indicatif"
+      "rateDisclaimerTitle": "Rendement indicatif",
+      "months_one": "{count} mois",
+      "months_other": "{count} mois"
     },
     "details": {
       "conditions": "Conditions",
@@ -758,9 +762,10 @@
     },
     "topups": {
       "title": "Augmentations",
-      "count": "{count, plural, one {# augmentation} other {# augmentations}}",
       "emptyTitle": "Aucune augmentation",
-      "emptyText": "Vos augmentations sur cet investissement seront listées ici."
+      "emptyText": "Vos augmentations sur cet investissement seront listées ici.",
+      "count_one": "{count} augmentation",
+      "count_other": "{count} augmentations"
     },
     "positions": {
       "emptyTitle": "Aucun investissement",
@@ -846,7 +851,8 @@
       "totalInvested": "Total investi",
       "deposits": "Dépôts",
       "withdrawals": "Retraits",
-      "activeInvestmentsHint": "{count, plural, one {# investissement actif} other {# investissements actifs}}"
+      "activeInvestmentsHint_one": "{count} investissement actif",
+      "activeInvestmentsHint_other": "{count} investissements actifs"
     },
     "quickActions": {
       "title": "Actions rapides",
@@ -899,12 +905,13 @@
       "pendingVerification": "En attente de vérification",
       "suspendedClients": "{count} suspendus",
       "operationVolume": "Volume des opérations",
-      "operationsCount": "{count, plural, one {# opération en cours} other {# opérations en cours}}",
       "pendingInvestments": "Investissements en attente",
       "pendingDeposits": "Dépôts en attente",
       "pendingWithdrawals": "Retraits en attente",
       "pendingLoans": "Prêts en attente",
-      "pendingCards": "Demandes de cartes"
+      "pendingCards": "Demandes de cartes",
+      "operationsCount_one": "{count} opération en cours",
+      "operationsCount_other": "{count} opérations en cours"
     },
     "activityLog": {
       "title": "Journal d'activité",

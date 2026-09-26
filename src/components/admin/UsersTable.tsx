@@ -67,13 +67,13 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onSelect }) => {
                   key={user.id}
                   className="border-b border-gray-100 last:border-b-0 hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-white/[0.03]"
                 >
-                  <TableCell className="ps-5">
+                  <TableCell className="ps-5" label={t("admin.users.table.reference")} >
                     <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {user.reference}
                     </span>
                   </TableCell>
 
-                  <TableCell>
+                  <TableCell label={t("admin.users.table.client")}>
                     <span className="block text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {user.profile.firstName} {user.profile.lastName}
                     </span>
@@ -82,13 +82,13 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onSelect }) => {
                     </span>
                   </TableCell>
 
-                  <TableCell>
+                  <TableCell label={t("admin.users.table.role")}>
                     <Badge color="light" size="sm">
                       {t(`roles.${user.role}`)}
                     </Badge>
                   </TableCell>
 
-                  <TableCell>
+                  <TableCell label={t("admin.users.table.kyc")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {user.kycDocuments.length > 0
                         ? t("admin.users.table.documents", {
@@ -99,19 +99,19 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onSelect }) => {
                     </span>
                   </TableCell>
 
-                  <TableCell>
+                  <TableCell label={t("admin.users.table.status")}>
                     <Badge color={statusColor[user.status]} size="sm">
                       {t(`status.account.${user.status}`)}
                     </Badge>
                   </TableCell>
 
-                  <TableCell>
+                  <TableCell label={t("admin.users.table.createdAt")}>
                     <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                       {formatDate(user.createdAt, i18n.language)}
                     </span>
                   </TableCell>
 
-                  <TableCell className="pe-5 text-end">
+                  <TableCell className="pe-5 text-end" label={t("admin.users.table.actions")} >
                     <Button
                       size="sm"
                       variant="outline"

@@ -1127,3 +1127,107 @@ pre[class*="language-"].line-numbers {
     min-width: 580px;
   }
 }
+
+
+/* =============================================================================
+   Tableau en carte, sous 640 px
+   -----------------------------------------------------------------------------
+   Un tableau financier fait cinq à huit colonnes. À 375 px, il ne peut que
+   déborder, et faire défiler un tableau horizontalement est le pire moyen de
+   lire un montant : on ne sait plus quelle colonne on regarde, et on perd la
+   ligne de tête dès qu'on descend.
+
+   Sous 640 px, chaque ligne devient donc une carte et chaque cellule une
+   ligne étiquetée. Le libellé vient de l'attribut `data-label` posé par
+   `TableCell`, pas du contenu de la cellule : un montant affiché seul ne dit
+   pas ce qu'il est.
+
+   Ce n'est pas une seconde version du composant, c'est la même, réagissant à
+   une media query. Un tableau sans `data-label` reste un tableau, il affiche
+   juste ses valeurs sans étiquette — ce qui vaut mieux que rien.
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .table-card,
+  .table-card thead,
+  .table-card tbody,
+  .table-card tr,
+  .table-card th,
+  .table-card td {
+    display: block;
+    width: 100%;
+  }
+
+  /* La ligne d'en-tête disparaît : ses libellés sont repris en tête de chaque
+     cellule. La garder prendrait une ligne de plus sur un écran où chaque
+     ligne compte. */
+  .table-card thead {
+    display: none;
+  }
+
+  .table-card tbody tr {
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.25rem;
+    background-color: var(--color-white);
+  }
+
+  .table-card tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .table-card tbody tr:hover {
+    background-color: var(--color-white);
+  }
+
+  .table-card tbody td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    text-align: end;
+  }
+
+  /* Le libellé est à gauche, la valeur à droite. `flex: none` l'empêche de
+     prendre toute la place sur une valeur longue — un identifiant de
+     transaction ne doit pas pousser son étiquette hors de l'écran. */
+  .table-card tbody td::before {
+    content: attr(data-label);
+    flex: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    text-align: start;
+  }
+
+  /* Une cellule sans libellé n'a pas d'étiquette à afficher : elle garde la
+     valeur alignée à droite, seule. C'est le cas des cellules d'action, dont
+     un libellé n'apporterait rien. */
+  .table-card tbody td:not([data-label]) {
+    justify-content: flex-end;
+  }
+
+  .table-card tbody td:not([data-label])::before {
+    content: none;
+  }
+
+  /* Le contenu de la cellule est regroupé par `TableCell`. Sans cela, une
+     cellule à deux éléments — une référence et sa description — verrait ses
+     enfants répartis côte à côte par la flexbox du parent, la description
+     atterrissant à droite de la référence au lieu de passer en dessous. */
+  .table-card tbody td > .table-card__value {
+    min-width: 0;
+  }
+
+  .table-card :where(.dark) tbody tr {
+    border-color: var(--color-gray-800);
+    background-color: var(--color-gray-900);
+  }
+
+  .table-card :where(.dark) tbody tr:hover {
+    background-color: var(--color-gray-900);
+  }
+}

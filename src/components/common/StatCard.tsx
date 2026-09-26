@@ -30,12 +30,22 @@ const StatCard: React.FC<StatCardProps> = ({
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
         <p className="text-theme-sm text-gray-500 dark:text-gray-400">{label}</p>
-        <p className="mt-2 truncate text-title-lg font-semibold text-gray-800 dark:text-white/90">
+        {/*
+          Jamais `truncate` sur un montant. À 375 px, « MAD 50 000,00 » ne
+          tient pas à `text-title-lg`, et la carte affichait « MAD 50,000.0 » :
+          un solde amputé de son dernier chiffre, sans aucun signe que ce soit
+          un troncature. Un montant qu'on ne peut pas lire entier ne vaut rien.
+
+          La taille descend donc d'un cran sur petit écran, et la valeur peut
+          passer à la ligne si elle reste trop longue — un solde à sept chiffres
+          avec une devise longue finira sur deux lignes, ce qui est lisible.
+          `break-words` évite le débordement horizontal quand un mot ne peut
+          pas être coupé autrement.
+        */}
+        <p className="mt-2 break-words text-title-md font-semibold text-gray-800 sm:text-title-lg dark:text-white/90">
           {value}
         </p>
-        {hint ? (
-          <p className="mt-1 truncate text-theme-xs text-gray-400">{hint}</p>
-        ) : null}
+        {hint ? <p className="mt-1 text-theme-xs text-gray-400">{hint}</p> : null}
       </div>
       {icon ? (
         <span

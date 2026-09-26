@@ -68,7 +68,7 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
               key={transaction.id}
               className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
             >
-              <TableCell className="ps-5">
+              <TableCell className="ps-5" label={t("transactions.table.reference")} >
                 <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                   {transaction.reference}
                 </span>
@@ -83,20 +83,20 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
               </TableCell>
 
               {showUser ? (
-                <TableCell>
+                <TableCell label={t("admin.users.table.client")}>
                   <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                     {userLabel ? userLabel(transaction.userId) : transaction.userId}
                   </span>
                 </TableCell>
               ) : null}
 
-              <TableCell>
+              <TableCell label={t("transactions.table.type")}>
                 <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                   {t(`transactions.types.${transaction.type}`)}
                 </span>
               </TableCell>
 
-              <TableCell>
+              <TableCell label={t("transactions.table.amount")}>
                 <span
                   className={`text-theme-sm font-medium ${
                     isOutflow(transaction.type)
@@ -113,7 +113,7 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
                 </span>
               </TableCell>
 
-              <TableCell>
+              <TableCell label={t("transactions.table.method")}>
                 <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                   {transaction.paymentMethod
                     ? t(`deposits.methods.${transaction.paymentMethod}`)
@@ -121,13 +121,13 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
                 </span>
               </TableCell>
 
-              <TableCell>
+              <TableCell label={t("transactions.table.date")}>
                 <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                   {formatDateTime(transaction.createdAt, i18n.language)}
                 </span>
               </TableCell>
 
-              <TableCell className="pe-5 text-end">
+              <TableCell className="pe-5 text-end" label={t("transactions.table.status")} >
                 <Badge color={statusColor[transaction.status]} size="sm">
                   {t(`status.transaction.${transaction.status}`)}
                 </Badge>

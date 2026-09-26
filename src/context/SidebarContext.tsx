@@ -36,7 +36,17 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
 
     useEffect(() => {
         const handleResize = () => {
-            const mobile = window.innerWidth < 1280; // Mobile behavior up to xl breakpoint (1280px)
+            // 1024 px, pas 1280. Sous 1280, un portable en 1152 px — une
+            // résolution courante — se retrouvait avec le tiroir mobile alors
+            // qu'il y a largement la place pour une barre latérale fixe. Le
+            // tiroir est fait pour le téléphone, pas pour l'ordinateur.
+            //
+            // Ce seuil doit rester aligné sur le `lg:` utilisé dans
+            // AppSidebar, AppHeader et Backdrop. Le CSS et ce TypeScript
+            // décident la même chose : s'ils divergent, l'interface affiche une
+            // barre fixe pendant que React croit être en mode mobile, et le
+            // bouton d'ouverture apparaît sans que rien ne se passe.
+            const mobile = window.innerWidth < 1024;
             setIsMobile(mobile);
             if (!mobile) {
                 setIsMobileOpen(false);

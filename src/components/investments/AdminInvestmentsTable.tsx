@@ -159,7 +159,7 @@ const AdminInvestmentsTable: React.FC<AdminInvestmentsTableProps> = ({
                   key={row.key}
                   className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
                 >
-                  <TableCell className="ps-5">
+                  <TableCell className="ps-5" label={t("admin.users.table.reference")} >
                     <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {row.reference}
                     </span>
@@ -169,22 +169,22 @@ const AdminInvestmentsTable: React.FC<AdminInvestmentsTableProps> = ({
                       </span>
                     ) : null}
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("admin.investments.table.client")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {row.client}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("admin.investments.table.product")}>
                     <span className="text-theme-sm text-gray-600 dark:text-gray-300">
                       {row.label}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("client.transactions.amount")}>
                     <span className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                       {formatCurrency(row.amount, row.currency, i18n.language)}
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("status.payment.label")}>
                     <Badge
                       color={
                         row.paymentStatus === "VERIFIED"
@@ -198,12 +198,12 @@ const AdminInvestmentsTable: React.FC<AdminInvestmentsTableProps> = ({
                       {t(`status.payment.${row.paymentStatus}`)}
                     </Badge>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("status.investment.label")}>
                     <Badge color={statusColor[row.status]} size="sm">
                       {t(`status.investment.${row.status}`)}
                     </Badge>
                   </TableCell>
-                  <TableCell>
+                  <TableCell label={t("admin.investments.table.date")}>
                     <span className="text-theme-sm text-gray-500 dark:text-gray-400">
                       {formatDate(row.createdAt, i18n.language)}
                     </span>
@@ -215,7 +215,7 @@ const AdminInvestmentsTable: React.FC<AdminInvestmentsTableProps> = ({
                       </span>
                     ) : null}
                   </TableCell>
-                  <TableCell className="pe-5">
+                  <TableCell className="pe-5" label={t("admin.users.table.actions")} >
                     <div className="flex flex-wrap justify-end gap-2">
                       {row.paymentStatus === "DECLARED" ? (
                         <>
