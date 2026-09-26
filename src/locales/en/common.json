@@ -1,0 +1,1164 @@
+{
+  "app": {
+    "name": "Invest.ma",
+    "shortName": "IM"
+  },
+  "common": {
+    "loading": "Loading…",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "copy": "Copy",
+    "copied": "Copied",
+    "saveChanges": "Save changes",
+    "seeAll": "See all",
+    "error": "An error occurred, please try again.",
+    "available": "Available",
+    "toggleSidebar": "Toggle sidebar",
+    "months": "months",
+    "phase": {
+      "2": "Phase 2",
+      "3": "Phase 3",
+      "4": "Phase 4",
+      "5": "Phase 5"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "Search or type command...",
+    "toggleSidebar": "Toggle sidebar",
+    "notifications": {
+      "title": "Notifications",
+      "empty": "No notification yet."
+    }
+  },
+  "userDropdown": {
+    "myProfile": "My profile",
+    "language": "Language",
+    "signOut": "Sign out"
+  },
+  "sidebar": {
+    "groups": {
+      "client": "My account",
+      "admin": "Administration"
+    },
+    "items": {
+      "clientDashboard": "Dashboard",
+      "clientInvestments": "Invest",
+      "clientMyInvestments": "My investments",
+      "clientProfile": "My profile",
+      "clientWallet": "Bank details & crypto",
+      "clientDeposits": "Deposits",
+      "clientWithdrawals": "Withdrawals",
+      "clientTransactions": "My transactions",
+      "clientLoans": "Loans",
+      "clientCards": "My cards",
+      "adminDashboard": "Dashboard",
+      "adminUsers": "Users",
+      "adminInvestments": "Investments",
+      "adminProducts": "Opportunities",
+      "adminBankAccounts": "Bank accounts",
+      "adminCryptoAddresses": "Crypto",
+      "adminDeposits": "Deposits",
+      "adminWithdrawals": "Withdrawals",
+      "adminTransactions": "Transactions",
+      "adminLoans": "Loans",
+      "adminCards": "Cards",
+      "adminSecurity": "Security"
+    }
+  },
+  "auth": {
+    "tagline": "Invest, follow your portfolio and manage your requests from a single place.",
+    "highlights": {
+      "invest": "Investment opportunities in one place",
+      "transparent": "Every operation tracked and historised",
+      "support": "A dedicated support team"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "fullName": "Full name",
+      "dateOfBirth": "Date of birth",
+      "nationality": "Nationality",
+      "phone": "Phone",
+      "address": "Address",
+      "addressLine1": "Address line 1",
+      "addressLine2": "Address line 2",
+      "city": "City",
+      "postalCode": "Postal code",
+      "country": "Country"
+    },
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Enter your email and password to access your account.",
+      "rememberMe": "Keep me signed in",
+      "forgotPassword": "Forgot password?",
+      "togglePassword": "Show or hide the password",
+      "submit": "Sign in",
+      "demoTitle": "Demo accounts",
+      "useAccount": "Use",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create an account"
+    },
+    "signUp": {
+      "title": "Create your account",
+      "subtitle": "Six steps, then the administration reviews your file.",
+      "confirmPassword": "Confirm password",
+      "acceptTerms": "I accept the terms and the privacy policy",
+      "backToSignIn": "Back to sign in",
+      "selectCountry": "Select a country",
+      "phoneHint": "The administration may contact you on this number.",
+      "documentsTitle": "Documents",
+      "documentsIntro": "Select the documents you can provide. You will attach the files from your profile.",
+      "documentsUploadNote": "You declare the documents here, then attach the files from your profile as soon as you are connected.",
+      "reviewNote": "After submitting, your account status becomes \"Pending verification\". No financial feature is available until the administration validates your file.",
+      "submit": "Submit my file",
+      "steps": {
+        "account": "Account",
+        "personal": "Identity",
+        "address": "Address",
+        "phone": "Phone",
+        "documents": "Documents",
+        "review": "Review"
+      },
+      "validation": {
+        "required": "This field is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "tooShort": "The password must contain at least 8 characters.",
+        "mismatch": "The passwords do not match.",
+        "notAdult": "You must be at least 18 years old."
+      }
+    },
+    "forgotPassword": {
+      "title": "Reset password",
+      "subtitle": "Enter your email, we will send you a reset link.",
+      "submit": "Send the link",
+      "successTitle": "Check your inbox",
+      "successText": "If an account matches this address, a reset link has been sent."
+    },
+    "twoFactor": {
+      "title": "Two-factor authentication",
+      "subtitle": "Enter the code from your authenticator application.",
+      "enabled": "Two-factor authentication is active on this account.",
+      "code": "Code",
+      "expiresIn": "This code expires in {seconds} seconds.",
+      "submit": "Verify",
+      "back": "Back to sign in",
+      "recoveryHint": "Lost your device? Use one of the recovery codes you saved during enrolment.",
+      "wrongCode": "This code is not valid. Check your authenticator and try again."
+    },
+    "session": {
+      "expiredTitle": "Session expired",
+      "expiredText": "Your session was closed after a period of inactivity or once its maximum duration was reached. Please sign in again."
+    },
+    "failures": {
+      "invalidCredentials": "Incorrect email or password.",
+      "rateLimited": "Too many attempts. Please wait before trying again.",
+      "locked": "This account is temporarily locked after too many failed attempts.",
+      "twoFactorInvalid": "The verification code is not valid.",
+      "accountBlocked": "This account is suspended. Contact the support.",
+      "sessionExpired": "Your session has expired.",
+      "passwordTooShort": "The password must contain at least 8 characters.",
+      "retryIn": "Try again in about {seconds} minutes."
+    },
+    "errors": {
+      "title": "Action impossible",
+      "invalidCredentials": "Incorrect email or password.",
+      "emailAlreadyUsed": "An account already exists with this email address.",
+      "userNotFound": "This account no longer exists.",
+      "unknown": "An error occurred, please try again.",
+      "productNotFound": "This opportunity no longer exists.",
+      "productNotAvailable": "This opportunity is not open to subscriptions.",
+      "investmentNotFound": "This investment no longer exists.",
+      "topupNotFound": "This top-up no longer exists.",
+      "accountNotVerified": "Your account must be validated by the administration first.",
+      "belowMinimumAmount": "The amount is below the minimum of this opportunity.",
+      "aboveMaximumAmount": "The amount is above the maximum of this opportunity.",
+      "noActiveBankAccount": "You have no active bank account attributed yet.",
+      "investmentNotActive": "Only an active investment can be used here.",
+      "paymentNotAwaiting": "This operation is no longer awaiting payment.",
+      "paymentNotDeclared": "The client has not declared a payment for this operation.",
+      "paymentNotVerified": "The payment must be verified before activation.",
+      "paymentAlreadyVerified": "This payment is already verified.",
+      "paymentDeadlinePassed": "The payment deadline has passed.",
+      "forbidden": "You are not allowed to perform this action.",
+      "invalidIban": "This IBAN is not valid.",
+      "invalidCryptoAddress": "This address does not match the format of the selected network.",
+      "addressAlreadyAssigned": "This address is already attributed to another client.",
+      "addressNotFound": "This address no longer exists.",
+      "transactionAlreadyKnown": "This transaction is already recorded.",
+      "cryptoTransactionNotFound": "This transaction no longer exists.",
+      "bankAccountNotFound": "This bank account no longer exists.",
+      "documentNotFound": "This document no longer exists.",
+      "invalidAmount": "Please enter a valid amount.",
+      "noActiveCryptoAddress": "You have no active crypto address yet.",
+      "destinationRequired": "Please enter a destination account or address.",
+      "invalidDestination": "This destination does not match the format of the selected network.",
+      "insufficientBalance": "Your available balance is not sufficient for this amount.",
+      "invalidTransition": "This operation cannot move to that state.",
+      "depositNotFound": "This deposit no longer exists.",
+      "depositAlreadyConfirmed": "This deposit is already confirmed.",
+      "depositClosed": "This deposit is closed and cannot be modified.",
+      "withdrawalNotFound": "This withdrawal no longer exists.",
+      "transactionReferenceRequired": "The reference of the real transaction is required to complete a withdrawal.",
+      "invalidLoanTerms": "These loan terms are not valid.",
+      "invalidDuration": "Please enter a valid duration in months.",
+      "purposeRequired": "Please state the purpose of the loan.",
+      "conditionsRequired": "The conditions are required to approve a loan.",
+      "loanNotFound": "This loan no longer exists.",
+      "loanNotApproved": "This loan has not been approved yet.",
+      "loanNotActive": "This loan is not in progress.",
+      "installmentNotFound": "This instalment does not exist.",
+      "installmentAlreadyPaid": "This instalment is already paid.",
+      "cardProductNotFound": "This card product no longer exists.",
+      "cardProductNotAvailable": "This card is not available for requests.",
+      "cardRequestNotFound": "This card request no longer exists.",
+      "cardRequestClosed": "This card request is closed.",
+      "cardRequestAlreadyOpen": "You already have a request under review for this card.",
+      "cardRequestNotApproved": "This request must be approved before a card is attributed.",
+      "cardNotFound": "This card no longer exists.",
+      "invalidLast4": "Please enter exactly four digits.",
+      "issuerReferenceRequired": "The issuer reference is required.",
+      "invalidExpiry": "Please enter a valid expiry date (MM/YY)."
+    }
+  },
+  "countries": {
+    "MA": "Morocco",
+    "FR": "France",
+    "ES": "Spain",
+    "DE": "Germany",
+    "GB": "United Kingdom",
+    "US": "United States",
+    "AE": "United Arab Emirates",
+    "SN": "Senegal",
+    "CI": "Ivory Coast",
+    "OTHER": "Other"
+  },
+  "roles": {
+    "CLIENT": "Client",
+    "ADMIN": "Administrator",
+    "SUPER_ADMIN": "Super administrator"
+  },
+  "status": {
+    "account": {
+      "PENDING": "Pending verification",
+      "VERIFIED": "Verified",
+      "REJECTED": "Rejected",
+      "SUSPENDED": "Suspended"
+    },
+    "kycDocument": {
+      "PENDING": "Pending review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "NEED_MORE_INFO": "More information needed"
+    },
+    "transaction": {
+      "PENDING": "Pending",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "CONFIRMED": "Confirmed",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled"
+    },
+    "bankAccount": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "BLOCKED": "Blocked"
+    },
+    "cryptoAddress": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "BLOCKED": "Blocked"
+    },
+    "cryptoTransaction": {
+      "DETECTED": "Detected",
+      "CONFIRMING": "Confirming",
+      "CONFIRMED": "Confirmed",
+      "REJECTED": "Rejected"
+    },
+    "investment": {
+      "label": "Status",
+      "PENDING_PAYMENT": "Awaiting payment",
+      "PAYMENT_REVIEW": "Payment verification",
+      "ACTIVE": "Active",
+      "MATURED": "Matured",
+      "CANCELLED": "Cancelled"
+    },
+    "payment": {
+      "label": "Payment",
+      "AWAITING_PAYMENT": "Awaiting payment",
+      "DECLARED": "Declared, to verify",
+      "VERIFIED": "Verified"
+    },
+    "product": {
+      "DRAFT": "Draft",
+      "PUBLISHED": "Published",
+      "CLOSED": "Subscriptions closed",
+      "ARCHIVED": "Archived"
+    },
+    "deposit": {
+      "PENDING": "Awaiting payment",
+      "UNDER_REVIEW": "Under review",
+      "CONFIRMED": "Confirmed",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled"
+    },
+    "withdrawal": {
+      "PENDING": "Submitted",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled"
+    },
+    "loan": {
+      "PENDING": "Submitted",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "REJECTED": "Refused",
+      "ACTIVE": "In progress",
+      "CLOSED": "Closed"
+    },
+    "card": {
+      "REQUESTED": "Requested",
+      "ISSUED": "Issued, to activate",
+      "ACTIVE": "Active",
+      "BLOCKED": "Blocked"
+    }
+  },
+  "bank": {
+    "card": {
+      "title": "My bank details",
+      "subtitle": "Account assigned by the administration. IBANs come from a licensed partner and are never generated by the application.",
+      "emptyTitle": "No bank account attributed",
+      "emptyText": "The administration will assign your IBAN once your file is validated."
+    },
+    "fields": {
+      "iban": "IBAN",
+      "bic": "BIC / SWIFT",
+      "bankName": "Bank name",
+      "holder": "Account holder",
+      "currency": "Currency"
+    },
+    "errors": {
+      "invalidIban": "This IBAN is not valid (format or mod 97 checksum failed).",
+      "formatOk": "Format valid. It still has to be confirmed with the bank."
+    }
+  },
+  "crypto": {
+    "assets": {
+      "BTC": "Bitcoin (BTC)",
+      "ETH": "Ether (ETH)",
+      "USDT_TRC20": "Tether (USDT TRC20)",
+      "USDT_ERC20": "Tether (USDT ERC20)"
+    },
+    "card": {
+      "title": "My deposit addresses",
+      "subtitle": "Send only on the network indicated for each address.",
+      "emptyTitle": "No address attributed",
+      "emptyText": "The administration will assign your deposit addresses."
+    },
+    "fields": {
+      "asset": "Asset and network",
+      "address": "Address",
+      "requiredConfirmations": "{count} confirmations are required before the deposit is credited."
+    },
+    "networkWarning": {
+      "title": "Check the network before sending",
+      "BTC": "Send only on the Bitcoin network. A transfer from another network can be lost irreversibly.",
+      "ETH": "Send only on the Ethereum network. Funds sent from another network cannot be recovered.",
+      "USDT_TRC20": "Send USDT only on the Tron (TRC20) network. Never send ERC20 USDT to this address.",
+      "USDT_ERC20": "Send USDT only on the Ethereum (ERC20) network. Never send TRC20 USDT to this address."
+    },
+    "transactions": {
+      "title": "Crypto deposits",
+      "emptyTitle": "No deposit observed",
+      "emptyText": "Transactions detected on your addresses appear here with their confirmation count.",
+      "hash": "TxID / Hash",
+      "asset": "Asset",
+      "amount": "Amount",
+      "confirmations": "Confirmations",
+      "date": "Detected on",
+      "status": "Status",
+      "pendingAmount": "Pending detection"
+    }
+  },
+  "wallet": {
+    "title": "Bank details & crypto",
+    "subtitle": "IBAN and deposit addresses attributed to your account"
+  },
+  "transactions": {
+    "title": "My transactions",
+    "subtitle": "Every operation on your account",
+    "emptyTitle": "No transaction",
+    "emptyText": "Your deposits, investments, withdrawals and returns will be listed here.",
+    "filters": {
+      "search": "Search by reference, description or hash...",
+      "allTypes": "All types",
+      "allStatuses": "All statuses"
+    },
+    "table": {
+      "reference": "Reference",
+      "type": "Type",
+      "amount": "Amount",
+      "method": "Method",
+      "date": "Date",
+      "status": "Status"
+    },
+    "types": {
+      "DEPOSIT": "Deposit",
+      "WITHDRAWAL": "Withdrawal",
+      "INVESTMENT": "Investment",
+      "INVESTMENT_TOPUP": "Investment top-up",
+      "LOAN": "Loan",
+      "CARD_PAYMENT": "Card payment",
+      "FEE": "Fee",
+      "RETURN": "Return"
+    }
+  },
+  "deposits": {
+    "title": "Deposits",
+    "subtitle": "Request a deposit and follow its validation",
+    "methods": {
+      "BANK_TRANSFER": "Bank transfer",
+      "CRYPTO": "Crypto"
+    },
+    "request": {
+      "title": "Request a deposit",
+      "subtitle": "Indicate the amount you intend to transfer. Your balance only changes once the administration confirms the payment.",
+      "method": "Method",
+      "amount": "Amount",
+      "proof": "Payment reference",
+      "proofOptional": "optional",
+      "proofPlaceholder": "Transfer id or TxID",
+      "proofHint": "If you have already sent the payment, add the reference now: the deposit goes straight to review instead of waiting.",
+      "submit": "Send my request",
+      "noDestination": "No destination available",
+      "noBankAccount": "You have no active bank account yet. The administration has to attribute one first.",
+      "noCryptoAddress": "You have no active crypto address yet. The administration has to attribute one first.",
+      "noticeBank": "Transfer to the IBAN {iban} and put the payment reference in the transfer label.",
+      "noticeCrypto": "Send only on the {network} network, then declare the TxID."
+    },
+    "history": {
+      "title": "My deposits",
+      "emptyTitle": "No deposit",
+      "emptyText": "Your deposit requests will appear here with their validation state.",
+      "proof": "Reference",
+      "sendProof": "I have sent the payment",
+      "cancel": "Cancel"
+    }
+  },
+  "withdrawals": {
+    "title": "Withdrawals",
+    "subtitle": "Request a withdrawal and follow its processing",
+    "request": {
+      "title": "Request a withdrawal",
+      "method": "Method",
+      "amount": "Amount",
+      "amountHint": "The maximum you can request right now is {max}.",
+      "destination": "Destination account or address",
+      "details": "Additional information",
+      "detailsPlaceholder": "Holder name, bank, anything useful to identify the account",
+      "submit": "Send my request",
+      "reserved": "Blocked by a pending request",
+      "reservedHint": "{count, plural, one {# withdrawal pending} other {# withdrawals pending}}",
+      "spendable": "Available to request",
+      "notice": "The money leaves your account only when the administration marks the withdrawal as completed, with the reference of the transaction recorded."
+    },
+    "history": {
+      "title": "My withdrawals",
+      "emptyTitle": "No withdrawal",
+      "emptyText": "Your withdrawal requests will appear here with their processing state.",
+      "destination": "Destination",
+      "transactionReference": "Transaction reference"
+    }
+  },
+  "loans": {
+    "title": "Loans",
+    "subtitle": "Request a loan and follow the repayment schedule",
+    "myLoans": "My loans",
+    "emptyTitle": "No loan request",
+    "emptyText": "Your loan requests will appear here with their state and schedule.",
+    "request": {
+      "title": "Request a loan",
+      "subtitle": "Submit your request. The administration decides the granted amount, the duration, the rate and the conditions.",
+      "amount": "Amount requested",
+      "amountHint": "Please enter a valid amount.",
+      "amountPreview": "You are asking for {amount}.",
+      "duration": "Duration",
+      "durationOption": "{count, plural, one {# month} other {# months}}",
+      "purpose": "Purpose",
+      "purposePlaceholder": "Ex: working capital, equipment purchase",
+      "additionalInfo": "Additional information",
+      "additionalInfoPlaceholder": "Anything that helps the administration assess the request",
+      "submit": "Submit my request",
+      "notice": "No rate is shown before the decision: the conditions of a loan are part of the approval, and they must comply with the applicable legal framework."
+    },
+    "details": {
+      "requested": "Requested",
+      "granted": "Amount granted",
+      "duration": "Duration",
+      "rate": "Nominal annual rate",
+      "rateNotSet": "Not set yet",
+      "requestedOn": "Requested on",
+      "conditions": "Conditions",
+      "reviewNote": "Note from the administration",
+      "grantedLess": "You asked for {requested}. The administration granted {granted}.",
+      "disbursedOn": "Disbursed on {date} (reference {reference})",
+      "remaining": "Remaining principal: {amount}",
+      "schedule": "Repayment schedule",
+      "installment": "Monthly instalment",
+      "totalCost": "Total cost",
+      "alreadyPaid": "Already paid",
+      "outstanding": "Outstanding",
+      "nextDue": "Next instalment: {amount} due on {date}",
+      "fullyPaid": "Every instalment has been paid."
+    },
+    "schedule": {
+      "index": "#",
+      "dueDate": "Due date",
+      "principal": "Principal",
+      "interest": "Interest",
+      "installment": "Instalment",
+      "status": "Status",
+      "statuses": {
+        "SCHEDULED": "Scheduled",
+        "PAID": "Paid",
+        "OVERDUE": "Overdue"
+      }
+    }
+  },
+  "cards": {
+    "title": "My cards",
+    "subtitle": "Your cards and your card requests",
+    "myCards": "My cards",
+    "myRequests": "My requests",
+    "available": "Available cards",
+    "emptyTitle": "No card",
+    "emptyText": "The cards attributed to you by the administration appear here.",
+    "disclaimer": "Only the last four digits are displayed. Cards are issued by an accredited provider: this application never generates a card number.",
+    "activate": "Activate this card",
+    "requestBlock": "Request a block",
+    "requestUnblock": "Request an unblock",
+    "request": "Request this card",
+    "requestOpen": "Request under review",
+    "annualFee": "{amount} / year",
+    "noAnnualFee": "No annual fee",
+    "networks": {
+      "VISA": "Visa",
+      "MASTERCARD": "Mastercard"
+    },
+    "tiers": {
+      "STANDARD": "Standard",
+      "PREMIUM": "Premium"
+    },
+    "fields": {
+      "holder": "Card holder",
+      "number": "Card",
+      "last4": "Last four digits",
+      "expiry": "Expiry",
+      "issuerReference": "Issuer reference"
+    },
+    "requests": {
+      "emptyTitle": "No card request",
+      "emptyText": "Your card requests will appear here with their state.",
+      "statuses": {
+        "PENDING": "Under review",
+        "APPROVED": "Approved",
+        "REJECTED": "Refused"
+      }
+    }
+  },
+  "security": {
+    "title": "Security",
+    "subtitle": "Second factor, sessions, rate limits and security journal",
+    "notice": "Security event",
+    "twoFactor": {
+      "title": "Two-factor authentication",
+      "subtitle": "A second factor is required on administration accounts (§20).",
+      "enabled": "Enabled",
+      "disabled": "Not enabled",
+      "missing": "Missing",
+      "enrolledAt": "Enrolled on",
+      "recoveryCodes": "Recovery codes",
+      "remainingCodes": "{count, plural, one {# code left} other {# codes left}}",
+      "disable": "Disable the second factor",
+      "disableWarning": "Disabling the second factor weakens the protection of an administration account. The action is logged.",
+      "missingWarning": "This administration account has no second factor. Enrol now: the next sign-in will ask for a code.",
+      "enable": "Enable the second factor",
+      "enrolmentTitle": "Enrolment",
+      "step1": "Add the secret to your authenticator",
+      "step1Hint": "Scan the provisioning URI, or type the secret in groups of four.",
+      "copySecret": "Copy the secret",
+      "showUri": "Show the provisioning URI",
+      "step2": "Save the recovery codes",
+      "step2Hint": "Each code works once. Keep them somewhere other than your phone.",
+      "recoveryWarning": "Without these codes and your device, nobody can restore your access.",
+      "step3": "Confirm with a code",
+      "showDemoCode": "Show the current code",
+      "demoCodeHint": "Demo helper: generates the code from the secret on this machine, to try the flow without an authenticator.",
+      "confirm": "Confirm and activate"
+    },
+    "accounts": {
+      "title": "Administration accounts",
+      "subtitle": "The state of the second factor and of the sessions, per account.",
+      "table": {
+        "account": "Account",
+        "twoFactor": "Second factor",
+        "sessions": "Active sessions",
+        "failures": "Failures (24h)",
+        "lastLogin": "Last sign-in"
+      }
+    },
+    "sessions": {
+      "title": "Sessions",
+      "subtitle": "A session ends after an hour of inactivity, and after eight hours whatever the activity.",
+      "empty": "No active session",
+      "emptyText": "Sessions appear here as soon as a sign-in happens.",
+      "current": "Current session",
+      "newDevice": "New device",
+      "startedAt": "Started {date}",
+      "expiresAt": "expires {date}",
+      "revokeAll": "Revoke all sessions",
+      "revokeAllReason": "Revoked by the administration",
+      "revoked": "The sessions of that account have been revoked."
+    },
+    "rateLimits": {
+      "title": "Rate limits",
+      "subtitle": "Brute force protection on the sensitive endpoints.",
+      "table": {
+        "action": "Action",
+        "used": "Usage",
+        "locked": "Lockout"
+      },
+      "actions": {
+        "LOGIN": "Sign-in",
+        "REGISTER": "Registration",
+        "TWO_FACTOR": "Second factor",
+        "PASSWORD_RESET": "Password reset",
+        "DOCUMENT_UPLOAD": "Document upload"
+      },
+      "lockedFor": "{seconds}s",
+      "reset": "Reset the counters"
+    },
+    "journal": {
+      "title": "Security journal",
+      "subtitle": "Every sign-in, failure and factor change (§22).",
+      "empty": "No security event",
+      "emptyText": "Security events appear here as they happen."
+    },
+    "password": {
+      "title": "Change the password",
+      "subtitle": "Changing the password closes every session of the account, including this one.",
+      "new": "New password",
+      "hint": "At least 8 characters.",
+      "submit": "Change the password",
+      "change": "Change my password",
+      "changed": "Password changed. Please sign in again."
+    }
+  },
+  "investments": {
+    "title": "Invest",
+    "subtitle": "Opportunities available on the platform",
+    "detailsTitle": "Opportunity",
+    "positionTitle": "Investment",
+    "emptyTitle": "No opportunity available",
+    "emptyText": "The administration has not published any opportunity yet.",
+    "nav": {
+      "myInvestments": "My investments"
+    },
+    "risk": {
+      "LOW": "Low risk",
+      "MEDIUM": "Medium risk",
+      "HIGH": "High risk"
+    },
+    "card": {
+      "minimum": "Minimum amount",
+      "maximum": "Maximum amount",
+      "duration": "Duration",
+      "months": "{count, plural, one {# month} other {# months}}",
+      "rate": "Target rate",
+      "indicative": "indicative",
+      "contractual": "contractual",
+      "initialAmount": "Initial amount",
+      "topupTotal": "Top-ups",
+      "totalInvested": "Total invested",
+      "contractualReturn": "Contractual return",
+      "noContractualReturn": "No contractual return: the rate is indicative",
+      "maturesOn": "Matures on {date}",
+      "paymentMethod": "Payment method",
+      "details": "See details",
+      "rateGuaranteed": "Contractual rate",
+      "rateIndicative": "Indicative annual rate",
+      "rateGuaranteedText": "{rate} % per year, contractual for the whole duration.",
+      "rateIndicativeText": "{rate} % per year is an objective, not a guarantee. The actual performance depends on the project.",
+      "rateDisclaimer": "This yield is indicative and not guaranteed. Read the risks before investing.",
+      "rateDisclaimerTitle": "Indicative yield"
+    },
+    "details": {
+      "conditions": "Conditions",
+      "documents": "Documents",
+      "risks": "Risks"
+    },
+    "paymentMethods": {
+      "BANK_TRANSFER": "Bank transfer",
+      "CRYPTO": "Crypto",
+      "OTHER": "Other"
+    },
+    "subscribe": {
+      "title": "Subscribe",
+      "amount": "Amount",
+      "amountHint": "Enter an amount between {min} and {max}.",
+      "noMaximum": "no maximum",
+      "paymentMethod": "Payment method",
+      "recap": "Recap",
+      "contractualReturn": "Contractual return",
+      "acceptConditions": "I have read the conditions and the risk document and I accept them.",
+      "submit": "Confirm my subscription",
+      "paymentNotice": "After confirming, you receive the payment instructions. The investment only becomes active once the administration has verified your payment.",
+      "notVerified": "Account not validated",
+      "notVerifiedText": "Your account must be validated by the administration before you can subscribe.",
+      "unavailable": "Opportunity unavailable",
+      "unavailableText": "This opportunity is not open to subscriptions right now.",
+      "created": "Subscription created",
+      "createdText": "Your request {reference} was created. Complete the payment to activate it."
+    },
+    "payment": {
+      "title": "Payment instructions",
+      "topupTitle": "Top-up payment instructions",
+      "amountDue": "Amount to pay",
+      "reference": "Payment reference",
+      "deadline": "Payment deadline",
+      "declarationNotice": "Declaring a payment does not activate anything. The administration verifies it before the investment becomes active.",
+      "declare": "I have made the payment",
+      "waitingReview": "Your declaration is being verified by the administration.",
+      "verified": "Payment verified",
+      "verifiedText": "The administration verified this payment."
+    },
+    "position": {
+      "activatedOn": "Activated on {date}"
+    },
+    "topup": {
+      "title": "Increase my investment",
+      "action": "Increase",
+      "currentTotal": "Currently invested",
+      "amount": "Additional amount",
+      "submit": "Confirm the increase",
+      "notice": "A top-up is a new operation linked to your investment. Your initial amount stays unchanged.",
+      "created": "Increase created",
+      "createdText": "Your increase {reference} was created. Complete the payment to apply it.",
+      "notActive": "Investment not active",
+      "notActiveText": "Only an active investment can be increased.",
+      "explanation": "How a top-up works",
+      "explanationText": "Your initial subscription is preserved as it was. The increase is recorded as a separate operation, which keeps the history of every amount readable."
+    },
+    "topups": {
+      "title": "Top-ups",
+      "count": "{count, plural, one {# increase} other {# increases}}",
+      "emptyTitle": "No increase yet",
+      "emptyText": "Your increases on this investment will be listed here."
+    },
+    "positions": {
+      "emptyTitle": "No investment yet",
+      "emptyText": "Subscribe to an opportunity to see it here."
+    }
+  },
+  "kyc": {
+    "card": {
+      "title": "Verification documents",
+      "emptyTitle": "No document registered",
+      "emptyText": "The documents you declare during sign-up appear here with their review state.",
+      "notUploaded": "Not uploaded yet"
+    },
+    "panel": {
+      "title": "My documents",
+      "subtitle": "Attach a file to each document. Replacing a reviewed document sends it back to review."
+    },
+    "upload": {
+      "title": "Upload impossible",
+      "choose": "Choose a file",
+      "replace": "Replace the file",
+      "constraints": "PDF, JPG, PNG or WEBP · {max} maximum"
+    },
+    "uploadErrors": {
+      "tooLarge": "This file is too large. Choose a smaller one.",
+      "unsupportedType": "This format is not accepted. Use PDF, JPG, PNG or WEBP.",
+      "readFailed": "The file could not be read. Try again."
+    },
+    "review": {
+      "open": "Open",
+      "close": "Close",
+      "notePlaceholder": "Review note (shown to the client)",
+      "askMore": "Ask for more",
+      "fileMissing": "The content of this document is no longer available."
+    },
+    "documents": {
+      "id_card": "Identity card",
+      "passport": "Passport",
+      "driving_license": "Driving licence",
+      "proof_of_address": "Proof of address",
+      "selfie": "Selfie with ID"
+    },
+    "documentHints": {
+      "ID_CARD": "Both sides, all corners visible",
+      "PASSPORT": "Identity page, valid document",
+      "DRIVING_LICENSE": "Both sides, valid document",
+      "PROOF_OF_ADDRESS": "Invoice less than 3 months old",
+      "SELFIE": "Neutral background, no filter"
+    }
+  },
+  "verification": {
+    "gate": {
+      "pendingTitle": "Your file is being reviewed",
+      "pendingText": "The administration is checking your identity documents. The financial features open as soon as your account is validated.",
+      "rejectedTitle": "Your file was rejected",
+      "rejectedText": "The documents provided were not accepted. Contact the support to know what to send again.",
+      "suspendedTitle": "Your account is suspended",
+      "suspendedText": "Access is temporarily disabled pending a documentary review. Contact the support for more information.",
+      "checklistTitle": "Verification progress",
+      "viewProfile": "Open my profile",
+      "contactSupport": "Contact support"
+    },
+    "steps": {
+      "identity": "Identity document",
+      "address": "Proof of address",
+      "selfie": "Selfie with ID",
+      "review": "Administration review"
+    },
+    "stepState": {
+      "done": "Done",
+      "pending": "In progress",
+      "todo": "To do",
+      "rejected": "Refused"
+    }
+  },
+  "client": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Balance, investments and recent activity"
+    },
+    "stats": {
+      "availableBalance": "Available balance",
+      "totalInvested": "Total invested",
+      "deposits": "Deposits",
+      "withdrawals": "Withdrawals",
+      "activeInvestmentsHint": "{count, plural, one {# active investment} other {# active investments}}"
+    },
+    "quickActions": {
+      "title": "Quick actions",
+      "invest": "Invest",
+      "deposit": "Add funds",
+      "topup": "Increase an investment",
+      "withdraw": "Withdraw",
+      "loan": "Request a loan",
+      "card": "Request a card",
+      "transactions": "My transactions",
+      "comingInPhase": "Available in phase {phase}",
+      "available": "Available now"
+    },
+    "transactions": {
+      "title": "Last transactions",
+      "emptyTitle": "No transaction yet",
+      "emptyText": "Your deposits, investments and withdrawals will appear here.",
+      "reference": "Reference",
+      "type": "Type",
+      "amount": "Amount",
+      "date": "Date",
+      "status": "Status"
+    }
+  },
+  "profile": {
+    "title": "My profile",
+    "subtitle": "Your information, verification status and documents",
+    "statusLabel": "Status",
+    "form": {
+      "title": "My information",
+      "subtitle": "Identity fields are locked once validated. You can update your contact details.",
+      "reference": "Client reference",
+      "countryCodePlaceholder": "ISO code (ex. MA)",
+      "savedTitle": "Profile updated",
+      "savedText": "Your information has been saved."
+    },
+    "bank": {
+      "title": "Bank details",
+      "description": "The IBAN assigned by the administration will be displayed here."
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Administration dashboard",
+      "subtitle": "Platform activity and files to review"
+    },
+    "stats": {
+      "totalClients": "Clients",
+      "verifiedClients": "{count} verified",
+      "pendingVerification": "Pending verification",
+      "suspendedClients": "{count} suspended",
+      "operationVolume": "Operation volume",
+      "operationsCount": "{count, plural, one {# operation in progress} other {# operations in progress}}",
+      "pendingInvestments": "Investments pending",
+      "pendingDeposits": "Deposits pending",
+      "pendingWithdrawals": "Withdrawals pending",
+      "pendingLoans": "Loans pending",
+      "pendingCards": "Card requests"
+    },
+    "activityLog": {
+      "title": "Activity log",
+      "emptyTitle": "No recorded action",
+      "emptyText": "Sensitive administrative actions are logged here."
+    },
+    "auditActions": {
+      "REGISTER": "Account created",
+      "LOGIN": "Sign in",
+      "APPROVE_ACCOUNT": "Account validated",
+      "REJECT_ACCOUNT": "Account rejected",
+      "SUSPEND_ACCOUNT": "Account suspended",
+      "REACTIVATE_ACCOUNT": "Account reactivated",
+      "REQUEST_MORE_INFO": "More information requested",
+      "REVIEW_KYC_DOCUMENT": "KYC document reviewed",
+      "UPLOAD_KYC_DOCUMENT": "KYC document uploaded",
+      "REPLACE_KYC_DOCUMENT": "KYC document replaced",
+      "CREATE_LOAN_REQUEST": "Loan request submitted",
+      "REVIEW_LOAN": "Loan under review",
+      "APPROVE_LOAN": "Loan approved",
+      "REJECT_LOAN": "Loan refused",
+      "REQUEST_LOAN_INFO": "More information requested on a loan",
+      "DISBURSE_LOAN": "Loan disbursed",
+      "PAY_LOAN_INSTALMENT": "Loan instalment paid",
+      "CLOSE_LOAN": "Loan closed",
+      "CREATE_CARD_REQUEST": "Card request submitted",
+      "APPROVE_CARD_REQUEST": "Card request approved",
+      "REJECT_CARD_REQUEST": "Card request refused",
+      "ISSUE_CARD": "Card issued",
+      "ACTIVATE_CARD": "Card activated",
+      "BLOCK_CARD": "Card blocked",
+      "SESSION_REVOKED": "Sessions revoked by the administration",
+      "CREATE_DEPOSIT": "Deposit requested",
+      "DECLARE_DEPOSIT_PROOF": "Deposit proof provided",
+      "CONFIRM_DEPOSIT": "Deposit confirmed",
+      "REJECT_DEPOSIT": "Deposit rejected",
+      "CREATE_WITHDRAWAL": "Withdrawal requested",
+      "REVIEW_WITHDRAWAL": "Withdrawal under review",
+      "APPROVE_WITHDRAWAL": "Withdrawal approved",
+      "REJECT_WITHDRAWAL": "Withdrawal rejected",
+      "PROCESS_WITHDRAWAL": "Withdrawal in processing",
+      "COMPLETE_WITHDRAWAL": "Withdrawal completed",
+      "CANCEL_WITHDRAWAL": "Withdrawal cancelled",
+      "ASSIGN_IBAN": "IBAN assigned",
+      "BLOCK_IBAN": "IBAN blocked",
+      "ACTIVATE_IBAN": "IBAN activated",
+      "ASSIGN_CRYPTO_ADDRESS": "Crypto address assigned",
+      "REMOVE_CRYPTO_ADDRESS": "Crypto address removed",
+      "CONFIRM_CRYPTO_TRANSACTION": "Crypto deposit confirmed",
+      "REJECT_CRYPTO_TRANSACTION": "Crypto deposit rejected",
+      "CREATE_INVESTMENT": "Investment created",
+      "CREATE_INVESTMENT_TOPUP": "Investment top-up created",
+      "DECLARE_INVESTMENT_PAYMENT": "Payment declared by the client",
+      "VERIFY_INVESTMENT_PAYMENT": "Payment verified",
+      "REJECT_INVESTMENT_PAYMENT": "Payment rejected",
+      "ACTIVATE_INVESTMENT": "Investment activated",
+      "CANCEL_INVESTMENT": "Investment cancelled",
+      "MATURE_INVESTMENT": "Investment matured",
+      "CREATE_PRODUCT": "Opportunity created",
+      "UPDATE_PRODUCT": "Opportunity updated",
+      "ACTIVATE_PRODUCT": "Opportunity published",
+      "ARCHIVE_PRODUCT": "Opportunity archived",
+      "ADD_INTERNAL_NOTE": "Internal note added",
+      "UPDATE_PROFILE": "Profile updated"
+    },
+    "auditResults": {
+      "SUCCESS": "Success",
+      "FAILURE": "Failure"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name, email or reference...",
+      "allStatuses": "All statuses",
+      "allRoles": "All roles"
+    },
+    "bankAccounts": {
+      "title": "Bank accounts",
+      "subtitle": "Associate an IBAN provided by a licensed partner to a client.",
+      "client": "Client",
+      "allClients": "All clients",
+      "selectClient": "Select a client above to attribute an IBAN.",
+      "assign": "Assign an IBAN",
+      "activate": "Activate",
+      "block": "Block"
+    },
+    "cryptoAddresses": {
+      "title": "Crypto addresses",
+      "subtitle": "Attribute deposit addresses and review the deposits seen on chain.",
+      "client": "Client",
+      "selectClient": "Select a client above to attribute an address.",
+      "selectClientOption": "Select a client",
+      "assign": "Assign the address",
+      "remove": "Remove"
+    },
+    "cryptoTransactions": {
+      "title": "Blockchain deposits",
+      "subtitle": "Confirm or reject the deposits announced by the clients.",
+      "confirm": "Confirm",
+      "reject": "Reject",
+      "rejectReason": "Deposit rejected after review"
+    },
+    "investments": {
+      "title": "Investments",
+      "subtitle": "Payments to verify, active and finished positions.",
+      "notice": "A declaration from a client is not a payment. Only verifying an operation here activates it and makes it count in the client's balance.",
+      "emptyTitle": "No investment",
+      "emptyText": "No client has subscribed yet.",
+      "verifyPayment": "Verify the payment",
+      "rejectPayment": "Reject the payment",
+      "rejectReason": "Payment not received or wrong reference",
+      "mature": "Mark as matured",
+      "cancel": "Cancel",
+      "table": {
+        "client": "Client",
+        "product": "Product",
+        "date": "Created on"
+      }
+    },
+    "deposits": {
+      "title": "Deposits",
+      "subtitle": "Confirm or reject the deposits requested by the clients.",
+      "notice": "A deposit request credits nothing. Confirming it is what writes the ledger row and makes the money available to the client.",
+      "emptyTitle": "No deposit",
+      "emptyText": "No client has requested a deposit yet.",
+      "noProof": "No payment reference provided by the client.",
+      "notePlaceholder": "Review note (visible by the client)",
+      "defaultRejectReason": "Payment not received",
+      "confirm": "Confirm and credit",
+      "reject": "Reject"
+    },
+    "withdrawals": {
+      "title": "Withdrawals",
+      "subtitle": "Review, approve, process and complete the withdrawals.",
+      "notice": "The money only leaves the account when the withdrawal is completed, and the reference of the real transaction is then required.",
+      "emptyTitle": "No withdrawal",
+      "emptyText": "No client has requested a withdrawal yet.",
+      "review": "Start the review",
+      "approve": "Approve",
+      "process": "Put in processing",
+      "complete": "Mark as completed",
+      "reject": "Reject",
+      "referencePlaceholder": "Reference of the real transaction (required)",
+      "notePlaceholder": "Reason for the rejection"
+    },
+    "transactions": {
+      "title": "Transactions",
+      "subtitle": "The central ledger, across every client.",
+      "notice": "This table is the trace of every movement. A row is never edited: a correction is a new row."
+    },
+    "loans": {
+      "title": "Loans",
+      "subtitle": "Review, approve and disburse the loan requests.",
+      "notice": "Approving a loan moves no money. The amount only reaches the client when the disbursement is recorded, with the reference of the real transfer.",
+      "emptyTitle": "No loan request",
+      "emptyText": "No client has requested a loan yet.",
+      "review": "Start the review",
+      "approve": "Approve",
+      "reject": "Refuse",
+      "disburse": "Record the disbursement",
+      "disburseHint": "The money leaves the platform at this step.",
+      "disbursePlaceholder": "Reference of the disbursement (required)",
+      "rejectPlaceholder": "Reason for the refusal",
+      "approvedOn": "Approved on {date}",
+      "legalNotice": "The conditions must fit the applicable legal framework. This is a legal validation, not a technical one: check the rate, the duration and the conditions before approving.",
+      "approvalForm": {
+        "title": "Approval terms",
+        "submit": "Approve and build the schedule"
+      }
+    },
+    "cards": {
+      "title": "Cards",
+      "subtitle": "Card requests, attribution and blocking.",
+      "notice": "Cards are issued by an accredited provider. The attribution form only records what that provider returns: the last four digits, an issuer reference and the expiry. The application never generates a card number.",
+      "emptyTitle": "No card",
+      "emptyText": "No client has requested a card yet.",
+      "pendingRequests": "Requests to process",
+      "noRequests": "No request",
+      "noRequestsText": "All card requests have been handled.",
+      "approve": "Approve",
+      "reject": "Refuse",
+      "rejectPlaceholder": "Reason for the refusal",
+      "attribution": "Attribution",
+      "noApprovedRequests": "No request ready",
+      "noApprovedRequestsText": "A card can only be attributed once its request is approved.",
+      "issuerHint": "Copy these values from the provider's dashboard. No full card number can be entered, by design.",
+      "attribute": "Attribute the card",
+      "issue": "Record the card",
+      "issuedCards": "Cards in circulation",
+      "noCards": "No card",
+      "noCardsText": "No card has been issued yet.",
+      "block": "Block",
+      "unblock": "Unblock",
+      "settledRequests": "Refused requests"
+    },
+    "products": {
+      "title": "Investment opportunities",
+      "subtitle": "Create, publish, close and archive the products.",
+      "notice": "A rate is contractual only when it legally is. Leave the contractual box unchecked unless that is the case, the yield is then displayed as indicative (§24).",
+      "create": "Create an opportunity",
+      "publish": "Publish",
+      "closeSubscriptions": "Close subscriptions",
+      "archive": "Archive",
+      "emptyTitle": "No opportunity",
+      "emptyText": "Create your first opportunity to let clients subscribe.",
+      "fields": {
+        "name": "Name",
+        "sector": "Sector",
+        "description": "Description",
+        "minimum": "Minimum amount",
+        "maximum": "Maximum amount",
+        "duration": "Duration in months",
+        "rate": "Target annual rate (%)",
+        "rateGuaranteed": "The rate is contractual",
+        "riskLevel": "Risk level",
+        "conditions": "Conditions",
+        "documents": "Documents",
+        "risks": "Risks",
+        "onePerLine": "One per line"
+      }
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Client files, KYC status and account actions",
+      "emptyTitle": "No user found",
+      "emptyText": "Adjust the filters to see more results.",
+      "table": {
+        "reference": "Reference",
+        "client": "Client",
+        "role": "Role",
+        "kyc": "Documents",
+        "status": "Status",
+        "createdAt": "Registered on",
+        "actions": "Actions",
+        "review": "Review",
+        "documents": "{count} documents ({pending} pending)",
+        "noDocuments": "None"
+      },
+      "detail": {
+        "registeredAt": "Registered on",
+        "approveDocument": "Approve",
+        "notes": "Internal notes",
+        "noNotes": "No internal note.",
+        "notePlaceholder": "Message to the file (internal note or request for information)",
+        "addNote": "Add note",
+        "requestInfo": "Request information",
+        "reject": "Reject",
+        "suspend": "Suspend",
+        "approve": "Validate",
+        "reactivate": "Reactivate"
+      }
+    }
+  },
+  "notFound": {
+    "error": "ERROR",
+    "message": "We can't seem to find the page you are looking for!",
+    "backHome": "Back to home page"
+  }
+}

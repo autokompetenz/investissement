@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Test build output
+.test-build
+
+# Connexion à la base : l'URL Neon contient le mot de passe. Elle vit dans les
+# variables d'environnement de Vercel, jamais dans le dépôt.
+.env
+.env.*
+!.env.example
+
+# Editor directories and files
+.commandcode
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

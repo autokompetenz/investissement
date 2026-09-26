@@ -1,0 +1,1111 @@
+CAHIER DES CHARGES FONCTIONNEL - PLATEFORME D'INVESTISSEMENT
+================================================================
+
+1. OBJECTIF DU PROJET
+----------------------
+Créer une plateforme financière en React JS permettant aux clients de créer un compte, faire vérifier leur identité, investir, augmenter leurs investissements, demander des prêts, demander des cartes bancaires, effectuer des dépôts, consulter leurs opérations et demander des retraits.
+
+L'entreprise et le site étant actuellement en phase de création, l'architecture doit être conçue pour évoluer avec les exigences réglementaires, les prestataires bancaires/paiement et les services crypto utilisés.
+
+Le système doit prévoir deux espaces principaux :
+- Espace Client
+- Espace Administration
+
+
+2. FONCTIONNEMENT GLOBAL
+------------------------
+Client
+  -> Création de compte
+  -> Vérification du profil/KYC
+  -> Validation par l'administration
+  -> Activation du compte
+  -> Attribution éventuelle d'un IBAN et d'adresses crypto
+  -> Dépôt
+  -> Investissement / augmentation d'investissement
+  -> Demande de prêt
+  -> Demande de carte
+  -> Suivi du solde et des opérations
+  -> Demande de retrait
+  -> Vérification et validation par l'administration
+  -> Traitement du retrait
+
+
+3. ESPACE CLIENT
+----------------
+
+3.1 Dashboard
+Le tableau de bord doit afficher :
+- Solde disponible
+- Total investi
+- Investissements actifs
+- Gains/rendements affichés selon les conditions réelles du produit
+- Dépôts
+- Retraits
+- Dernières transactions
+- Graphique d'évolution du portefeuille
+- Notifications
+
+Actions rapides :
+- Investir
+- Ajouter des fonds
+- Augmenter un investissement
+- Retirer
+- Demander un prêt
+- Demander une carte
+
+
+3.2 Création de compte
+Étapes :
+1. Email + mot de passe
+2. Informations personnelles
+3. Adresse
+4. Téléphone
+5. Informations d'identification
+6. Documents nécessaires
+7. Soumission du dossier
+8. Statut "En attente de vérification"
+
+L'administration peut :
+- Valider
+- Rejeter
+- Demander des informations complémentaires
+
+Statuts :
+- PENDING
+- VERIFIED
+- REJECTED
+- SUSPENDED
+
+
+3.3 Profil
+Le client doit pouvoir consulter/modifier selon les autorisations :
+- Nom
+- Prénom
+- Email
+- Téléphone
+- Adresse
+- Informations personnelles
+- Statut de vérification
+- Documents/KYC
+- Informations bancaires autorisées
+
+
+4. COMPTES BANCAIRES / IBAN
+----------------------------
+L'administration doit pouvoir associer un compte bancaire/IBAN à un client.
+
+Informations possibles :
+- IBAN
+- BIC/SWIFT
+- Nom de la banque
+- Titulaire
+- Devise
+- Statut
+
+Côté client :
+- Affichage de l'IBAN
+- Affichage du BIC
+- Bouton "Copier l'IBAN"
+
+IMPORTANT :
+Dans une vraie plateforme financière, les IBAN doivent provenir d'un établissement bancaire ou de paiement partenaire autorisé. L'application ne doit pas fabriquer de faux IBAN.
+
+
+5. ADRESSES CRYPTO
+------------------
+L'administration doit pouvoir attribuer des adresses crypto aux clients.
+
+Exemples :
+- BTC
+- ETH
+- USDT TRC20
+- USDT ERC20
+- Autres actifs/réseaux selon les services utilisés
+
+Informations :
+- Crypto
+- Réseau
+- Adresse
+- Statut
+- Client associé
+
+Côté client :
+- Affichage de la crypto
+- Réseau
+- Adresse de dépôt
+- Bouton "Copier"
+- Avertissement sur le réseau à utiliser
+- Historique des transactions
+
+Le système doit pouvoir enregistrer :
+- Hash/TxID
+- Montant
+- Devise
+- Réseau
+- Date
+- Nombre de confirmations
+- Statut
+
+
+6. INVESTISSEMENTS
+------------------
+Le client accède à une page "Investir".
+
+Chaque opportunité peut afficher :
+- Nom du produit/projet
+- Description
+- Montant minimum
+- Montant maximum si applicable
+- Durée
+- Conditions
+- Documents
+- Risques
+- Informations sur le rendement lorsqu'il est applicable
+- Statut du produit
+
+Exemple de parcours :
+1. Le client choisit une opportunité.
+2. Il indique le montant.
+3. Il consulte le récapitulatif.
+4. Il accepte les conditions.
+5. Il confirme la demande.
+6. Une opération est créée.
+7. Le paiement est effectué.
+8. Le paiement est vérifié.
+9. L'investissement devient actif lorsque toutes les conditions sont remplies.
+
+Statuts possibles :
+- PENDING_PAYMENT
+- PAYMENT_REVIEW
+- ACTIVE
+- MATURED
+- CANCELLED
+
+
+7. AUGMENTATION D'UN INVESTISSEMENT
+------------------------------------
+Le client doit pouvoir augmenter un investissement existant.
+
+Exemple :
+Investissement initial : 5 000 EUR
+Ajout : 2 500 EUR
+Total : 7 500 EUR
+
+Il est préférable de créer une nouvelle opération "INVESTMENT_TOPUP" liée à l'investissement original plutôt que de modifier simplement l'ancien montant.
+
+Le système doit conserver :
+- Montant initial
+- Montants ajoutés
+- Date de chaque ajout
+- Référence de chaque opération
+- Total investi
+- Statut
+
+
+8. PAIEMENT D'UN INVESTISSEMENT
+--------------------------------
+Après confirmation, le client reçoit les instructions de paiement.
+
+Informations possibles :
+- Montant à payer
+- Devise
+- Méthode de paiement
+- Coordonnées bancaires ou adresse crypto
+- Référence
+- Date limite éventuelle
+
+Le client peut signaler :
+"J'ai effectué le paiement"
+
+L'administration vérifie ensuite le paiement.
+
+Flux :
+En attente de paiement
+-> Paiement déclaré
+-> Paiement en vérification
+-> Paiement vérifié
+-> Investissement actif
+
+
+9. DEMANDES DE PRÊT
+-------------------
+Le client ouvre "Prêts".
+
+Formulaire :
+- Montant demandé
+- Durée souhaitée
+- Motif
+- Informations complémentaires
+- Documents nécessaires
+
+Après soumission :
+Statut = PENDING
+
+Administration :
+- Approuver
+- Refuser
+- Demander des informations complémentaires
+
+Si approuvé :
+- Montant
+- Durée
+- Conditions
+- Échéancier
+- Statut du prêt
+
+Les conditions de prêt doivent respecter le cadre juridique applicable.
+
+
+10. CARTES BANCAIRES
+--------------------
+Le client ouvre "Mes cartes".
+
+Il peut demander une carte selon les produits réellement disponibles :
+- Visa
+- Mastercard
+- Standard
+- Premium
+- Autres catégories autorisées
+
+Parcours :
+1. Choix de la carte
+2. Vérification des informations
+3. Demande
+4. Validation par l'administration/prestataire
+5. Attribution
+6. Activation
+
+Administration :
+- Voir les demandes
+- Approuver
+- Refuser
+- Attribuer une carte
+- Bloquer/désactiver une carte
+
+Côté client :
+- Type de carte
+- Derniers chiffres
+- Statut
+- Date d'expiration si disponible
+
+IMPORTANT :
+Les cartes réelles doivent être émises par un prestataire/émetteur habilité. L'application ne doit pas générer elle-même de véritables numéros de cartes bancaires.
+
+
+11. DÉPÔTS
+---------
+Le client peut effectuer un dépôt selon les moyens réellement disponibles :
+- Virement bancaire
+- Crypto
+- Autres moyens intégrés ultérieurement
+
+Chaque dépôt doit posséder :
+- ID
+- Client
+- Montant
+- Devise
+- Méthode
+- Référence
+- Statut
+- Date
+- Preuve/TxID si applicable
+
+Statuts :
+- PENDING
+- UNDER_REVIEW
+- CONFIRMED
+- REJECTED
+- CANCELLED
+
+
+12. RETRAITS
+-----------
+Le client ouvre "Retirer".
+
+Il renseigne :
+- Montant
+- Méthode
+- Compte/adresse de destination
+- Informations nécessaires
+
+Le système doit vérifier notamment :
+- Compte actif
+- Solde disponible
+- Limites éventuelles
+- Informations de destination
+- Conditions applicables
+
+Après soumission :
+PENDING
+
+Administration :
+- Consulter la demande
+- Vérifier les informations
+- Approuver
+- Refuser
+- Demander des informations
+- Passer en traitement
+- Marquer comme terminé
+
+Statuts :
+- PENDING
+- UNDER_REVIEW
+- APPROVED
+- PROCESSING
+- COMPLETED
+- REJECTED
+- CANCELLED
+
+Une référence de transaction doit être enregistrée lorsque le retrait est réellement traité.
+
+
+13. ESPACE ADMINISTRATION
+-------------------------
+Dashboard Admin :
+
+Statistiques :
+- Nombre de clients
+- Clients en attente de vérification
+- Investissements
+- Investissements en attente
+- Retraits en attente
+- Prêts en attente
+- Demandes de cartes
+- Dépôts en attente
+- Volume des opérations
+
+Menu recommandé :
+
+Dashboard
+
+Utilisateurs
+  - Tous les clients
+  - En attente
+  - Vérifiés
+  - Suspendus
+  - Bloqués
+
+Investissements
+  - Tous
+  - En attente
+  - Actifs
+  - Terminés
+  - Produits/opportunités
+
+Dépôts
+  - Tous
+  - Bancaires
+  - Crypto
+  - En attente
+  - Confirmés
+  - Refusés
+
+Retraits
+  - En attente
+  - En vérification
+  - Approuvés
+  - En traitement
+  - Terminés
+  - Refusés
+
+Prêts
+  - Demandes
+  - En étude
+  - Approuvés
+  - Refusés
+  - Actifs
+
+Cartes
+  - Demandes
+  - Attribuées
+  - Actives
+  - Bloquées
+
+Comptes bancaires
+  - IBAN
+  - BIC
+  - Comptes associés
+
+Crypto
+  - Adresses
+  - Réseaux
+  - Transactions
+
+Opportunités d'investissement
+  - Créer
+  - Modifier
+  - Désactiver
+  - Archiver
+
+Notifications
+
+Journal d'activité
+
+Paramètres
+
+
+14. GESTION DES UTILISATEURS
+----------------------------
+L'admin doit pouvoir :
+- Voir les informations du client
+- Voir le statut KYC
+- Voir les documents autorisés
+- Vérifier les opérations
+- Voir les investissements
+- Voir les dépôts
+- Voir les retraits
+- Voir les prêts
+- Voir les cartes
+- Attribuer un IBAN
+- Attribuer des adresses crypto
+- Suspendre un compte
+- Réactiver un compte
+- Ajouter des notes internes
+
+Toutes les actions sensibles doivent être journalisées.
+
+
+15. TRANSACTIONS
+----------------
+Une table centrale "transactions" doit permettre de conserver une trace des mouvements.
+
+Champs recommandés :
+- id
+- user_id
+- type
+- amount
+- currency
+- status
+- reference
+- description
+- payment_method
+- transaction_hash si crypto
+- created_at
+- updated_at
+
+Types possibles :
+- DEPOSIT
+- WITHDRAWAL
+- INVESTMENT
+- INVESTMENT_TOPUP
+- LOAN
+- CARD_PAYMENT
+- FEE
+- RETURN
+
+
+16. ARCHITECTURE TECHNIQUE REACT
+--------------------------------
+Le frontend peut être organisé ainsi :
+
+src/
+|
+|-- components/
+|   |-- Navbar.jsx
+|   |-- Sidebar.jsx
+|   |-- Modal.jsx
+|   |-- StatCard.jsx
+|   |-- DataTable.jsx
+|   `-- ...
+|
+|-- pages/
+|   |-- auth/
+|   |   |-- Login.jsx
+|   |   |-- Register.jsx
+|   |   `-- ForgotPassword.jsx
+|   |
+|   |-- client/
+|   |   |-- Dashboard.jsx
+|   |   |-- Investments.jsx
+|   |   |-- InvestmentDetails.jsx
+|   |   |-- Loans.jsx
+|   |   |-- Cards.jsx
+|   |   |-- Deposits.jsx
+|   |   |-- Withdrawals.jsx
+|   |   |-- Transactions.jsx
+|   |   `-- Profile.jsx
+|   |
+|   `-- admin/
+|       |-- Dashboard.jsx
+|       |-- Users.jsx
+|       |-- Investments.jsx
+|       |-- Loans.jsx
+|       |-- Withdrawals.jsx
+|       |-- Cards.jsx
+|       |-- BankAccounts.jsx
+|       |-- CryptoAddresses.jsx
+|       |-- Transactions.jsx
+|       `-- Settings.jsx
+|
+|-- services/
+|   |-- api.js
+|   |-- auth.js
+|   |-- investments.js
+|   |-- withdrawals.js
+|   `-- ...
+|
+|-- context/
+|   `-- AuthContext.jsx
+|
+`-- App.jsx
+
+
+17. BACKEND
+-----------
+Architecture recommandée :
+
+React JS
+   |
+   v
+REST API
+   |
+   v
+Node.js + Express
+   |
+   v
+PostgreSQL / Supabase
+
+Le frontend ne doit jamais être responsable seul des opérations financières sensibles.
+
+Exemple :
+Le frontend ne doit pas simplement faire :
+balance = balance + 5000
+
+Le serveur doit :
+1. Authentifier l'utilisateur
+2. Vérifier son autorisation
+3. Vérifier le solde
+4. Vérifier les règles de l'opération
+5. Créer la transaction
+6. Mettre à jour les données
+7. Enregistrer l'opération dans l'audit
+8. Retourner le résultat au frontend
+
+
+18. BASE DE DONNÉES
+------------------
+Tables principales :
+
+users
+profiles
+kyc_documents
+
+bank_accounts
+crypto_addresses
+
+investments
+investment_deposits
+investment_transactions
+
+investment_products
+
+loan_requests
+loans
+
+cards
+card_requests
+
+deposits
+withdrawals
+
+transactions
+
+notifications
+
+admin_actions
+audit_logs
+
+
+19. STATUTS
+-----------
+Compte :
+- PENDING
+- VERIFIED
+- REJECTED
+- SUSPENDED
+
+Retrait :
+- PENDING
+- UNDER_REVIEW
+- APPROVED
+- PROCESSING
+- COMPLETED
+- REJECTED
+- CANCELLED
+
+Investissement :
+- PENDING_PAYMENT
+- PAYMENT_REVIEW
+- ACTIVE
+- MATURED
+- CANCELLED
+
+Dépôt :
+- PENDING
+- UNDER_REVIEW
+- CONFIRMED
+- REJECTED
+- CANCELLED
+
+
+20. SÉCURITÉ
+------------
+Prévoir :
+- Authentification sécurisée
+- Hashage des mots de passe
+- Sessions/tokens sécurisés
+- Contrôle des rôles
+- Rôle CLIENT
+- Rôle ADMIN
+- Éventuellement SUPER_ADMIN
+- Protection des routes
+- Validation côté serveur
+- Rate limiting
+- Protection contre les injections
+- Journalisation
+- 2FA pour les comptes administrateurs
+- Confirmation des actions sensibles
+- Audit des modifications
+- Chiffrement des informations sensibles lorsque nécessaire
+- Sauvegardes régulières
+- Gestion sécurisée des secrets et clés API
+
+Les clés privées crypto ne doivent jamais être exposées dans le frontend.
+
+
+21. NOTIFICATIONS
+-----------------
+Le système peut envoyer des notifications pour :
+- Création du compte
+- Validation du compte
+- Rejet du compte
+- Nouveau dépôt
+- Dépôt confirmé
+- Investissement créé
+- Investissement activé
+- Investissement arrivé à échéance
+- Demande de retrait
+- Retrait approuvé
+- Retrait refusé
+- Retrait terminé
+- Demande de prêt
+- Prêt approuvé/refusé
+- Demande de carte
+- Carte attribuée
+- Modification importante du compte
+
+Canaux possibles :
+- Notification interne
+- Email
+- SMS ultérieurement
+
+
+22. JOURNAL D'ACTIVITÉ
+----------------------
+Toutes les actions administratives importantes doivent être enregistrées.
+
+Exemple :
+
+Admin :
+admin@example.com
+
+Action :
+APPROVE_WITHDRAWAL
+
+Utilisateur :
+USER-000124
+
+Montant :
+2 000 EUR
+
+Date :
+2026-09-25
+
+Résultat :
+SUCCESS
+
+
+23. FLUX COMPLET
+----------------
+
+VISITEUR
+   |
+   v
+INSCRIPTION
+   |
+   v
+VÉRIFICATION
+   |
+   +----> REFUSÉ
+   |
+   v
+APPROUVÉ
+   |
+   v
+COMPTE CLIENT
+   |
+   +------------------+------------------+
+   |                  |                  |
+   v                  v                  v
+INVESTIR             PRÊT              CARTE
+   |                  |                  |
+   v                  v                  v
+PAIEMENT            DEMANDE           DEMANDE
+   |                  |                  |
+   +------------------+------------------+
+                      |
+                      v
+                    ADMIN
+                      |
+                      v
+                  VALIDATION
+                      |
+                      v
+                OPÉRATION ACTIVE
+                      |
+                      v
+               SOLDE / GAINS
+                      |
+                      v
+                DEMANDE RETRAIT
+                      |
+                      v
+               VÉRIFICATION ADMIN
+                      |
+                      v
+                  TRAITEMENT
+                      |
+                      v
+                   RETRAIT
+
+
+24. POINTS RÉGLEMENTAIRES IMPORTANTS
+-------------------------------------
+Cette plateforme touche à plusieurs activités potentiellement réglementées :
+- Réception et gestion de fonds
+- Services de paiement
+- Comptes/IBAN
+- Émission de cartes
+- Investissement
+- Prêts
+- Crypto-actifs
+- Retraits
+
+Avant de mettre la plateforme en production, il faut déterminer :
+- Les pays dans lesquels le service sera proposé
+- Le statut juridique de l'entreprise
+- Les licences/agréments nécessaires
+- Les partenaires bancaires
+- Les partenaires de paiement
+- Le prestataire d'émission de cartes
+- Le prestataire crypto
+- Les procédures KYC/AML
+- Les règles de protection des données
+- Les conditions contractuelles
+- Les risques et informations à communiquer aux clients
+
+Les rendements ne doivent pas être présentés comme garantis si cela n'est pas réellement garanti et légalement encadré.
+
+
+25. VERSION MVP
+---------------
+Pour la première version, développer dans cet ordre :
+
+PHASE 1
+- Authentification
+- Inscription
+- Connexion
+- Profil
+- Dashboard client
+- Dashboard admin
+- Gestion des utilisateurs
+
+PHASE 2
+- KYC
+- Validation des comptes
+- IBAN
+- Adresses crypto
+
+PHASE 3
+- Produits d'investissement
+- Demandes d'investissement
+- Paiements
+- Augmentation d'investissement
+- Historique
+
+PHASE 4
+- Dépôts
+- Retraits
+- Validation admin
+- Transactions
+- Notifications
+
+PHASE 5
+- Prêts
+- Cartes
+- Gestion avancée des comptes
+
+PHASE 6
+- Sécurité avancée
+- Audit
+- 2FA
+- Intégration des prestataires bancaires/paiement/crypto
+- Tests
+- Mise en production
+
+
+26. OBJECTIF FINAL
+------------------
+La plateforme doit permettre à un client de gérer son parcours depuis la création du compte jusqu'aux investissements, dépôts, demandes de prêt, cartes et retraits, tandis que l'administration contrôle les étapes sensibles.
+
+Le système doit conserver une traçabilité complète de chaque opération et séparer clairement :
+- Interface utilisateur
+- API/backend
+- Base de données
+- Gestion des paiements
+- Gestion des investissements
+- Gestion des comptes
+- Administration
+- Audit et sécurité
+
+
+27. CONNEXION DU PORTEFEUILLE TRUST WALLET
+------------------------------------------
+Les clients pourront associer leur portefeuille crypto à leur compte.
+
+IMPORTANT :
+Le site ne doit JAMAIS demander, recevoir, enregistrer ou stocker les 12/24 mots de récupération (seed phrase) du portefeuille.
+
+La connexion doit utiliser une méthode sécurisée de connexion de portefeuille, par exemple WalletConnect ou une solution officielle compatible avec Trust Wallet.
+
+Le système doit récupérer uniquement les informations nécessaires, notamment :
+- Adresse publique du portefeuille
+- Réseau utilisé
+- Type de portefeuille
+- Date de connexion
+- Preuve/signature de propriété lorsque nécessaire
+- Statut de vérification
+
+
+27.1 PARCOURS CLIENT
+--------------------
+Le client ouvre :
+
+"Mon portefeuille"
+
+Puis :
+
+[ CONNECTER TRUST WALLET ]
+
+Le système ouvre le processus de connexion du portefeuille.
+
+Le client confirme la connexion depuis Trust Wallet.
+
+Le site récupère alors l'adresse publique du portefeuille.
+
+Exemple :
+
+Réseau :
+BNB Smart Chain
+
+Adresse :
+0xXXXXXXXXXXXXXXXXXXXXXXXX
+
+Le système peut ensuite demander au portefeuille de signer un message unique afin de vérifier que le client contrôle réellement l'adresse.
+
+Aucune transaction financière ne doit être créée simplement pour vérifier la propriété du portefeuille.
+
+
+27.2 CRÉATION DE LA DEMANDE DE CONNEXION
+-----------------------------------------
+Après connexion :
+
+Statut :
+PENDING_ADMIN_REVIEW
+
+Informations enregistrées :
+- User ID
+- Adresse publique
+- Réseau
+- Wallet provider
+- Date/heure
+- Signature de vérification si utilisée
+- Message signé
+- Statut
+
+
+27.3 VÉRIFICATION DANS L'ESPACE ADMIN
+--------------------------------------
+L'administration dispose d'une section :
+
+Portefeuilles
+
+Elle peut voir :
+
+Client :
+XXXXXXXX
+
+Wallet :
+Trust Wallet
+
+Réseau :
+BNB Smart Chain
+
+Adresse :
+0xXXXXXXXXXXXXXXXXXXXXXXXX
+
+Statut :
+EN ATTENTE DE VÉRIFICATION
+
+Signature :
+VERIFIED / NOT VERIFIED
+
+L'administrateur peut effectuer les contrôles prévus par la plateforme puis :
+
+[ APPROUVER ]
+
+[ REJETER ]
+
+[ DEMANDER UNE NOUVELLE VÉRIFICATION ]
+
+
+27.4 STATUTS DU PORTEFEUILLE
+----------------------------
+- NOT_CONNECTED
+- CONNECTED
+- PENDING_ADMIN_REVIEW
+- VERIFIED
+- REJECTED
+- SUSPENDED
+- DISCONNECTED
+
+
+27.5 APRÈS VALIDATION
+---------------------
+Une fois le portefeuille validé :
+
+Statut :
+VERIFIED
+
+Le client voit :
+
+Mon portefeuille
+
+Trust Wallet ✓
+
+Réseau :
+BNB Smart Chain
+
+Adresse :
+0xXXXXXXXXXXXXXXXX
+
+[ COPIER ]
+
+[ DÉCONNECTER ]
+
+L'adresse publique pourra ensuite être utilisée dans les fonctionnalités autorisées de la plateforme.
+
+
+27.6 SÉCURITÉ
+-------------
+Le système ne doit jamais :
+- demander les 12 mots de récupération ;
+- demander la clé privée ;
+- enregistrer une seed phrase ;
+- envoyer une seed phrase au backend ;
+- afficher une seed phrase dans l'espace admin ;
+- demander au client de transmettre sa clé privée.
+
+La plateforme doit fonctionner uniquement avec des informations publiques du portefeuille et des signatures cryptographiques lorsque nécessaire.
+
+Les opérations financières doivent toujours nécessiter une confirmation explicite dans le portefeuille du client lorsqu'une transaction blockchain est réellement effectuée.
+
+
+27.7 VÉRIFICATION DE L'ADRESSE
+------------------------------
+L'administration peut consulter les informations publiques nécessaires :
+
+- Adresse
+- Réseau
+- Solde public si pertinent
+- Transactions publiques si pertinent
+- Hash des transactions
+- Date de connexion
+- Signature de propriété
+- Statut du portefeuille
+
+La vérification de l'adresse ne doit pas donner à l'administration le contrôle des fonds du client.
+
+
+27.8 DÉCONNEXION
+---------------
+Le client peut demander :
+
+[ DÉCONNECTER LE PORTEFEUILLE ]
+
+Le système conserve l'historique de l'association précédente, mais marque le portefeuille comme :
+
+DISCONNECTED
+
+Si le client reconnecte un autre portefeuille, une nouvelle demande de vérification peut être créée.
+
+
+27.9 FLUX COMPLET
+-----------------
+CLIENT
+  |
+  v
+MON PORTEFEUILLE
+  |
+  v
+CONNECTER TRUST WALLET
+  |
+  v
+WALLETCONNECT / MÉTHODE DE CONNEXION COMPATIBLE
+  |
+  v
+CONFIRMATION DANS TRUST WALLET
+  |
+  v
+ADRESSE PUBLIQUE RÉCUPÉRÉE
+  |
+  v
+SIGNATURE DE VÉRIFICATION
+  |
+  v
+DEMANDE EN ATTENTE
+  |
+  v
+ESPACE ADMIN
+  |
+  +----> REJETER
+  |
+  +----> DEMANDER UNE NOUVELLE VÉRIFICATION
+  |
+  v
+APPROUVER
+  |
+  v
+PORTEFEUILLE VÉRIFIÉ
+  |
+  v
+UTILISATION DES FONCTIONNALITÉS AUTORISÉES
+
+
+27.10 DIFFÉRENCE ENTRE CONNEXION ET DÉPÔT
+-----------------------------------------
+La connexion du portefeuille permet uniquement d'associer une adresse au compte et de vérifier que l'utilisateur contrôle cette adresse.
+
+Un dépôt crypto est une opération différente.
+
+Dépôt :
+- Le client choisit un montant.
+- Le système affiche l'adresse de paiement/dépôt prévue.
+- Le client effectue la transaction depuis son portefeuille.
+- La blockchain permet de vérifier la transaction.
+- Le système enregistre le TxID/hash.
+- Le dépôt est confirmé selon les règles définies.
+
+La connexion du portefeuille ne doit donc pas être considérée automatiquement comme un dépôt.
+
+FIN DU CAHIER DES CHARGES

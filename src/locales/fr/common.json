@@ -1,0 +1,1164 @@
+{
+  "app": {
+    "name": "Invest.ma",
+    "shortName": "IM"
+  },
+  "common": {
+    "loading": "Chargement…",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "copy": "Copier",
+    "copied": "Copié",
+    "saveChanges": "Enregistrer",
+    "seeAll": "Tout voir",
+    "error": "Une erreur est survenue, veuillez réessayer.",
+    "available": "Disponible",
+    "toggleSidebar": "Afficher ou masquer le menu",
+    "months": "mois",
+    "phase": {
+      "2": "Phase 2",
+      "3": "Phase 3",
+      "4": "Phase 4",
+      "5": "Phase 5"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "Rechercher ou saisir une commande…",
+    "toggleSidebar": "Afficher ou masquer le menu",
+    "notifications": {
+      "title": "Notifications",
+      "empty": "Aucune notification."
+    }
+  },
+  "userDropdown": {
+    "myProfile": "Mon profil",
+    "language": "Langue",
+    "signOut": "Se déconnecter"
+  },
+  "sidebar": {
+    "groups": {
+      "client": "Mon espace",
+      "admin": "Administration"
+    },
+    "items": {
+      "clientDashboard": "Tableau de bord",
+      "clientInvestments": "Investir",
+      "clientMyInvestments": "Mes investissements",
+      "clientProfile": "Mon profil",
+      "clientWallet": "Banque & crypto",
+      "clientDeposits": "Dépôts",
+      "clientWithdrawals": "Retraits",
+      "clientTransactions": "Mes transactions",
+      "clientLoans": "Prêts",
+      "clientCards": "Mes cartes",
+      "adminDashboard": "Tableau de bord",
+      "adminUsers": "Utilisateurs",
+      "adminInvestments": "Investissements",
+      "adminProducts": "Opportunités",
+      "adminBankAccounts": "Comptes bancaires",
+      "adminCryptoAddresses": "Crypto",
+      "adminDeposits": "Dépôts",
+      "adminWithdrawals": "Retraits",
+      "adminTransactions": "Transactions",
+      "adminLoans": "Prêts",
+      "adminCards": "Cartes",
+      "adminSecurity": "Sécurité"
+    }
+  },
+  "auth": {
+    "tagline": "Investissez, suivez votre portefeuille et gérez vos demandes depuis un seul espace.",
+    "highlights": {
+      "invest": "Les opportunités d'investissement au même endroit",
+      "transparent": "Chaque opération suivie et historisée",
+      "support": "Une équipe support dédiée"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "fullName": "Nom complet",
+      "dateOfBirth": "Date de naissance",
+      "nationality": "Nationalité",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "addressLine1": "Adresse ligne 1",
+      "addressLine2": "Adresse ligne 2",
+      "city": "Ville",
+      "postalCode": "Code postal",
+      "country": "Pays"
+    },
+    "signIn": {
+      "title": "Connexion",
+      "subtitle": "Saisissez votre email et votre mot de passe pour accéder à votre espace.",
+      "rememberMe": "Rester connecté",
+      "forgotPassword": "Mot de passe oublié ?",
+      "togglePassword": "Afficher ou masquer le mot de passe",
+      "submit": "Se connecter",
+      "demoTitle": "Comptes de démonstration",
+      "useAccount": "Utiliser",
+      "noAccount": "Pas encore de compte ?",
+      "createAccount": "Créer un compte"
+    },
+    "signUp": {
+      "title": "Créer votre compte",
+      "subtitle": "Six étapes, puis l'administration vérifie votre dossier.",
+      "confirmPassword": "Confirmer le mot de passe",
+      "acceptTerms": "J'accepte les conditions générales et la politique de confidentialité",
+      "backToSignIn": "Retour à la connexion",
+      "selectCountry": "Sélectionnez un pays",
+      "phoneHint": "L'administration peut vous contacter à ce numéro.",
+      "documentsTitle": "Documents",
+      "documentsIntro": "Sélectionnez les documents que vous pouvez fournir. Vous joindrez les fichiers depuis votre profil.",
+      "documentsUploadNote": "Vous déclarez les documents ici, puis vous joignez les fichiers depuis votre profil une fois connecté.",
+      "reviewNote": "Après envoi, le statut du compte passe à « En attente de vérification ». Aucune fonctionnalité financière n'est ouverte avant la validation du dossier par l'administration.",
+      "submit": "Envoyer mon dossier",
+      "steps": {
+        "account": "Compte",
+        "personal": "Identité",
+        "address": "Adresse",
+        "phone": "Téléphone",
+        "documents": "Documents",
+        "review": "Récapitulatif"
+      },
+      "validation": {
+        "required": "Ce champ est obligatoire.",
+        "invalidEmail": "Veuillez saisir une adresse email valide.",
+        "tooShort": "Le mot de passe doit contenir au moins 8 caractères.",
+        "mismatch": "Les mots de passe ne correspondent pas.",
+        "notAdult": "Vous devez avoir au moins 18 ans."
+      }
+    },
+    "forgotPassword": {
+      "title": "Réinitialiser le mot de passe",
+      "subtitle": "Saisissez votre email, nous vous enverrons un lien de réinitialisation.",
+      "submit": "Envoyer le lien",
+      "successTitle": "Consultez votre boîte mail",
+      "successText": "Si un compte correspond à cette adresse, un lien de réinitialisation a été envoyé."
+    },
+    "twoFactor": {
+      "title": "Double authentification",
+      "subtitle": "Saisissez le code de votre application d'authentification.",
+      "enabled": "La double authentification est active sur ce compte.",
+      "code": "Code",
+      "expiresIn": "Ce code expire dans {seconds} secondes.",
+      "submit": "Vérifier",
+      "back": "Retour à la connexion",
+      "recoveryHint": "Appareil perdu ? Utilisez l'un des codes de secours enregistrés lors de l'activation.",
+      "wrongCode": "Ce code n'est pas valide. Vérifiez votre authentificateur et réessayez."
+    },
+    "session": {
+      "expiredTitle": "Session expirée",
+      "expiredText": "Votre session a été fermée après une période d'inactivité ou à l'issue de sa durée maximale. Veuillez vous reconnecter."
+    },
+    "failures": {
+      "invalidCredentials": "Email ou mot de passe incorrect.",
+      "rateLimited": "Trop de tentatives. Veuillez patienter avant de réessayer.",
+      "locked": "Ce compte est temporairement bloqué après trop de tentatives échouées.",
+      "twoFactorInvalid": "Le code de vérification n'est pas valide.",
+      "accountBlocked": "Ce compte est suspendu. Contactez le support.",
+      "sessionExpired": "Votre session a expiré.",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères.",
+      "retryIn": "Réessayez dans environ {seconds} minutes."
+    },
+    "errors": {
+      "title": "Action impossible",
+      "invalidCredentials": "Email ou mot de passe incorrect.",
+      "emailAlreadyUsed": "Un compte existe déjà avec cette adresse email.",
+      "userNotFound": "Ce compte n'existe plus.",
+      "unknown": "Une erreur est survenue, veuillez réessayer.",
+      "productNotFound": "Cette opportunité n'existe plus.",
+      "productNotAvailable": "Cette opportunité n'est pas ouverte aux souscriptions.",
+      "investmentNotFound": "Cet investissement n'existe plus.",
+      "topupNotFound": "Cette augmentation n'existe plus.",
+      "accountNotVerified": "Votre compte doit d'abord être validé par l'administration.",
+      "belowMinimumAmount": "Le montant est inférieur au minimum de cette opportunité.",
+      "aboveMaximumAmount": "Le montant est supérieur au maximum de cette opportunité.",
+      "noActiveBankAccount": "Vous n'avez pas encore de compte bancaire actif attribué.",
+      "investmentNotActive": "Seul un investissement actif peut être utilisé ici.",
+      "paymentNotAwaiting": "Cette opération n'est plus en attente de paiement.",
+      "paymentNotDeclared": "Le client n'a pas déclaré de paiement pour cette opération.",
+      "paymentNotVerified": "Le paiement doit être vérifié avant l'activation.",
+      "paymentAlreadyVerified": "Ce paiement est déjà vérifié.",
+      "paymentDeadlinePassed": "La date limite de paiement est dépassée.",
+      "forbidden": "Vous n'êtes pas autorisé à effectuer cette action.",
+      "invalidIban": "Cet IBAN n'est pas valide.",
+      "invalidCryptoAddress": "Cette adresse ne correspond pas au format du réseau sélectionné.",
+      "addressAlreadyAssigned": "Cette adresse est déjà attribuée à un autre client.",
+      "addressNotFound": "Cette adresse n'existe plus.",
+      "transactionAlreadyKnown": "Cette transaction est déjà enregistrée.",
+      "cryptoTransactionNotFound": "Cette transaction n'existe plus.",
+      "bankAccountNotFound": "Ce compte bancaire n'existe plus.",
+      "documentNotFound": "Ce document n'existe plus.",
+      "invalidAmount": "Veuillez saisir un montant valide.",
+      "noActiveCryptoAddress": "Vous n'avez pas encore d'adresse crypto active.",
+      "destinationRequired": "Veuillez saisir un compte ou une adresse de destination.",
+      "invalidDestination": "Cette destination ne correspond pas au format du réseau sélectionné.",
+      "insufficientBalance": "Votre solde disponible ne permet pas ce montant.",
+      "invalidTransition": "Cette opération ne peut pas passer à cet état.",
+      "depositNotFound": "Ce dépôt n'existe plus.",
+      "depositAlreadyConfirmed": "Ce dépôt est déjà confirmé.",
+      "depositClosed": "Ce dépôt est clôturé et ne peut plus être modifié.",
+      "withdrawalNotFound": "Ce retrait n'existe plus.",
+      "transactionReferenceRequired": "La référence de la transaction réelle est obligatoire pour terminer un retrait.",
+      "invalidLoanTerms": "Ces conditions de prêt ne sont pas valides.",
+      "invalidDuration": "Veuillez saisir une durée valide en mois.",
+      "purposeRequired": "Veuillez indiquer le motif du prêt.",
+      "conditionsRequired": "Les conditions sont obligatoires pour approuver un prêt.",
+      "loanNotFound": "Ce prêt n'existe plus.",
+      "loanNotApproved": "Ce prêt n'a pas encore été approuvé.",
+      "loanNotActive": "Ce prêt n'est pas en cours.",
+      "installmentNotFound": "Cette échéance n'existe pas.",
+      "installmentAlreadyPaid": "Cette échéance est déjà payée.",
+      "cardProductNotFound": "Cette carte n'existe plus.",
+      "cardProductNotAvailable": "Cette carte n'est pas disponible à la demande.",
+      "cardRequestNotFound": "Cette demande de carte n'existe plus.",
+      "cardRequestClosed": "Cette demande de carte est clôturée.",
+      "cardRequestAlreadyOpen": "Vous avez déjà une demande en cours pour cette carte.",
+      "cardRequestNotApproved": "La demande doit être approuvée avant d'attribuer une carte.",
+      "cardNotFound": "Cette carte n'existe plus.",
+      "invalidLast4": "Veuillez saisir exactement quatre chiffres.",
+      "issuerReferenceRequired": "La référence émetteur est obligatoire.",
+      "invalidExpiry": "Veuillez saisir une date d'expiration valide (MM/AA)."
+    }
+  },
+  "countries": {
+    "MA": "Maroc",
+    "FR": "France",
+    "ES": "Espagne",
+    "DE": "Allemagne",
+    "GB": "Royaume-Uni",
+    "US": "États-Unis",
+    "AE": "Émirats arabes unis",
+    "SN": "Sénégal",
+    "CI": "Côte d'Ivoire",
+    "OTHER": "Autre"
+  },
+  "roles": {
+    "CLIENT": "Client",
+    "ADMIN": "Administrateur",
+    "SUPER_ADMIN": "Super administrateur"
+  },
+  "status": {
+    "account": {
+      "PENDING": "En attente de vérification",
+      "VERIFIED": "Vérifié",
+      "REJECTED": "Rejeté",
+      "SUSPENDED": "Suspendu"
+    },
+    "kycDocument": {
+      "PENDING": "En cours de revue",
+      "APPROVED": "Approuvé",
+      "REJECTED": "Rejeté",
+      "NEED_MORE_INFO": "Informations complémentaires"
+    },
+    "transaction": {
+      "PENDING": "En attente",
+      "UNDER_REVIEW": "En vérification",
+      "APPROVED": "Approuvé",
+      "PROCESSING": "En traitement",
+      "COMPLETED": "Terminé",
+      "CONFIRMED": "Confirmé",
+      "REJECTED": "Refusé",
+      "CANCELLED": "Annulé"
+    },
+    "bankAccount": {
+      "ACTIVE": "Actif",
+      "PENDING": "En attente",
+      "BLOCKED": "Bloqué"
+    },
+    "cryptoAddress": {
+      "ACTIVE": "Active",
+      "PENDING": "En attente",
+      "BLOCKED": "Bloquée"
+    },
+    "cryptoTransaction": {
+      "DETECTED": "Détectée",
+      "CONFIRMING": "En confirmation",
+      "CONFIRMED": "Confirmée",
+      "REJECTED": "Refusée"
+    },
+    "investment": {
+      "label": "Statut",
+      "PENDING_PAYMENT": "En attente de paiement",
+      "PAYMENT_REVIEW": "Vérification du paiement",
+      "ACTIVE": "Actif",
+      "MATURED": "Échu",
+      "CANCELLED": "Annulé"
+    },
+    "payment": {
+      "label": "Paiement",
+      "AWAITING_PAYMENT": "En attente de paiement",
+      "DECLARED": "Déclaré, à vérifier",
+      "VERIFIED": "Vérifié"
+    },
+    "product": {
+      "DRAFT": "Brouillon",
+      "PUBLISHED": "Publié",
+      "CLOSED": "Souscriptions closes",
+      "ARCHIVED": "Archivé"
+    },
+    "deposit": {
+      "PENDING": "En attente de paiement",
+      "UNDER_REVIEW": "En vérification",
+      "CONFIRMED": "Confirmé",
+      "REJECTED": "Refusé",
+      "CANCELLED": "Annulé"
+    },
+    "withdrawal": {
+      "PENDING": "Demandé",
+      "UNDER_REVIEW": "En vérification",
+      "APPROVED": "Approuvé",
+      "PROCESSING": "En traitement",
+      "COMPLETED": "Terminé",
+      "REJECTED": "Refusé",
+      "CANCELLED": "Annulé"
+    },
+    "loan": {
+      "PENDING": "Demandé",
+      "UNDER_REVIEW": "En étude",
+      "APPROVED": "Approuvé",
+      "REJECTED": "Refusé",
+      "ACTIVE": "En cours",
+      "CLOSED": "Soldé"
+    },
+    "card": {
+      "REQUESTED": "Demandée",
+      "ISSUED": "Émise, à activer",
+      "ACTIVE": "Active",
+      "BLOCKED": "Bloquée"
+    }
+  },
+  "bank": {
+    "card": {
+      "title": "Mes informations bancaires",
+      "subtitle": "Compte attribué par l'administration. Les IBAN proviennent d'un partenaire habilité et ne sont jamais générés par l'application.",
+      "emptyTitle": "Aucun compte attribué",
+      "emptyText": "L'administration attribuera votre IBAN une fois votre dossier validé."
+    },
+    "fields": {
+      "iban": "IBAN",
+      "bic": "BIC / SWIFT",
+      "bankName": "Nom de la banque",
+      "holder": "Titulaire",
+      "currency": "Devise"
+    },
+    "errors": {
+      "invalidIban": "Cet IBAN n'est pas valide (format ou clé de contrôle mod 97 incorrects).",
+      "formatOk": "Format valide. Il reste à le confirmer auprès de la banque."
+    }
+  },
+  "crypto": {
+    "assets": {
+      "BTC": "Bitcoin (BTC)",
+      "ETH": "Ether (ETH)",
+      "USDT_TRC20": "Tether (USDT TRC20)",
+      "USDT_ERC20": "Tether (USDT ERC20)"
+    },
+    "card": {
+      "title": "Mes adresses de dépôt",
+      "subtitle": "N'envoyez que sur le réseau indiqué pour chaque adresse.",
+      "emptyTitle": "Aucune adresse attribuée",
+      "emptyText": "L'administration attribuera vos adresses de dépôt."
+    },
+    "fields": {
+      "asset": "Actif et réseau",
+      "address": "Adresse",
+      "requiredConfirmations": "{count} confirmations sont nécessaires avant que le dépôt soit crédité."
+    },
+    "networkWarning": {
+      "title": "Vérifiez le réseau avant d'envoyer",
+      "BTC": "Envoyez uniquement sur le réseau Bitcoin. Un transfert depuis un autre réseau peut être perdu définitivement.",
+      "ETH": "Envoyez uniquement sur le réseau Ethereum. Les fonds envoyés depuis un autre réseau sont irrécupérables.",
+      "USDT_TRC20": "Envoyez des USDT uniquement sur le réseau Tron (TRC20). N'envoyez jamais des USDT ERC20 à cette adresse.",
+      "USDT_ERC20": "Envoyez des USDT uniquement sur le réseau Ethereum (ERC20). N'envoyez jamais des USDT TRC20 à cette adresse."
+    },
+    "transactions": {
+      "title": "Dépôts crypto",
+      "emptyTitle": "Aucun dépôt détecté",
+      "emptyText": "Les transactions détectées sur vos adresses apparaissent ici avec leur nombre de confirmations.",
+      "hash": "TxID / Hash",
+      "asset": "Actif",
+      "amount": "Montant",
+      "confirmations": "Confirmations",
+      "date": "Détectée le",
+      "status": "Statut",
+      "pendingAmount": "Détection en cours"
+    }
+  },
+  "wallet": {
+    "title": "Banque & crypto",
+    "subtitle": "IBAN et adresses de dépôt attribués à votre compte"
+  },
+  "transactions": {
+    "title": "Mes transactions",
+    "subtitle": "Toutes les opérations de votre compte",
+    "emptyTitle": "Aucune transaction",
+    "emptyText": "Vos dépôts, investissements, retraits et retours seront listés ici.",
+    "filters": {
+      "search": "Rechercher par référence, description ou hash…",
+      "allTypes": "Tous les types",
+      "allStatuses": "Tous les statuts"
+    },
+    "table": {
+      "reference": "Référence",
+      "type": "Type",
+      "amount": "Montant",
+      "method": "Moyen",
+      "date": "Date",
+      "status": "Statut"
+    },
+    "types": {
+      "DEPOSIT": "Dépôt",
+      "WITHDRAWAL": "Retrait",
+      "INVESTMENT": "Investissement",
+      "INVESTMENT_TOPUP": "Augmentation d'investissement",
+      "LOAN": "Prêt",
+      "CARD_PAYMENT": "Paiement par carte",
+      "FEE": "Frais",
+      "RETURN": "Retour"
+    }
+  },
+  "deposits": {
+    "title": "Dépôts",
+    "subtitle": "Demander un dépôt et suivre sa validation",
+    "methods": {
+      "BANK_TRANSFER": "Virement bancaire",
+      "CRYPTO": "Crypto"
+    },
+    "request": {
+      "title": "Demander un dépôt",
+      "subtitle": "Indiquez le montant que vous souhaitez transférer. Votre solde ne change qu'une fois le paiement confirmé par l'administration.",
+      "method": "Moyen",
+      "amount": "Montant",
+      "proof": "Référence du paiement",
+      "proofOptional": "facultatif",
+      "proofPlaceholder": "Identifiant de virement ou TxID",
+      "proofHint": "Si le paiement est déjà envoyé, ajoutez la référence maintenant : le dépôt passe directement en revue.",
+      "submit": "Envoyer ma demande",
+      "noDestination": "Aucune destination disponible",
+      "noBankAccount": "Vous n'avez pas encore de compte bancaire actif. L'administration doit d'abord vous en attribuer un.",
+      "noCryptoAddress": "Vous n'avez pas encore d'adresse crypto active. L'administration doit d'abord vous en attribuer une.",
+      "noticeBank": "Effectuez le virement vers l'IBAN {iban} en indiquant la référence de paiement.",
+      "noticeCrypto": "Envoyez uniquement sur le réseau {network}, puis déclarez le TxID."
+    },
+    "history": {
+      "title": "Mes dépôts",
+      "emptyTitle": "Aucun dépôt",
+      "emptyText": "Vos demandes de dépôt apparaîtront ici avec leur état de validation.",
+      "proof": "Référence",
+      "sendProof": "J'ai effectué le paiement",
+      "cancel": "Annuler"
+    }
+  },
+  "withdrawals": {
+    "title": "Retraits",
+    "subtitle": "Demander un retrait et suivre son traitement",
+    "request": {
+      "title": "Demander un retrait",
+      "method": "Moyen",
+      "amount": "Montant",
+      "amountHint": "Le maximum que vous pouvez demander maintenant est de {max}.",
+      "destination": "Compte ou adresse de destination",
+      "details": "Informations complémentaires",
+      "detailsPlaceholder": "Titulaire, banque, toute information utile pour identifier le compte",
+      "submit": "Envoyer ma demande",
+      "reserved": "Bloqué par une demande en attente",
+      "reservedHint": "{count, plural, one {# retrait en attente} other {# retraits en attente}}",
+      "spendable": "Disponible pour demande",
+      "notice": "L'argent ne quitte votre compte que lorsque l'administration marque le retrait comme terminé, avec la référence de la transaction enregistrée."
+    },
+    "history": {
+      "title": "Mes retraits",
+      "emptyTitle": "Aucun retrait",
+      "emptyText": "Vos demandes de retrait apparaîtront ici avec leur état de traitement.",
+      "destination": "Destination",
+      "transactionReference": "Référence de la transaction"
+    }
+  },
+  "loans": {
+    "title": "Prêts",
+    "subtitle": "Demander un prêt et suivre l'échéancier",
+    "myLoans": "Mes prêts",
+    "emptyTitle": "Aucune demande de prêt",
+    "emptyText": "Vos demandes de prêt apparaîtront ici avec leur état et l'échéancier.",
+    "request": {
+      "title": "Demander un prêt",
+      "subtitle": "Envoyez votre demande. L'administration décide du montant accordé, de la durée, du taux et des conditions.",
+      "amount": "Montant demandé",
+      "amountHint": "Veuillez saisir un montant valide.",
+      "amountPreview": "Vous demandez {amount}.",
+      "duration": "Durée",
+      "durationOption": "{count, plural, one {# mois} other {# mois}}",
+      "purpose": "Motif",
+      "purposePlaceholder": "Ex : besoin en fonds de roulement, achat de matériel",
+      "additionalInfo": "Informations complémentaires",
+      "additionalInfoPlaceholder": "Tout élément aidant l'administration à évaluer la demande",
+      "submit": "Envoyer ma demande",
+      "notice": "Aucun taux n'est affiché avant la décision : les conditions d'un prêt font partie de l'approbation et doivent respecter le cadre juridique applicable."
+    },
+    "details": {
+      "requested": "Demandé",
+      "granted": "Montant accordé",
+      "duration": "Durée",
+      "rate": "Taux nominal annuel",
+      "rateNotSet": "Pas encore défini",
+      "requestedOn": "Demandé le",
+      "conditions": "Conditions",
+      "reviewNote": "Note de l'administration",
+      "grantedLess": "Vous avez demandé {requested}. L'administration a accordé {granted}.",
+      "disbursedOn": "Décaissé le {date} (référence {reference})",
+      "remaining": "Capital restant dû : {amount}",
+      "schedule": "Échéancier de remboursement",
+      "installment": "Mensualité",
+      "totalCost": "Coût total",
+      "alreadyPaid": "Déjà remboursé",
+      "outstanding": "Restant dû",
+      "nextDue": "Prochaine échéance : {amount} le {date}",
+      "fullyPaid": "Toutes les échéances ont été réglées."
+    },
+    "schedule": {
+      "index": "#",
+      "dueDate": "Échéance",
+      "principal": "Capital",
+      "interest": "Intérêts",
+      "installment": "Mensualité",
+      "status": "Statut",
+      "statuses": {
+        "SCHEDULED": "Planifiée",
+        "PAID": "Payée",
+        "OVERDUE": "En retard"
+      }
+    }
+  },
+  "cards": {
+    "title": "Mes cartes",
+    "subtitle": "Vos cartes et vos demandes de carte",
+    "myCards": "Mes cartes",
+    "myRequests": "Mes demandes",
+    "available": "Cartes disponibles",
+    "emptyTitle": "Aucune carte",
+    "emptyText": "Les cartes que l'administration vous attribue apparaissent ici.",
+    "disclaimer": "Seuls les quatre derniers chiffres sont affichés. Les cartes sont émises par un prestataire habilité : cette application ne génère jamais de numéro de carte.",
+    "activate": "Activer cette carte",
+    "requestBlock": "Demander le blocage",
+    "requestUnblock": "Demander le déblocage",
+    "request": "Demander cette carte",
+    "requestOpen": "Demande en cours",
+    "annualFee": "{amount} / an",
+    "noAnnualFee": "Sans frais annuels",
+    "networks": {
+      "VISA": "Visa",
+      "MASTERCARD": "Mastercard"
+    },
+    "tiers": {
+      "STANDARD": "Standard",
+      "PREMIUM": "Premium"
+    },
+    "fields": {
+      "holder": "Titulaire",
+      "number": "Carte",
+      "last4": "Quatre derniers chiffres",
+      "expiry": "Expiration",
+      "issuerReference": "Référence émetteur"
+    },
+    "requests": {
+      "emptyTitle": "Aucune demande de carte",
+      "emptyText": "Vos demandes de carte apparaîtront ici avec leur état.",
+      "statuses": {
+        "PENDING": "En cours de revue",
+        "APPROVED": "Approuvée",
+        "REJECTED": "Refusée"
+      }
+    }
+  },
+  "security": {
+    "title": "Sécurité",
+    "subtitle": "Double authentification, sessions, limitations et journal de sécurité",
+    "notice": "Événement de sécurité",
+    "twoFactor": {
+      "title": "Double authentification",
+      "subtitle": "Un second facteur est requis sur les comptes d'administration (§20).",
+      "enabled": "Activée",
+      "disabled": "Non activée",
+      "missing": "Absente",
+      "enrolledAt": "Activée le",
+      "recoveryCodes": "Codes de secours",
+      "remainingCodes": "{count, plural, one {# code restant} other {# codes restants}}",
+      "disable": "Désactiver le second facteur",
+      "disableWarning": "Désactiver le second facteur affaiblit la protection d'un compte d'administration. L'action est journalisée.",
+      "missingWarning": "Ce compte d'administration n'a pas de second facteur. Activez-le maintenant : la prochaine connexion demandera un code.",
+      "enable": "Activer le second facteur",
+      "enrolmentTitle": "Activation",
+      "step1": "Ajoutez le secret à votre authentificateur",
+      "step1Hint": "Scannez l'URI de provisioning, ou saisissez le secret par groupes de quatre.",
+      "copySecret": "Copier le secret",
+      "showUri": "Afficher l'URI de provisioning",
+      "step2": "Conservez les codes de secours",
+      "step2Hint": "Chaque code fonctionne une seule fois. Gardez-les ailleurs que sur votre téléphone.",
+      "recoveryWarning": "Sans ces codes et votre appareil, personne ne peut restaurer votre accès.",
+      "step3": "Confirmez avec un code",
+      "showDemoCode": "Afficher le code actuel",
+      "demoCodeHint": "Aide démo : génère le code à partir du secret sur cette machine, pour essayer le flux sans authentificateur.",
+      "confirm": "Confirmer et activer"
+    },
+    "accounts": {
+      "title": "Comptes d'administration",
+      "subtitle": "État du second facteur et des sessions, par compte.",
+      "table": {
+        "account": "Compte",
+        "twoFactor": "Second facteur",
+        "sessions": "Sessions actives",
+        "failures": "Échecs (24 h)",
+        "lastLogin": "Dernière connexion"
+      }
+    },
+    "sessions": {
+      "title": "Sessions",
+      "subtitle": "Une session se ferme après une heure d'inactivité, et après huit heures quelle que soit l'activité.",
+      "empty": "Aucune session active",
+      "emptyText": "Les sessions apparaissent dès la première connexion.",
+      "current": "Session actuelle",
+      "newDevice": "Nouvel appareil",
+      "startedAt": "Débutée {date}",
+      "expiresAt": "expire {date}",
+      "revokeAll": "Révoquer toutes les sessions",
+      "revokeAllReason": "Révoquées par l'administration",
+      "revoked": "Les sessions de ce compte ont été révoquées."
+    },
+    "rateLimits": {
+      "title": "Limitation de débit",
+      "subtitle": "Protection contre les attaques par force brute sur les endpoints sensibles.",
+      "table": {
+        "action": "Action",
+        "used": "Utilisation",
+        "locked": "Blocage"
+      },
+      "actions": {
+        "LOGIN": "Connexion",
+        "REGISTER": "Inscription",
+        "TWO_FACTOR": "Second facteur",
+        "PASSWORD_RESET": "Réinitialisation",
+        "DOCUMENT_UPLOAD": "Dépôt de document"
+      },
+      "lockedFor": "{seconds} s",
+      "reset": "Réinitialiser les compteurs"
+    },
+    "journal": {
+      "title": "Journal de sécurité",
+      "subtitle": "Chaque connexion, échec et changement de facteur (§22).",
+      "empty": "Aucun événement de sécurité",
+      "emptyText": "Les événements de sécurité apparaissent ici au fil de l'eau."
+    },
+    "password": {
+      "title": "Changer le mot de passe",
+      "subtitle": "Changer le mot de passe ferme toutes les sessions du compte, y compris celle-ci.",
+      "new": "Nouveau mot de passe",
+      "hint": "Au moins 8 caractères.",
+      "submit": "Changer le mot de passe",
+      "change": "Changer mon mot de passe",
+      "changed": "Mot de passe changé. Veuillez vous reconnecter."
+    }
+  },
+  "investments": {
+    "title": "Investir",
+    "subtitle": "Opportunités disponibles sur la plateforme",
+    "detailsTitle": "Opportunité",
+    "positionTitle": "Investissement",
+    "emptyTitle": "Aucune opportunité disponible",
+    "emptyText": "L'administration n'a pas encore publié d'opportunité.",
+    "nav": {
+      "myInvestments": "Mes investissements"
+    },
+    "risk": {
+      "LOW": "Risque faible",
+      "MEDIUM": "Risque moyen",
+      "HIGH": "Risque élevé"
+    },
+    "card": {
+      "minimum": "Montant minimum",
+      "maximum": "Montant maximum",
+      "duration": "Durée",
+      "months": "{count, plural, one {# mois} other {# mois}}",
+      "rate": "Rendement cible",
+      "indicative": "indicatif",
+      "contractual": "contractuel",
+      "initialAmount": "Montant initial",
+      "topupTotal": "Augmentations",
+      "totalInvested": "Total investi",
+      "contractualReturn": "Rendement contractuel",
+      "noContractualReturn": "Aucun rendement contractuel : le taux est indicatif",
+      "maturesOn": "Échéance le {date}",
+      "paymentMethod": "Moyen de paiement",
+      "details": "Voir les détails",
+      "rateGuaranteed": "Taux contractuel",
+      "rateIndicative": "Taux annuel indicatif",
+      "rateGuaranteedText": "{rate} % par an, contractuel sur toute la durée.",
+      "rateIndicativeText": "{rate} % par an est un objectif, pas une garantie. La performance réelle dépend du projet.",
+      "rateDisclaimer": "Ce rendement est indicatif et non garanti. Lisez les risques avant d'investir.",
+      "rateDisclaimerTitle": "Rendement indicatif"
+    },
+    "details": {
+      "conditions": "Conditions",
+      "documents": "Documents",
+      "risks": "Risques"
+    },
+    "paymentMethods": {
+      "BANK_TRANSFER": "Virement bancaire",
+      "CRYPTO": "Crypto",
+      "OTHER": "Autre"
+    },
+    "subscribe": {
+      "title": "Souscrire",
+      "amount": "Montant",
+      "amountHint": "Saisissez un montant entre {min} et {max}.",
+      "noMaximum": "sans maximum",
+      "paymentMethod": "Moyen de paiement",
+      "recap": "Récapitulatif",
+      "contractualReturn": "Rendement contractuel",
+      "acceptConditions": "J'ai lu les conditions et le document de risques et je les accepte.",
+      "submit": "Confirmer ma souscription",
+      "paymentNotice": "Après confirmation, vous recevez les instructions de paiement. L'investissement n'est actif qu'une fois le paiement vérifié par l'administration.",
+      "notVerified": "Compte non validé",
+      "notVerifiedText": "Votre compte doit être validé par l'administration avant de pouvoir souscrire.",
+      "unavailable": "Opportunité indisponible",
+      "unavailableText": "Cette opportunité n'est pas ouverte aux souscriptions actuellement.",
+      "created": "Souscription créée",
+      "createdText": "Votre demande {reference} a été créée. Effectuez le paiement pour l'activer."
+    },
+    "payment": {
+      "title": "Instructions de paiement",
+      "topupTitle": "Instructions de paiement de l'augmentation",
+      "amountDue": "Montant à payer",
+      "reference": "Référence de paiement",
+      "deadline": "Date limite de paiement",
+      "declarationNotice": "Déclarer un paiement n'active rien. L'administration le vérifie avant que l'investissement devienne actif.",
+      "declare": "J'ai effectué le paiement",
+      "waitingReview": "Votre déclaration est en cours de vérification par l'administration.",
+      "verified": "Paiement vérifié",
+      "verifiedText": "L'administration a vérifié ce paiement."
+    },
+    "position": {
+      "activatedOn": "Activé le {date}"
+    },
+    "topup": {
+      "title": "Augmenter mon investissement",
+      "action": "Augmenter",
+      "currentTotal": "Actuellement investi",
+      "amount": "Montant supplémentaire",
+      "submit": "Confirmer l'augmentation",
+      "notice": "Une augmentation est une nouvelle opération liée à votre investissement. Votre montant initial reste inchangé.",
+      "created": "Augmentation créée",
+      "createdText": "Votre augmentation {reference} a été créée. Effectuez le paiement pour l'appliquer.",
+      "notActive": "Investissement non actif",
+      "notActiveText": "Seul un investissement actif peut être augmenté.",
+      "explanation": "Comment fonctionne une augmentation",
+      "explanationText": "Votre souscription initiale est conservée telle quelle. L'augmentation est enregistrée comme une opération distincte, ce qui garde l'historique de chaque montant lisible."
+    },
+    "topups": {
+      "title": "Augmentations",
+      "count": "{count, plural, one {# augmentation} other {# augmentations}}",
+      "emptyTitle": "Aucune augmentation",
+      "emptyText": "Vos augmentations sur cet investissement seront listées ici."
+    },
+    "positions": {
+      "emptyTitle": "Aucun investissement",
+      "emptyText": "Souscrivez à une opportunité pour la voir apparaître ici."
+    }
+  },
+  "kyc": {
+    "card": {
+      "title": "Documents de vérification",
+      "emptyTitle": "Aucun document enregistré",
+      "emptyText": "Les documents déclarés lors de l'inscription apparaissent ici avec leur état de revue.",
+      "notUploaded": "Pas encore déposé"
+    },
+    "panel": {
+      "title": "Mes documents",
+      "subtitle": "Associez un fichier à chaque document. Remplacer un document déjà revu le remet en revue."
+    },
+    "upload": {
+      "title": "Dépôt impossible",
+      "choose": "Choisir un fichier",
+      "replace": "Remplacer le fichier",
+      "constraints": "PDF, JPG, PNG ou WEBP · {max} maximum"
+    },
+    "uploadErrors": {
+      "tooLarge": "Ce fichier est trop volumineux. Choisissez-en un plus léger.",
+      "unsupportedType": "Ce format n'est pas accepté. Utilisez PDF, JPG, PNG ou WEBP.",
+      "readFailed": "Le fichier n'a pas pu être lu. Réessayez."
+    },
+    "review": {
+      "open": "Ouvrir",
+      "close": "Fermer",
+      "notePlaceholder": "Note de revue (visible par le client)",
+      "askMore": "Demander plus",
+      "fileMissing": "Le contenu de ce document n'est plus disponible."
+    },
+    "documents": {
+      "id_card": "Carte d'identité",
+      "passport": "Passeport",
+      "driving_license": "Permis de conduire",
+      "proof_of_address": "Justificatif de domicile",
+      "selfie": "Selfie avec pièce d'identité"
+    },
+    "documentHints": {
+      "ID_CARD": "Les deux faces, tous les coins visibles",
+      "PASSPORT": "Page d'identité, document valide",
+      "DRIVING_LICENSE": "Les deux faces, document valide",
+      "PROOF_OF_ADDRESS": "Facture de moins de 3 mois",
+      "SELFIE": "Fond neutre, sans filtre"
+    }
+  },
+  "verification": {
+    "gate": {
+      "pendingTitle": "Votre dossier est en cours de vérification",
+      "pendingText": "L'administration contrôle vos pièces d'identité. Les fonctionnalités financières s'ouvriront dès la validation de votre compte.",
+      "rejectedTitle": "Votre dossier a été rejeté",
+      "rejectedText": "Les documents fournis n'ont pas été acceptés. Contactez le support pour savoir quoi renvoyer.",
+      "suspendedTitle": "Votre compte est suspendu",
+      "suspendedText": "L'accès est désactivé temporairement dans le cadre d'une revue documentaire. Contactez le support pour plus d'informations.",
+      "checklistTitle": "Avancement de la vérification",
+      "viewProfile": "Ouvrir mon profil",
+      "contactSupport": "Contacter le support"
+    },
+    "steps": {
+      "identity": "Pièce d'identité",
+      "address": "Justificatif de domicile",
+      "selfie": "Selfie avec pièce d'identité",
+      "review": "Revue par l'administration"
+    },
+    "stepState": {
+      "done": "Terminé",
+      "pending": "En cours",
+      "todo": "À faire",
+      "rejected": "Refusé"
+    }
+  },
+  "client": {
+    "dashboard": {
+      "title": "Tableau de bord",
+      "subtitle": "Solde, investissements et activité récente"
+    },
+    "stats": {
+      "availableBalance": "Solde disponible",
+      "totalInvested": "Total investi",
+      "deposits": "Dépôts",
+      "withdrawals": "Retraits",
+      "activeInvestmentsHint": "{count, plural, one {# investissement actif} other {# investissements actifs}}"
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "invest": "Investir",
+      "deposit": "Ajouter des fonds",
+      "topup": "Augmenter un investissement",
+      "withdraw": "Retirer",
+      "loan": "Demander un prêt",
+      "card": "Demander une carte",
+      "transactions": "Mes transactions",
+      "comingInPhase": "Disponible en phase {phase}",
+      "available": "Disponible maintenant"
+    },
+    "transactions": {
+      "title": "Dernières transactions",
+      "emptyTitle": "Aucune transaction",
+      "emptyText": "Vos dépôts, investissements et retraits apparaîtront ici.",
+      "reference": "Référence",
+      "type": "Type",
+      "amount": "Montant",
+      "date": "Date",
+      "status": "Statut"
+    }
+  },
+  "profile": {
+    "title": "Mon profil",
+    "subtitle": "Vos informations, votre statut de vérification et vos documents",
+    "statusLabel": "Statut",
+    "form": {
+      "title": "Mes informations",
+      "subtitle": "Les données d'identité sont verrouillées après validation. Vous pouvez mettre à jour vos coordonnées.",
+      "reference": "Référence client",
+      "countryCodePlaceholder": "Code ISO (ex. MA)",
+      "savedTitle": "Profil mis à jour",
+      "savedText": "Vos informations ont été enregistrées."
+    },
+    "bank": {
+      "title": "Informations bancaires",
+      "description": "L'IBAN attribué par l'administration sera affiché ici."
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Tableau de bord administration",
+      "subtitle": "Activité de la plateforme et dossiers à traiter"
+    },
+    "stats": {
+      "totalClients": "Clients",
+      "verifiedClients": "{count} vérifiés",
+      "pendingVerification": "En attente de vérification",
+      "suspendedClients": "{count} suspendus",
+      "operationVolume": "Volume des opérations",
+      "operationsCount": "{count, plural, one {# opération en cours} other {# opérations en cours}}",
+      "pendingInvestments": "Investissements en attente",
+      "pendingDeposits": "Dépôts en attente",
+      "pendingWithdrawals": "Retraits en attente",
+      "pendingLoans": "Prêts en attente",
+      "pendingCards": "Demandes de cartes"
+    },
+    "activityLog": {
+      "title": "Journal d'activité",
+      "emptyTitle": "Aucune action enregistrée",
+      "emptyText": "Les actions administratives sensibles sont journalisées ici."
+    },
+    "auditActions": {
+      "REGISTER": "Compte créé",
+      "LOGIN": "Connexion",
+      "APPROVE_ACCOUNT": "Compte validé",
+      "REJECT_ACCOUNT": "Compte rejeté",
+      "SUSPEND_ACCOUNT": "Compte suspendu",
+      "REACTIVATE_ACCOUNT": "Compte réactivé",
+      "REQUEST_MORE_INFO": "Informations complémentaires demandées",
+      "REVIEW_KYC_DOCUMENT": "Document KYC revu",
+      "UPLOAD_KYC_DOCUMENT": "Document KYC déposé",
+      "REPLACE_KYC_DOCUMENT": "Document KYC remplacé",
+      "CREATE_LOAN_REQUEST": "Demande de prêt soumise",
+      "REVIEW_LOAN": "Prêt en étude",
+      "APPROVE_LOAN": "Prêt approuvé",
+      "REJECT_LOAN": "Prêt refusé",
+      "REQUEST_LOAN_INFO": "Informations complémentaires demandées sur un prêt",
+      "DISBURSE_LOAN": "Prêt décaissé",
+      "PAY_LOAN_INSTALMENT": "Échéance de prêt payée",
+      "CLOSE_LOAN": "Prêt soldé",
+      "CREATE_CARD_REQUEST": "Demande de carte soumise",
+      "APPROVE_CARD_REQUEST": "Demande de carte approuvée",
+      "REJECT_CARD_REQUEST": "Demande de carte refusée",
+      "ISSUE_CARD": "Carte émise",
+      "ACTIVATE_CARD": "Carte activée",
+      "BLOCK_CARD": "Carte bloquée",
+      "SESSION_REVOKED": "Sessions révoquées par l'administration",
+      "CREATE_DEPOSIT": "Dépôt demandé",
+      "DECLARE_DEPOSIT_PROOF": "Preuve de dépôt fournie",
+      "CONFIRM_DEPOSIT": "Dépôt confirmé",
+      "REJECT_DEPOSIT": "Dépôt refusé",
+      "CREATE_WITHDRAWAL": "Retrait demandé",
+      "REVIEW_WITHDRAWAL": "Retrait en vérification",
+      "APPROVE_WITHDRAWAL": "Retrait approuvé",
+      "REJECT_WITHDRAWAL": "Retrait refusé",
+      "PROCESS_WITHDRAWAL": "Retrait en traitement",
+      "COMPLETE_WITHDRAWAL": "Retrait terminé",
+      "CANCEL_WITHDRAWAL": "Retrait annulé",
+      "ASSIGN_IBAN": "IBAN attribué",
+      "BLOCK_IBAN": "IBAN bloqué",
+      "ACTIVATE_IBAN": "IBAN activé",
+      "ASSIGN_CRYPTO_ADDRESS": "Adresse crypto attribuée",
+      "REMOVE_CRYPTO_ADDRESS": "Adresse crypto retirée",
+      "CONFIRM_CRYPTO_TRANSACTION": "Dépôt crypto confirmé",
+      "REJECT_CRYPTO_TRANSACTION": "Dépôt crypto refusé",
+      "CREATE_INVESTMENT": "Investissement créé",
+      "CREATE_INVESTMENT_TOPUP": "Augmentation d'investissement créée",
+      "DECLARE_INVESTMENT_PAYMENT": "Paiement déclaré par le client",
+      "VERIFY_INVESTMENT_PAYMENT": "Paiement vérifié",
+      "REJECT_INVESTMENT_PAYMENT": "Paiement refusé",
+      "ACTIVATE_INVESTMENT": "Investissement activé",
+      "CANCEL_INVESTMENT": "Investissement annulé",
+      "MATURE_INVESTMENT": "Investissement échu",
+      "CREATE_PRODUCT": "Opportunité créée",
+      "UPDATE_PRODUCT": "Opportunité modifiée",
+      "ACTIVATE_PRODUCT": "Opportunité publiée",
+      "ARCHIVE_PRODUCT": "Opportunité archivée",
+      "ADD_INTERNAL_NOTE": "Note interne ajoutée",
+      "UPDATE_PROFILE": "Profil mis à jour"
+    },
+    "auditResults": {
+      "SUCCESS": "Succès",
+      "FAILURE": "Échec"
+    },
+    "filters": {
+      "searchPlaceholder": "Rechercher par nom, email ou référence…",
+      "allStatuses": "Tous les statuts",
+      "allRoles": "Tous les rôles"
+    },
+    "bankAccounts": {
+      "title": "Comptes bancaires",
+      "subtitle": "Associer à un client un IBAN fourni par un partenaire habilité.",
+      "client": "Client",
+      "allClients": "Tous les clients",
+      "selectClient": "Sélectionnez un client ci-dessus pour attribuer un IBAN.",
+      "assign": "Attribuer un IBAN",
+      "activate": "Activer",
+      "block": "Bloquer"
+    },
+    "cryptoAddresses": {
+      "title": "Adresses crypto",
+      "subtitle": "Attribuer des adresses de dépôt et revoir les dépôts détectés sur la blockchain.",
+      "client": "Client",
+      "selectClient": "Sélectionnez un client ci-dessus pour attribuer une adresse.",
+      "selectClientOption": "Sélectionnez un client",
+      "assign": "Attribuer l'adresse",
+      "remove": "Retirer"
+    },
+    "cryptoTransactions": {
+      "title": "Dépôts blockchain",
+      "subtitle": "Confirmer ou refuser les dépôts annoncés par les clients.",
+      "confirm": "Confirmer",
+      "reject": "Refuser",
+      "rejectReason": "Dépôt refusé après revue"
+    },
+    "investments": {
+      "title": "Investissements",
+      "subtitle": "Paiements à vérifier, positions actives et terminées.",
+      "notice": "Une déclaration d'un client n'est pas un paiement. Seule la vérification d'une opération ici l'active et la fait compter dans le solde du client.",
+      "emptyTitle": "Aucun investissement",
+      "emptyText": "Aucun client n'a encore souscrit.",
+      "verifyPayment": "Vérifier le paiement",
+      "rejectPayment": "Refuser le paiement",
+      "rejectReason": "Paiement non reçu ou référence erronée",
+      "mature": "Marquer comme échu",
+      "cancel": "Annuler",
+      "table": {
+        "client": "Client",
+        "product": "Produit",
+        "date": "Créé le"
+      }
+    },
+    "deposits": {
+      "title": "Dépôts",
+      "subtitle": "Confirmer ou refuser les dépôts demandés par les clients.",
+      "notice": "Une demande de dépôt ne crédite rien. C'est sa confirmation qui écrit la ligne du grand livre et rend l'argent disponible au client.",
+      "emptyTitle": "Aucun dépôt",
+      "emptyText": "Aucun client n'a encore demandé de dépôt.",
+      "noProof": "Aucune référence de paiement fournie par le client.",
+      "notePlaceholder": "Note de revue (visible par le client)",
+      "defaultRejectReason": "Paiement non reçu",
+      "confirm": "Confirmer et créditer",
+      "reject": "Refuser"
+    },
+    "withdrawals": {
+      "title": "Retraits",
+      "subtitle": "Vérifier, approuver, traiter et terminer les retraits.",
+      "notice": "L'argent ne quitte le compte qu'à la completion du retrait, et la référence de la transaction réelle est alors obligatoire.",
+      "emptyTitle": "Aucun retrait",
+      "emptyText": "Aucun client n'a encore demandé de retrait.",
+      "review": "Démarrer la vérification",
+      "approve": "Approuver",
+      "process": "Mettre en traitement",
+      "complete": "Marquer comme terminé",
+      "reject": "Refuser",
+      "referencePlaceholder": "Référence de la transaction réelle (obligatoire)",
+      "notePlaceholder": "Motif du refus"
+    },
+    "transactions": {
+      "title": "Transactions",
+      "subtitle": "Le grand livre central, tous clients confondus.",
+      "notice": "Cette table est la trace de chaque mouvement. Une ligne n'est jamais modifiée : une correction est une nouvelle ligne."
+    },
+    "loans": {
+      "title": "Prêts",
+      "subtitle": "Vérifier, approuver et décaisser les demandes de prêt.",
+      "notice": "Approuver un prêt ne déplace aucun argent. Le montant n'arrive chez le client qu'au décaissement, avec la référence du virement réel.",
+      "emptyTitle": "Aucune demande de prêt",
+      "emptyText": "Aucun client n'a encore demandé de prêt.",
+      "review": "Démarrer l'étude",
+      "approve": "Approuver",
+      "reject": "Refuser",
+      "disburse": "Enregistrer le décaissement",
+      "disburseHint": "L'argent quitte la plateforme à cette étape.",
+      "disbursePlaceholder": "Référence du décaissement (obligatoire)",
+      "rejectPlaceholder": "Motif du refus",
+      "approvedOn": "Approuvé le {date}",
+      "legalNotice": "Les conditions doivent respecter le cadre juridique applicable. Il s'agit d'une validation juridique, pas technique : vérifiez le taux, la durée et les conditions avant d'approuver.",
+      "approvalForm": {
+        "title": "Conditions d'approbation",
+        "submit": "Approuver et générer l'échéancier"
+      }
+    },
+    "cards": {
+      "title": "Cartes",
+      "subtitle": "Demandes de carte, attribution et blocage.",
+      "notice": "Les cartes sont émises par un prestataire habilité. Le formulaire d'attribution n'enregistre que ce que ce prestataire renvoie : les quatre derniers chiffres, une référence émetteur et l'expiration. L'application ne génère jamais de numéro de carte.",
+      "emptyTitle": "Aucune carte",
+      "emptyText": "Aucun client n'a encore demandé de carte.",
+      "pendingRequests": "Demandes à traiter",
+      "noRequests": "Aucune demande",
+      "noRequestsText": "Toutes les demandes de carte ont été traitées.",
+      "approve": "Approuver",
+      "reject": "Refuser",
+      "rejectPlaceholder": "Motif du refus",
+      "attribution": "Attribution",
+      "noApprovedRequests": "Aucune demande prête",
+      "noApprovedRequestsText": "Une carte ne peut être attribuée qu'une fois sa demande approuvée.",
+      "issuerHint": "Reprenez ces valeurs depuis l'interface du prestataire. Aucun numéro complet ne peut être saisi, par conception.",
+      "attribute": "Attribuer la carte",
+      "issue": "Enregistrer la carte",
+      "issuedCards": "Cartes en circulation",
+      "noCards": "Aucune carte",
+      "noCardsText": "Aucune carte n'a encore été émise.",
+      "block": "Bloquer",
+      "unblock": "Débloquer",
+      "settledRequests": "Demandes refusées"
+    },
+    "products": {
+      "title": "Opportunités d'investissement",
+      "subtitle": "Créer, publier, clôturer et archiver les produits.",
+      "notice": "Un taux n'est contractuel que s'il l'est juridiquement. Laissez la case « contractuel » décochée sinon : le rendement est alors affiché comme indicatif (§24).",
+      "create": "Créer une opportunité",
+      "publish": "Publier",
+      "closeSubscriptions": "Clôturer les souscriptions",
+      "archive": "Archiver",
+      "emptyTitle": "Aucune opportunité",
+      "emptyText": "Créez votre première opportunité pour que les clients puissent souscrire.",
+      "fields": {
+        "name": "Nom",
+        "sector": "Secteur",
+        "description": "Description",
+        "minimum": "Montant minimum",
+        "maximum": "Montant maximum",
+        "duration": "Durée en mois",
+        "rate": "Taux annuel cible (%)",
+        "rateGuaranteed": "Le taux est contractuel",
+        "riskLevel": "Niveau de risque",
+        "conditions": "Conditions",
+        "documents": "Documents",
+        "risks": "Risques",
+        "onePerLine": "Un par ligne"
+      }
+    },
+    "users": {
+      "title": "Utilisateurs",
+      "subtitle": "Dossiers clients, statut KYC et actions de compte",
+      "emptyTitle": "Aucun utilisateur",
+      "emptyText": "Ajustez les filtres pour afficher plus de résultats.",
+      "table": {
+        "reference": "Référence",
+        "client": "Client",
+        "role": "Rôle",
+        "kyc": "Documents",
+        "status": "Statut",
+        "createdAt": "Inscrit le",
+        "actions": "Actions",
+        "review": "Examiner",
+        "documents": "{count} documents ({pending} en attente)",
+        "noDocuments": "Aucun"
+      },
+      "detail": {
+        "registeredAt": "Inscrit le",
+        "approveDocument": "Approuver",
+        "notes": "Notes internes",
+        "noNotes": "Aucune note interne.",
+        "notePlaceholder": "Message au dossier (note interne ou demande d'information)",
+        "addNote": "Ajouter une note",
+        "requestInfo": "Demander des informations",
+        "reject": "Rejeter",
+        "suspend": "Suspendre",
+        "approve": "Valider",
+        "reactivate": "Réactiver"
+      }
+    }
+  },
+  "notFound": {
+    "error": "ERREUR",
+    "message": "Nous ne arrivons pas à trouver la page demandée.",
+    "backHome": "Retour à l'accueil"
+  }
+}
