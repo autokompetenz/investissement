@@ -1,4 +1,4 @@
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import ProductsManager from "@/components/investments/ProductsManager";
@@ -37,7 +37,7 @@ export default function AdminProducts() {
           title={`${t("admin.products.title")} | ${t("app.name")}`}
           description={t("admin.products.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.products.title")} />
+        <PageHeader pageTitle={t("admin.products.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -50,7 +50,7 @@ export default function AdminProducts() {
         description={t("admin.products.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.products.title")} />
+      <PageHeader pageTitle={t("admin.products.title")} />
 
       <ProductsManager
         products={products}

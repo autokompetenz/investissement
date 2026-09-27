@@ -1,7 +1,7 @@
 import UserDetailModal from "@/components/admin/UserDetailModal";
 import UsersFilters from "@/components/admin/UsersFilters";
 import UsersTable from "@/components/admin/UsersTable";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -64,7 +64,7 @@ export default function AdminUsers() {
         description={t("admin.users.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.users.title")} />
+      <PageHeader pageTitle={t("admin.users.title")} />
 
       <div className="space-y-5">
         <UsersFilters

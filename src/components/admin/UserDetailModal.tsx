@@ -329,7 +329,7 @@ const UserDetailModal: React.FC<UserDetailModalProps> = ({
                   </div>
                 </div>
                 <div className="mt-2 flex flex-wrap items-center gap-2">
-                  <code className="min-w-0 flex-1 overflow-x-auto rounded-lg bg-white p-2 font-mono text-theme-xs text-gray-700 dark:bg-gray-900 dark:text-gray-300">
+                  <code className="min-w-0 flex-1 rounded-lg bg-white p-2 font-mono identifier text-theme-xs text-gray-700 dark:bg-gray-900 dark:text-gray-300">
                     {account.iban}
                   </code>
                   <CopyButton value={account.iban} />

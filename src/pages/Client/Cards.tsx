@@ -1,5 +1,5 @@
 import CardsPanel from "@/components/cards/CardsPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -54,7 +54,7 @@ export default function Cards() {
           title={`${t("cards.title")} | ${t("app.name")}`}
           description={t("cards.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("cards.title")} />
+        <PageHeader pageTitle={t("cards.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -67,7 +67,7 @@ export default function Cards() {
         description={t("cards.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("cards.title")} />
+      <PageHeader pageTitle={t("cards.title")} />
 
       <CardsPanel
         cards={cards}

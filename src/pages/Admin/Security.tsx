@@ -3,7 +3,7 @@ import Badge from "@/components/ui/badge/Badge";
 import Button from "@/components/ui/button/Button";
 import EmptyState from "@/components/common/EmptyState";
 import TwoFactorSettings from "@/components/security/TwoFactorSettings";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -69,7 +69,7 @@ export default function Security() {
           title={`${t("security.title")} | ${t("app.name")}`}
           description={t("security.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("security.title")} />
+        <PageHeader pageTitle={t("security.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -105,7 +105,7 @@ export default function Security() {
         description={t("security.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("security.title")} />
+      <PageHeader pageTitle={t("security.title")} />
 
       <div className="space-y-6">
         {notice ? (

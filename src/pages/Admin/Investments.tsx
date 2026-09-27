@@ -1,5 +1,5 @@
 import AdminInvestmentsTable from "@/components/investments/AdminInvestmentsTable";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -46,7 +46,7 @@ export default function AdminInvestments() {
           title={`${t("admin.investments.title")} | ${t("app.name")}`}
           description={t("admin.investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.investments.title")} />
+        <PageHeader pageTitle={t("admin.investments.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -59,7 +59,7 @@ export default function AdminInvestments() {
         description={t("admin.investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.investments.title")} />
+      <PageHeader pageTitle={t("admin.investments.title")} />
 
       <div className="space-y-5">
         <p className="rounded-xl bg-gray-50 p-4 text-theme-sm text-gray-500 dark:bg-white/[0.03] dark:text-gray-400">

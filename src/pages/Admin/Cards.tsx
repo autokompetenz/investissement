@@ -1,5 +1,5 @@
 import AdminCardsPanel from "@/components/cards/AdminCardsPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -45,7 +45,7 @@ export default function AdminCards() {
           title={`${t("admin.cards.title")} | ${t("app.name")}`}
           description={t("admin.cards.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.cards.title")} />
+        <PageHeader pageTitle={t("admin.cards.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -58,7 +58,7 @@ export default function AdminCards() {
         description={t("admin.cards.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.cards.title")} />
+      <PageHeader pageTitle={t("admin.cards.title")} />
 
       <AdminCardsPanel
         requests={requests}

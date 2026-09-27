@@ -1,6 +1,6 @@
 import Alert from "@/components/ui/alert/Alert";
 import Badge from "@/components/ui/badge/Badge";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import PaymentInstructions from "@/components/investments/PaymentInstructions";
@@ -80,7 +80,7 @@ export default function InvestmentPositionPage() {
           title={`${t("investments.positionTitle")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.positionTitle")} />
+        <PageHeader pageTitle={t("investments.positionTitle")} />
         <Alert variant="error" title={t("auth.errors.title")} message={t("auth.errors.unknown")} />
       </>
     );
@@ -93,7 +93,7 @@ export default function InvestmentPositionPage() {
           title={`${t("investments.positionTitle")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.positionTitle")} />
+        <PageHeader pageTitle={t("investments.positionTitle")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -108,7 +108,7 @@ export default function InvestmentPositionPage() {
         description={t("investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={investment.productName} />
+      <PageHeader pageTitle={investment.productName} />
 
       <div className="space-y-6">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
@@ -214,9 +214,12 @@ export default function InvestmentPositionPage() {
         </div>
 
         {investment.status === "ACTIVE" ? (
+          // The only action on this page, and it was a line of text 19 pixels
+          // tall. Padding takes it to a target a thumb can find, and the
+          // negative margin keeps the visual alignment of the block it sits in.
           <Link
             to={`${ROUTES.investmentTopup}/${investment.id}`}
-            className="inline-block text-theme-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400"
+            className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 text-theme-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400"
           >
             {t("investments.topup.action")}
           </Link>

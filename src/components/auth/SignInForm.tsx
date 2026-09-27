@@ -247,10 +247,19 @@ const SignInForm: React.FC = () => {
                   onChange={(event) => setPassword(event.target.value)}
                   required
                 />
+                {/*
+                  The reveal button sat on a 20-pixel icon inside an absolutely
+                  positioned box: too small to hit, and sitting on top of the
+                  field it belongs to.
+
+                  It is now a 44-pixel box centred on the same point. The field
+                  keeps its own right padding, so the text never runs under the
+                  icon — the padding is what the larger box eats into.
+                */}
                 <button
                   type="button"
                   onClick={() => setShowPassword((previous) => !previous)}
-                  className="absolute inset-e-4 top-1/2 z-30 -translate-y-1/2 cursor-pointer"
+                  className="absolute inset-e-2 top-1/2 z-30 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg"
                   aria-label={t("auth.signIn.togglePassword")}
                 >
                   {showPassword ? (
@@ -274,9 +283,11 @@ const SignInForm: React.FC = () => {
                   {t("auth.signIn.rememberMe")}
                 </span>
               </label>
+              {/* 44 pixels tall, from `sm` up — a forgotten password on a phone
+                  is not a 20-pixel line of text. */}
               <Link
                 to={ROUTES.forgotPassword}
-                className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 text-sm text-brand-500 hover:text-brand-600 sm:min-h-0 dark:text-brand-400"
               >
                 {t("auth.signIn.forgotPassword")}
               </Link>
@@ -302,14 +313,21 @@ const SignInForm: React.FC = () => {
               { role: "Client", email: "client@invest.ma", password: "Client123!" },
               { role: "Admin", email: "admin@invest.ma", password: "Admin123!" },
             ].map((account) => (
-              <li key={account.email} className="flex items-center justify-between gap-3">
-                <span className="text-theme-sm text-gray-600 dark:text-gray-300">
+              // The email is an unbreakable token and the button was bare text,
+              // 19 pixels tall. `min-w-0` and `break-all` on the label, a real
+              // target on the button, and the negative margin keeps the pair
+              // looking aligned with the border of the box around it.
+              <li
+                key={account.email}
+                className="flex items-center justify-between gap-3"
+              >
+                <span className="min-w-0 break-all text-theme-sm text-gray-600 dark:text-gray-300">
                   <span className="font-medium">{account.role}</span> · {account.email}
                 </span>
                 <button
                   type="button"
                   onClick={() => fillDemoAccount(account.email, account.password)}
-                  className="text-theme-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                  className="-my-2 -me-2 inline-flex min-h-11 shrink-0 items-center rounded-lg px-2 text-theme-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
                   {t("auth.signIn.useAccount")}
                 </button>

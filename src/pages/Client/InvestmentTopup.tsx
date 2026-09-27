@@ -1,5 +1,5 @@
 import Alert from "@/components/ui/alert/Alert";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import PaymentInstructions from "@/components/investments/PaymentInstructions";
@@ -60,7 +60,7 @@ export default function InvestmentTopup() {
           title={`${t("investments.topup.title")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.topup.title")} />
+        <PageHeader pageTitle={t("investments.topup.title")} />
         <Alert variant="error" title={t("auth.errors.title")} message={t("auth.errors.unknown")} />
       </>
     );
@@ -73,7 +73,7 @@ export default function InvestmentTopup() {
           title={`${t("investments.topup.title")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.topup.title")} />
+        <PageHeader pageTitle={t("investments.topup.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -86,7 +86,7 @@ export default function InvestmentTopup() {
           title={`${t("investments.topup.title")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.topup.title")} />
+        <PageHeader pageTitle={t("investments.topup.title")} />
         <Alert
           variant="warning"
           title={t("investments.topup.notActive")}
@@ -103,7 +103,7 @@ export default function InvestmentTopup() {
         description={t("investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("investments.topup.title")} />
+      <PageHeader pageTitle={t("investments.topup.title")} />
 
       <div className="grid gap-6 xl:grid-cols-2">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">

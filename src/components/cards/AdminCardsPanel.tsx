@@ -380,7 +380,7 @@ const AdminCardsPanel: React.FC<{
                     <dt className="text-theme-xs text-gray-400">
                       {t("cards.fields.number")}
                     </dt>
-                    <dd className="mt-0.5 font-mono text-theme-sm text-gray-700 dark:text-gray-300">
+                    <dd className="mt-0.5 font-mono identifier text-theme-sm text-gray-700 dark:text-gray-300">
                       •••• {card.last4}
                     </dd>
                   </div>

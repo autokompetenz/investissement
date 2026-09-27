@@ -58,7 +58,7 @@ const BankAccountCard: React.FC<BankAccountCardProps> = ({ accounts }) => {
                     {t("bank.fields.iban")}
                   </dt>
                   <dd className="mt-1 flex flex-wrap items-center gap-2">
-                    <code className="rounded-lg bg-gray-50 px-2.5 py-1.5 font-mono text-theme-sm text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
+                    <code className="rounded-lg bg-gray-50 px-2.5 py-1.5 font-mono identifier text-theme-sm text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
                       {account.iban}
                     </code>
                     <CopyButton value={account.iban} />
@@ -68,7 +68,7 @@ const BankAccountCard: React.FC<BankAccountCardProps> = ({ accounts }) => {
                   <dt className="text-theme-xs text-gray-500 dark:text-gray-400">
                     {t("bank.fields.bic")}
                   </dt>
-                  <dd className="mt-0.5 font-mono text-theme-sm text-gray-800 dark:text-white/90">
+                  <dd className="mt-0.5 font-mono identifier text-theme-sm text-gray-800 dark:text-white/90">
                     {account.bic ?? "—"}
                   </dd>
                 </div>

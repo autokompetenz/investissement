@@ -38,7 +38,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onSelect }) => {
 
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
-      <div className="overflow-x-auto">
+      <div className="max-w-full overflow-x-auto">
         <Table>
           <TableHeader className="border-b border-gray-200 dark:border-gray-800">
             <TableRow>

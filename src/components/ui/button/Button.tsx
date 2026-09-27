@@ -23,10 +23,19 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   disabled = false,
 }) => {
-  // Size Classes
+  /*
+    Size classes. The vertical padding grows on a phone: 44 pixels is the
+    smallest target a fingertip can hit reliably, and a padding of 12 or 14
+    pixels gives 40 or 42 — under the threshold on a mid-range handset.
+
+    Full width under `sm`, which suits a form, and never on a row of actions.
+    A confirmation button sitting in a table is one of several side by side:
+    stretched to the full width of a phone it would push its neighbours off
+    screen, so it opts out with `w-auto` and keeps the 44-pixel height.
+  */
   const sizeClasses = {
-    sm: "px-4 py-3 text-sm",
-    md: "px-5 py-3.5 text-sm",
+    sm: "w-full px-4 py-3.5 text-sm sm:w-auto sm:py-3",
+    md: "w-full px-5 py-3.5 text-sm sm:w-auto sm:py-3.5",
   };
 
   // Variant Classes

@@ -76,7 +76,7 @@ const LoanScheduleCard: React.FC<LoanScheduleCardProps> = ({ loan }) => {
         </p>
       )}
 
-      <div className="mt-4 overflow-x-auto">
+      <div className="mt-4 max-w-full overflow-x-auto">
         <Table>
           <TableHeader className="border-b border-gray-200 dark:border-gray-800">
             <TableRow>

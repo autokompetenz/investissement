@@ -107,7 +107,7 @@ const Cards: React.FC<{
                   </p>
                   <p className="mt-0.5 text-theme-sm font-medium">{card.holderName}</p>
 
-                  <p className="mt-4 font-mono text-title-sm tracking-widest">
+                  <p className="mt-4 font-mono identifier text-title-sm tracking-widest">
                     •••• •••• •••• {card.last4}
                   </p>
 

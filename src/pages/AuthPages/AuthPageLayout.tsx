@@ -16,7 +16,22 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="relative z-1 bg-white p-6 sm:p-0 dark:bg-gray-900">
-      <div className="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row dark:bg-gray-900">
+      {/*
+        `min-h-screen` with `py-10`, and `justify-center` only from `sm` up.
+
+        The pairing was `h-screen` with `justify-center`, on every screen size.
+        A centred flex container whose content is taller than itself does not
+        grow — it overflows in both directions, and the top overflow is
+        unreachable: there is no scrollbar to reach it, so the "back to sign in"
+        link and the title simply cannot be got back to. The six-step sign-up
+        form is taller than a phone screen, which is exactly how this happened.
+
+        `min-h-screen` lets the container grow with its content, so the page
+        scrolls normally and the top stays reachable. The vertical padding
+        replaces the lost centring on a phone, and from `sm` up the content is
+        short enough that centring is safe again.
+      */}
+      <div className="relative flex min-h-screen w-full flex-col justify-center py-10 sm:p-0 lg:flex-row dark:bg-gray-900">
         {children}
 
         <div className="hidden h-full w-full items-center bg-brand-950 lg:grid lg:w-1/2 dark:bg-white/5">

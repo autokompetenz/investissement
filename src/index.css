@@ -194,6 +194,47 @@
   body {
     @apply relative z-1 bg-gray-50 font-outfit font-normal;
   }
+
+  /*
+    Two rules that belong to the document rather than to any component.
+
+    `overflow-x: clip` on the root: the page must never scroll sideways. Every
+    fix for a specific overflow is in the component that causes it, but a
+    single unhandled case — a long word in a translated string, a value three
+    times longer than expected — would otherwise hand the user a page they can
+    pan, with the interface sliding out from under their thumb. `clip` rather
+    than `hidden`, because `hidden` on the root turns the element into a scroll
+    container, which breaks `position: sticky` on the header.
+
+    The layout column also carries `min-w-0`, so a wide child cannot force the
+    document wider in the first place. The two work together: the first clips
+    what slips through, the second removes the cause.
+
+    `text-wrap: pretty` on headings: a title that would break after the last
+    word leaves a very short last line, which reads as a mistake.
+  */
+  html {
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: pretty;
+  }
+
+  /* A translated string can be longer than the English one it replaces, and a
+     single long word in any language will not wrap on its own. */
+  p,
+  span,
+  dd,
+  dt,
+  td,
+  th,
+  li {
+    overflow-wrap: break-word;
+  }
 }
 
 @utility menu-item {
@@ -1130,24 +1171,31 @@ pre[class*="language-"].line-numbers {
 
 
 /* =============================================================================
-   Tableau en carte, sous 640 px
+   Tableau en carte, sous 768 px
    -----------------------------------------------------------------------------
    Un tableau financier fait cinq à huit colonnes. À 375 px, il ne peut que
    déborder, et faire défiler un tableau horizontalement est le pire moyen de
    lire un montant : on ne sait plus quelle colonne on regarde, et on perd la
    ligne de tête dès qu'on descend.
 
-   Sous 640 px, chaque ligne devient donc une carte et chaque cellule une
+   Sous 768 px, chaque ligne devient donc une carte et chaque cellule une
    ligne étiquetée. Le libellé vient de l'attribut `data-label` posé par
    `TableCell`, pas du contenu de la cellule : un montant affiché seul ne dit
    pas ce qu'il est.
+
+   Le seuil est à 768 px et non à 640 px pour une raison précise : un téléphone
+   tenu en paysage fait 667 px de large. À 640 px, ce téléphone retrouvait un
+   tableau à huit colonnes dans 667 px, soit quatre-vingts pixels par colonne —
+   plus étroit que la plus petite cible tactile, et assez pour couper un
+   montant en deux lignes. 768 px couvre la fois le téléphone en portrait et le
+   téléphone en paysage, et ne touche pas la tablette.
 
    Ce n'est pas une seconde version du composant, c'est la même, réagissant à
    une media query. Un tableau sans `data-label` reste un tableau, il affiche
    juste ses valeurs sans étiquette — ce qui vaut mieux que rien.
    ========================================================================== */
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .table-card,
   .table-card thead,
   .table-card tbody,
@@ -1230,4 +1278,30 @@ pre[class*="language-"].line-numbers {
   .table-card :where(.dark) tbody tr:hover {
     background-color: var(--color-gray-900);
   }
+}
+
+/* =============================================================================
+   Identifiants financiers insécables
+   -----------------------------------------------------------------------------
+   Un IBAN, un haché de transaction, une adresse de portefeuille ou un secret
+   2FA forment une seule chaîne sans espace ni trait d'union. En police à
+   chasse fixe, un haché de 66 caractères fait environ 380 pixels : plus large
+   qu'un téléphone. Sans césure, il ne déborde pas seulement son propre
+   conteneur — il élargit sa carte, puis la colonne, puis la page. C'est
+   exactement le débordement horizontal que l'application ne doit jamais avoir.
+
+   `overflow-wrap: anywhere` et non `break-word` : les deux coupent le texte,
+   mais `break-word` laisse la largeur minimale intrinsèque de la boîte
+   inchangée. Dans une carte, un paragraphe ou un élément flexible, c'est
+   cette largeur minimale qui est negotiate lors de la mise en page — le
+   conteneur refuse donc de rétrécir, et la page déborde quand même. `anywhere`
+   la réduit, ce qui laisse la boîte se replier à la largeur disponible.
+
+   `min-width: 0` accompagne la césure pour la même raison côté flexbox : un
+   enfant flexible refuse de descendre sous sa taille de contenu sans cela.
+   ========================================================================== */
+
+@utility identifier {
+  overflow-wrap: anywhere;
+  min-width: 0;
 }

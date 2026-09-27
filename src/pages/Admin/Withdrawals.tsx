@@ -1,5 +1,5 @@
 import AdminWithdrawalsTable from "@/components/finance/AdminWithdrawalsTable";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -42,7 +42,7 @@ export default function AdminWithdrawals() {
           title={`${t("admin.withdrawals.title")} | ${t("app.name")}`}
           description={t("admin.withdrawals.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.withdrawals.title")} />
+        <PageHeader pageTitle={t("admin.withdrawals.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -55,7 +55,7 @@ export default function AdminWithdrawals() {
         description={t("admin.withdrawals.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.withdrawals.title")} />
+      <PageHeader pageTitle={t("admin.withdrawals.title")} />
 
       <AdminWithdrawalsTable
         withdrawals={withdrawals}

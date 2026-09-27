@@ -1,5 +1,6 @@
-import type React from "react";
+import { CheckLineIcon } from "@/icons";
 import { cn } from "@/utils";
+import type React from "react";
 
 interface CheckboxProps {
   label?: string;
@@ -25,54 +26,33 @@ const Checkbox: React.FC<CheckboxProps> = ({
         disabled && "cursor-not-allowed opacity-60"
       )}
     >
-      <div className="relative flex items-center justify-center w-5 h-5">
+      {/*
+        The box grows to 44 pixels on a phone, from `sm` up, while the drawn
+        square stays 20. The extra room is padding around the control, not a
+        bigger control: the border and the check mark keep their proportions,
+        and what grows is the area a finger has to land on.
+
+        The tick and the disabled mark come from `@/icons` rather than being
+        inlined here, so every icon in the application has one source.
+      */}
+      <div className="relative flex size-11 items-center justify-center sm:size-5">
         <input
           id={id}
           type="checkbox"
           className={cn(
-            "w-5 h-5 appearance-none cursor-pointer dark:border-gray-700 border border-gray-300 checked:border-transparent rounded-md checked:bg-brand-500 disabled:opacity-60",
+            "size-5 appearance-none cursor-pointer rounded-md border border-gray-300 checked:border-transparent checked:bg-brand-500 disabled:opacity-60 dark:border-gray-700",
             className
           )}
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           disabled={disabled}
         />
-        {checked && (
-          <svg
-            className="pointer-events-none absolute inset-0 m-auto"
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-          >
-            <path
-              d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
-              stroke="white"
-              strokeWidth="1.94437"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
-        {disabled && (
-          <svg
-            className="pointer-events-none absolute inset-0 m-auto"
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-          >
-            <path
-              d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
-              stroke="#E4E7EC"
-              strokeWidth="2.33333"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
+        {checked ? (
+          <CheckLineIcon className="pointer-events-none absolute inset-0 m-auto size-3.5 text-white" />
+        ) : null}
+        {disabled ? (
+          <CheckLineIcon className="pointer-events-none absolute inset-0 m-auto size-3.5 text-gray-300" />
+        ) : null}
       </div>
       {label && (
         <span className="text-sm font-medium text-gray-800 dark:text-gray-200">

@@ -1,5 +1,5 @@
 import AdminDepositsTable from "@/components/finance/AdminDepositsTable";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -42,7 +42,7 @@ export default function AdminDeposits() {
           title={`${t("admin.deposits.title")} | ${t("app.name")}`}
           description={t("admin.deposits.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.deposits.title")} />
+        <PageHeader pageTitle={t("admin.deposits.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -55,7 +55,7 @@ export default function AdminDeposits() {
         description={t("admin.deposits.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.deposits.title")} />
+      <PageHeader pageTitle={t("admin.deposits.title")} />
 
       <AdminDepositsTable
         deposits={deposits}

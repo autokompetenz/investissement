@@ -1,7 +1,7 @@
 import EmptyState from "@/components/common/EmptyState";
 import LoanCard from "@/components/loans/LoanCard";
 import LoanRequestForm from "@/components/loans/LoanRequestForm";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -40,7 +40,7 @@ export default function Loans() {
         description={t("loans.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("loans.title")} />
+      <PageHeader pageTitle={t("loans.title")} />
 
       <div className="space-y-6">
         {user?.status === "VERIFIED" ? (

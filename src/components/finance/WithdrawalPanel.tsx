@@ -255,13 +255,13 @@ const WithdrawalPanel: React.FC<WithdrawalPanelProps> = ({
 
                 <p className="mt-2 text-theme-xs text-gray-500 dark:text-gray-400">
                   {t("withdrawals.history.destination")}:{" "}
-                  <span className="font-mono">{withdrawal.destination}</span>
+                  <span className="font-mono identifier">{withdrawal.destination}</span>
                 </p>
 
                 {withdrawal.transactionReference ? (
                   <p className="mt-1 text-theme-xs text-success-600 dark:text-success-500">
                     {t("withdrawals.history.transactionReference")}:{" "}
-                    <span className="font-mono">{withdrawal.transactionReference}</span>
+                    <span className="font-mono identifier">{withdrawal.transactionReference}</span>
                   </p>
                 ) : null}
 

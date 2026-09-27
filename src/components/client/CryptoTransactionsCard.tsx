@@ -38,7 +38,7 @@ const CryptoTransactionsCard: React.FC<CryptoTransactionsCardProps> = ({
           description={t("crypto.transactions.emptyText")}
         />
       ) : (
-        <div className="overflow-x-auto">
+        <div className="max-w-full overflow-x-auto">
           <Table>
             <TableHeader className="border-b border-gray-200 dark:border-gray-800">
               <TableRow>
@@ -61,7 +61,7 @@ const CryptoTransactionsCard: React.FC<CryptoTransactionsCardProps> = ({
                   className="border-b border-gray-100 last:border-b-0 dark:border-gray-800"
                 >
                   <TableCell className="ps-5" label={t("crypto.transactions.hash")} >
-                    <code className="font-mono text-theme-xs text-gray-600 dark:text-gray-300">
+                    <code className="font-mono identifier text-theme-xs text-gray-600 dark:text-gray-300">
                       {transaction.txHash.slice(0, 14)}…
                     </code>
                   </TableCell>

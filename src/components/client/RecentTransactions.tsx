@@ -40,7 +40,7 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({ transactions })
           description={t("client.transactions.emptyText")}
         />
       ) : (
-        <div className="overflow-x-auto">
+        <div className="max-w-full overflow-x-auto">
           <Table>
             <TableHeader className="border-b border-gray-200 dark:border-gray-800">
               <TableRow>

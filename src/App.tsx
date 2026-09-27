@@ -50,9 +50,16 @@ const AppRoutes = () => (
 
     {/* Client space */}
     <Route element={<ProtectedRoute roles={["CLIENT"]} />}>
-      <Route path={ROUTES.clientProfile} element={<Profile />} />
+      {/*
+        The profile sits inside `AppLayout` like every other client page. It
+        used to be declared above it, outside: the only client page with no
+        sidebar, no header, and no page padding. Its content therefore touched
+        the very edge of a phone screen, and an email address — a single token
+        with no break opportunity — ran off it.
+      */}
       <Route element={<AppLayout />}>
         <Route element={<VerificationGate />}>
+          <Route path={ROUTES.clientProfile} element={<Profile />} />
           <Route path={ROUTES.clientDashboard} element={<ClientDashboard />} />
           <Route path={ROUTES.clientWallet} element={<Wallet />} />
           <Route path={ROUTES.clientDeposits} element={<ClientDeposits />} />

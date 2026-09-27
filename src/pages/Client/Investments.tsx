@@ -1,6 +1,6 @@
 import ProductCard from "@/components/investments/ProductCard";
 import EmptyState from "@/components/common/EmptyState";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { listPublishedProducts } from "@/services/investments";
@@ -37,7 +37,7 @@ export default function Investments() {
         description={t("investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("investments.title")} />
+      <PageHeader pageTitle={t("investments.title")} />
 
       {!products ? (
         <PageLoader label={t("common.loading")} />

@@ -43,7 +43,16 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="overflow-x-auto">
+    /*
+      `max-w-full` alongside `overflow-x-auto`, and the reason is flexbox.
+      A scroll container only scrolls if it is allowed to be narrower than its
+      content. Inside a flex or grid parent, an element's default `min-width` is
+      its content's intrinsic width, so the container refuses to shrink below
+      the table and grows instead — no scrollbar appears and the overflow
+      reaches the page. `max-w-full` is what lets it shrink, and the table then
+      scrolls inside its own box, below 768 px, or becomes a card.
+    */
+    <div className="max-w-full overflow-x-auto">
       <Table>
         <TableHeader className="border-b border-gray-200 dark:border-gray-800">
           <TableRow>
@@ -76,7 +85,7 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
                   {transaction.description}
                 </span>
                 {transaction.transactionHash ? (
-                  <span className="mt-0.5 block font-mono text-theme-xs text-gray-400">
+                  <span className="mt-0.5 block font-mono identifier text-theme-xs text-gray-400">
                     {transaction.transactionHash.slice(0, 14)}…
                   </span>
                 ) : null}

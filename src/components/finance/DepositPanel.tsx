@@ -186,7 +186,11 @@ const DepositPanel: React.FC<DepositPanelProps> = ({
         )}
 
         {canRequest ? (
-          <p className="mt-4 text-theme-xs text-gray-400">
+          // The IBAN is interpolated into this sentence, and a bank can enter
+          // it without spaces. It is a single unbroken token in the middle of a
+          // paragraph: without a break opportunity it sets the width of the
+          // line, and the paragraph, and the card, past the edge of the phone.
+          <p className="mt-4 break-words text-theme-xs text-gray-400">
             {method === "BANK_TRANSFER" && activeAccount
               ? t("deposits.request.noticeBank", { iban: activeAccount.iban })
               : activeAddress
@@ -234,7 +238,7 @@ const DepositPanel: React.FC<DepositPanelProps> = ({
                 {deposit.proof ? (
                   <p className="mt-2 text-theme-xs text-gray-500 dark:text-gray-400">
                     {t("deposits.history.proof")}:{" "}
-                    <span className="font-mono">{deposit.proof}</span>
+                    <span className="font-mono identifier">{deposit.proof}</span>
                   </p>
                 ) : null}
 

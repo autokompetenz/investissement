@@ -1,6 +1,6 @@
 import CryptoAddressesPanel from "@/components/admin/CryptoAddressesPanel";
 import CryptoTransactionsPanel from "@/components/admin/CryptoTransactionsPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import Select from "@/components/form/Select";
@@ -52,7 +52,7 @@ export default function AdminCryptoAddresses() {
           title={`${t("admin.cryptoAddresses.title")} | ${t("app.name")}`}
           description={t("admin.cryptoAddresses.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.cryptoAddresses.title")} />
+        <PageHeader pageTitle={t("admin.cryptoAddresses.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -65,7 +65,7 @@ export default function AdminCryptoAddresses() {
         description={t("admin.cryptoAddresses.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.cryptoAddresses.title")} />
+      <PageHeader pageTitle={t("admin.cryptoAddresses.title")} />
 
       <div className="space-y-6">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">

@@ -191,7 +191,7 @@ const BankAccountsPanel: React.FC<BankAccountsPanelProps> = ({
               </div>
 
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <code className="min-w-0 flex-1 overflow-x-auto rounded-lg bg-gray-50 p-2.5 font-mono text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
+                <code className="min-w-0 flex-1 rounded-lg bg-gray-50 p-2.5 font-mono identifier text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
                   {account.iban}
                 </code>
                 <CopyButton value={account.iban} />
@@ -208,7 +208,7 @@ const BankAccountsPanel: React.FC<BankAccountsPanelProps> = ({
 
               {account.bic ? (
                 <p className="mt-2 text-theme-xs text-gray-500 dark:text-gray-400">
-                  {t("bank.fields.bic")}: <span className="font-mono">{account.bic}</span>
+                  {t("bank.fields.bic")}: <span className="font-mono identifier">{account.bic}</span>
                 </p>
               ) : null}
             </li>

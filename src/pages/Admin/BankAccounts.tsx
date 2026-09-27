@@ -1,5 +1,5 @@
 import BankAccountsPanel from "@/components/admin/BankAccountsPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import Select from "@/components/form/Select";
@@ -51,7 +51,7 @@ export default function AdminBankAccounts() {
           title={`${t("admin.bankAccounts.title")} | ${t("app.name")}`}
           description={t("admin.bankAccounts.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.bankAccounts.title")} />
+        <PageHeader pageTitle={t("admin.bankAccounts.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -64,7 +64,7 @@ export default function AdminBankAccounts() {
         description={t("admin.bankAccounts.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.bankAccounts.title")} />
+      <PageHeader pageTitle={t("admin.bankAccounts.title")} />
 
       <div className="space-y-6">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">

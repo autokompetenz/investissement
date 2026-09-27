@@ -108,7 +108,7 @@ const AdminDepositsTable: React.FC<AdminDepositsTableProps> = ({
             {deposit.proof ? (
               <p className="mt-3 text-theme-sm text-gray-600 dark:text-gray-300">
                 {t("deposits.history.proof")}:{" "}
-                <span className="font-mono">{deposit.proof}</span>
+                <span className="font-mono identifier">{deposit.proof}</span>
               </p>
             ) : (
               <p className="mt-3 text-theme-sm text-warning-600 dark:text-warning-400">

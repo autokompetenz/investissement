@@ -47,14 +47,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {
         {product.description}
       </p>
 
+      {/* Two columns, kept on a phone. See `PositionCard` for why each cell
+          carries `min-w-0` and the amount `break-words`: a grid cell will not
+          go narrower than its content, and a minimum of seven figures does not
+          fit in half a phone. */}
       <div className="mt-4 grid grid-cols-2 gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-theme-xs text-gray-400">{t("investments.card.minimum")}</p>
-          <p className="mt-0.5 text-theme-sm font-semibold text-gray-800 dark:text-white/90">
+          <p className="mt-0.5 break-words text-theme-sm font-semibold text-gray-800 dark:text-white/90">
             {formatCurrency(product.minimumAmount, product.currency, i18n.language)}
           </p>
         </div>
-        <div>
+        <div className="min-w-0">
           <p className="text-theme-xs text-gray-400">{t("investments.card.duration")}</p>
           <p className="mt-0.5 text-theme-sm font-semibold text-gray-800 dark:text-white/90">
             {t("investments.card.months", { count: product.durationMonths })}

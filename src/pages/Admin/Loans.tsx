@@ -1,5 +1,5 @@
 import AdminLoansPanel from "@/components/loans/AdminLoansPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -42,7 +42,7 @@ export default function AdminLoans() {
           title={`${t("admin.loans.title")} | ${t("app.name")}`}
           description={t("admin.loans.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("admin.loans.title")} />
+        <PageHeader pageTitle={t("admin.loans.title")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -55,7 +55,7 @@ export default function AdminLoans() {
         description={t("admin.loans.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.loans.title")} />
+      <PageHeader pageTitle={t("admin.loans.title")} />
 
       <AdminLoansPanel
         loans={loans}

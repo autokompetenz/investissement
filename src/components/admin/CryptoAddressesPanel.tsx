@@ -167,7 +167,7 @@ const CryptoAddressesPanel: React.FC<CryptoAddressesPanelProps> = ({
               </div>
 
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <code className="min-w-0 flex-1 overflow-x-auto rounded-lg bg-gray-50 p-2.5 font-mono text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
+                <code className="min-w-0 flex-1 rounded-lg bg-gray-50 p-2.5 font-mono identifier text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
                   {item.address}
                 </code>
                 <CopyButton value={item.address} />

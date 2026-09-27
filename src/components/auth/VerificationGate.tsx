@@ -1,5 +1,4 @@
 import Badge from "@/components/ui/badge/Badge";
-import Button from "@/components/ui/button/Button";
 import { useAuth } from "@/context/AuthContext";
 import { isAdminRole, ROUTES } from "@/utils/routes";
 import { AlertIcon, CheckCircleIcon, ClockIcon, TimeIcon } from "@/icons";
@@ -127,12 +126,25 @@ export const VerificationGate: React.FC = () => {
           </ul>
         </div>
 
+        {/*
+          Two destinations, so two anchors. Neither wraps a `Button`: a button
+          inside an anchor is invalid HTML, gives the keyboard two focus stops
+          for one action, and puts the focus ring on the wrong element. These
+          are links to a page and to a mail address, and they are drawn like
+          buttons.
+        */}
         <div className="mt-6 flex flex-col gap-3 border-t border-gray-200 pt-5 sm:flex-row dark:border-gray-800">
-          <Link to={ROUTES.clientProfile}>
-            <Button>{t("verification.gate.viewProfile")}</Button>
+          <Link
+            to={ROUTES.clientProfile}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 py-3.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600 sm:w-auto"
+          >
+            {t("verification.gate.viewProfile")}
           </Link>
-          <a href="mailto:support@invest.ma">
-            <Button variant="outline">{t("verification.gate.contactSupport")}</Button>
+          <a
+            href="mailto:support@invest.ma"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-gray-700 ring-1 ring-inset ring-gray-300 transition hover:bg-gray-50 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/3 dark:hover:text-gray-300"
+          >
+            {t("verification.gate.contactSupport")}
           </a>
         </div>
       </div>

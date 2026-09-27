@@ -134,7 +134,7 @@ const AdminWithdrawalsTable: React.FC<AdminWithdrawalsTableProps> = ({
                   <dt className="text-theme-xs text-gray-400">
                     {t("withdrawals.history.destination")}
                   </dt>
-                  <dd className="mt-0.5 font-mono text-theme-sm text-gray-700 dark:text-gray-300">
+                  <dd className="mt-0.5 font-mono identifier text-theme-sm text-gray-700 dark:text-gray-300">
                     {withdrawal.destination}
                   </dd>
                 </div>
@@ -153,7 +153,7 @@ const AdminWithdrawalsTable: React.FC<AdminWithdrawalsTableProps> = ({
               {withdrawal.transactionReference ? (
                 <p className="mt-2 text-theme-sm text-success-600 dark:text-success-500">
                   {t("withdrawals.history.transactionReference")}:{" "}
-                  <span className="font-mono">{withdrawal.transactionReference}</span>
+                  <span className="font-mono identifier">{withdrawal.transactionReference}</span>
                 </p>
               ) : null}
 

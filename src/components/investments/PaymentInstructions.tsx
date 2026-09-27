@@ -105,7 +105,7 @@ const PaymentInstructions: React.FC<PaymentInstructionsProps> = ({
             {t("investments.payment.reference")}
           </dt>
           <dd className="flex items-center gap-2">
-            <code className="rounded bg-gray-50 px-2 py-1 font-mono text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
+            <code className="rounded bg-gray-50 px-2 py-1 font-mono identifier text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
               {target.paymentReference}
             </code>
             <CopyButton value={target.paymentReference} />

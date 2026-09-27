@@ -1,7 +1,7 @@
 import Alert from "@/components/ui/alert/Alert";
 import ProductDetails from "@/components/investments/ProductDetails";
 import SubscribeForm from "@/components/investments/SubscribeForm";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -46,7 +46,7 @@ export default function InvestmentDetails() {
           title={`${t("investments.detailsTitle")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.detailsTitle")} />
+        <PageHeader pageTitle={t("investments.detailsTitle")} />
         <Alert variant="error" title={t("auth.errors.title")} message={t("auth.errors.unknown")} />
       </>
     );
@@ -59,7 +59,7 @@ export default function InvestmentDetails() {
           title={`${t("investments.detailsTitle")} | ${t("app.name")}`}
           description={t("investments.subtitle")}
         />
-        <PageBreadCrumb pageTitle={t("investments.detailsTitle")} />
+        <PageHeader pageTitle={t("investments.detailsTitle")} />
         <PageLoader label={t("common.loading")} />
       </>
     );
@@ -72,7 +72,7 @@ export default function InvestmentDetails() {
         description={t("investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={product.name} />
+      <PageHeader pageTitle={product.name} />
 
       <div className="grid gap-6 xl:grid-cols-3">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs xl:col-span-2 dark:border-gray-800 dark:bg-white/[0.03]">
@@ -95,12 +95,21 @@ export default function InvestmentDetails() {
                   reference: created.reference,
                 })}
               />
-              <Link to={`${ROUTES.investmentDetail}/${product.id}`}>
+              {/* The two ways out of this state. Both were bare text, 19 pixels
+                  tall; the padding and the negative margin give them a real
+                  target without moving them. */}
+              <Link
+                to={`${ROUTES.investmentDetail}/${product.id}`}
+                className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2"
+              >
                 <span className="text-theme-sm font-medium text-brand-500 dark:text-brand-400">
                   {t("investments.subscribe.created")}
                 </span>
               </Link>
-              <Link to={ROUTES.myInvestments}>
+              <Link
+                to={ROUTES.myInvestments}
+                className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2"
+              >
                 <span className="block text-theme-sm text-gray-500 dark:text-gray-400">
                   {t("investments.nav.myInvestments")}
                 </span>

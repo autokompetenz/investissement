@@ -190,7 +190,7 @@ const TwoFactorSettings: React.FC = () => {
                 {t("security.twoFactor.step1Hint")}
               </p>
               <div className="mt-2 flex flex-wrap items-center gap-2">
-                <code className="rounded-lg bg-gray-50 px-2.5 py-1.5 font-mono text-theme-sm text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
+                <code className="rounded-lg bg-gray-50 px-2.5 py-1.5 font-mono identifier text-theme-sm text-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
                   {formatSecretGroups(enrolment.secret)}
                 </code>
                 <CopyButton value={enrolment.secret} label={t("security.twoFactor.copySecret")} />
@@ -199,7 +199,7 @@ const TwoFactorSettings: React.FC = () => {
                 <summary className="cursor-pointer text-theme-xs text-brand-500 dark:text-brand-400">
                   {t("security.twoFactor.showUri")}
                 </summary>
-                <code className="mt-2 block break-all rounded-lg bg-gray-50 p-2.5 font-mono text-theme-xs text-gray-600 dark:bg-white/[0.03] dark:text-gray-400">
+                <code className="mt-2 block break-all rounded-lg bg-gray-50 p-2.5 font-mono identifier text-theme-xs text-gray-600 dark:bg-white/[0.03] dark:text-gray-400">
                   {enrolment.uri}
                 </code>
               </details>
@@ -216,7 +216,7 @@ const TwoFactorSettings: React.FC = () => {
                 {enrolment.recoveryCodes.map((recoveryCode) => (
                   <li
                     key={recoveryCode}
-                    className="rounded-lg bg-gray-50 px-2 py-1.5 text-center font-mono text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300"
+                    className="rounded-lg bg-gray-50 px-2 py-1.5 text-center font-mono identifier text-theme-xs text-gray-700 dark:bg-white/[0.03] dark:text-gray-300"
                   >
                     {recoveryCode}
                   </li>

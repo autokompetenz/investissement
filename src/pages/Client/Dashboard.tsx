@@ -1,4 +1,4 @@
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import ClientStats from "@/components/client/ClientStats";
@@ -43,7 +43,7 @@ export default function ClientDashboard() {
         description={t("client.dashboard.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("client.dashboard.title")} />
+      <PageHeader pageTitle={t("client.dashboard.title")} />
 
       {isError ? (
         <div className="rounded-2xl border border-error-500 bg-error-50 p-5 text-sm text-error-600 dark:bg-error-500/15 dark:text-error-400">

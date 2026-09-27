@@ -1,6 +1,6 @@
 import ActivityLogCard from "@/components/admin/ActivityLogCard";
 import AdminStatsGrid from "@/components/admin/AdminStatsGrid";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { getAdminStats, getRecentAuditEntries } from "@/services/ledger";
@@ -37,7 +37,7 @@ export default function AdminDashboard() {
         description={t("admin.dashboard.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("admin.dashboard.title")} />
+      <PageHeader pageTitle={t("admin.dashboard.title")} />
 
       {!stats ? (
         <PageLoader label={t("common.loading")} />

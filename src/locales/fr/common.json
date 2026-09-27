@@ -5,6 +5,8 @@
   },
   "common": {
     "loading": "Chargement…",
+    "home": "Accueil",
+    "breadcrumb": "Fil d'Ariane",
     "back": "Retour",
     "next": "Suivant",
     "close": "Fermer",
@@ -128,7 +130,8 @@
         "tooShort": "Le mot de passe doit contenir au moins 8 caractères.",
         "mismatch": "Les mots de passe ne correspondent pas.",
         "notAdult": "Vous devez avoir au moins 18 ans."
-      }
+      },
+      "stepOf": "Étape {{current}} sur {{total}}"
     },
     "forgotPassword": {
       "title": "Réinitialiser le mot de passe",

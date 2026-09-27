@@ -1,5 +1,5 @@
 import EmptyState from "@/components/common/EmptyState";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import PositionCard from "@/components/investments/PositionCard";
@@ -40,7 +40,7 @@ export default function MyInvestments() {
         description={t("investments.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("investments.nav.myInvestments")} />
+      <PageHeader pageTitle={t("investments.nav.myInvestments")} />
 
       {!positions ? (
         <PageLoader label={t("common.loading")} />

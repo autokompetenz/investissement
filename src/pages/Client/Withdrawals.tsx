@@ -1,5 +1,5 @@
 import WithdrawalPanel from "@/components/finance/WithdrawalPanel";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -56,7 +56,7 @@ export default function Withdrawals() {
         description={t("withdrawals.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("withdrawals.title")} />
+      <PageHeader pageTitle={t("withdrawals.title")} />
 
       {!withdrawals || !balance ? (
         <PageLoader label={t("common.loading")} />

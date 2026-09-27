@@ -1,5 +1,5 @@
 import EmptyState from "@/components/common/EmptyState";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import TransactionsTable, {
@@ -52,7 +52,7 @@ export default function Transactions() {
         description={t("transactions.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("transactions.title")} />
+      <PageHeader pageTitle={t("transactions.title")} />
 
       <div className="space-y-5">
         <TransactionsFilters

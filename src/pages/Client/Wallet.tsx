@@ -1,7 +1,7 @@
 import BankAccountCard from "@/components/client/BankAccountCard";
 import CryptoAddressesCard from "@/components/client/CryptoAddressesCard";
 import CryptoTransactionsCard from "@/components/client/CryptoTransactionsCard";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
+import PageHeader from "@/components/common/PageHeader";
 import PageMeta from "@/components/common/PageMeta";
 import PageLoader from "@/components/common/PageLoader";
 import { useAuth } from "@/context/AuthContext";
@@ -56,7 +56,7 @@ export default function Wallet() {
         description={t("wallet.subtitle")}
       />
 
-      <PageBreadCrumb pageTitle={t("wallet.title")} />
+      <PageHeader pageTitle={t("wallet.title")} />
 
       {!accounts || !addresses || !transactions ? (
         <PageLoader label={t("common.loading")} />

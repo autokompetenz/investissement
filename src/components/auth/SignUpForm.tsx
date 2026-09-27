@@ -100,17 +100,23 @@ const SignUpForm: React.FC = () => {
 
   return (
     <div className="flex w-full flex-1 flex-col">
-      <div className="mx-auto w-full max-w-2xl pt-10">
+      {/* The way out. `pt-10` is dropped: the layout now supplies the top
+          padding, and the extra 40 pixels on a six-step form only pushed the
+          fields further down. */}
+      <div className="mx-auto w-full max-w-2xl">
         <Link
           to={ROUTES.signIn}
-          className="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+          className="-ms-2 inline-flex min-h-11 items-center gap-1 rounded-lg px-2 text-sm text-gray-500 transition-colors hover:text-gray-700 sm:min-h-0 dark:text-gray-400 dark:hover:text-gray-300"
         >
           <ChevronLeftIcon className="size-5 rtl:rotate-180" />
           {t("auth.signUp.backToSignIn")}
         </Link>
       </div>
 
-      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center py-8">
+      {/* `justify-center` from `sm` up only. Centring a form taller than the
+          viewport is what made the top of this page unreachable; on a phone the
+          form simply starts where the padding leaves it. */}
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col py-8 sm:justify-center">
         <div className="mb-5 sm:mb-8">
           <h1 className="mb-2 text-title-sm font-semibold text-gray-800 sm:text-title-md dark:text-white/90">
             {t("auth.signUp.title")}
