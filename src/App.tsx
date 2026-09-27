@@ -56,10 +56,19 @@ const AppRoutes = () => (
         sidebar, no header, and no page padding. Its content therefore touched
         the very edge of a phone screen, and an email address — a single token
         with no break opportunity — ran off it.
+
+        It stays OUTSIDE `VerificationGate`, deliberately. The gate only lets
+        through a VERIFIED client, and the portal it shows for a PENDING one
+        has exactly one action: a link to the profile. Inside the gate, that
+        link lands on the portal again, and a client registering for the first
+        time could never reach the page where the KYC documents are uploaded —
+        a dead end in the validation journey.
+
+        `AppLayout` and `VerificationGate` are therefore siblings, not nested.
       */}
       <Route element={<AppLayout />}>
+        <Route path={ROUTES.clientProfile} element={<Profile />} />
         <Route element={<VerificationGate />}>
-          <Route path={ROUTES.clientProfile} element={<Profile />} />
           <Route path={ROUTES.clientDashboard} element={<ClientDashboard />} />
           <Route path={ROUTES.clientWallet} element={<Wallet />} />
           <Route path={ROUTES.clientDeposits} element={<ClientDeposits />} />

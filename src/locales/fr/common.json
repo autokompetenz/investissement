@@ -535,6 +535,9 @@
         "PAID": "Payée",
         "OVERDUE": "En retard"
       }
+    },
+    "errors": {
+      "loanNotSettled": "Ce prêt comporte encore des échéances impayées."
     }
   },
   "cards": {

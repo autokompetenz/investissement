@@ -1,6 +1,6 @@
-import { api, wait } from "@/services/api";
+import { api, toPublicUser, wait } from "@/services/api";
 import { clearAll as clearRateLimits, listSnapshots, type RateLimitSnapshot } from "@/services/rateLimit";
-import type { AuthSession, PublicUser, Role, User } from "@/types";
+import type { AuthSession, PublicUser, Role } from "@/types";
 
 /**
  * Security overview for the administration (phase 6, §20, §22).
@@ -59,15 +59,7 @@ export const listSecurityRows = async (): Promise<SecurityUserRow[]> => {
     .sort((a, b) => Number(a.twoFactorEnabled) - Number(b.twoFactorEnabled));
 };
 
-const toPublicUserSafely = (user: User): PublicUser => {
-  const copy: Partial<User> = { ...user };
-  delete copy.passwordHash;
-  // The secret never leaves the service, not even to its own administration.
-  if (copy.twoFactor) {
-    copy.twoFactor = { enabled: copy.twoFactor.enabled, recoveryCodes: [] };
-  }
-  return copy as PublicUser;
-};
+const toPublicUserSafely = toPublicUser;
 
 export const listActiveSessions = async (): Promise<AuthSession[]> => {
   await wait(200);

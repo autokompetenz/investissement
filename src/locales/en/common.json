@@ -535,6 +535,9 @@
         "PAID": "Paid",
         "OVERDUE": "Overdue"
       }
+    },
+    "errors": {
+      "loanNotSettled": "This loan still has unpaid instalments."
     }
   },
   "cards": {

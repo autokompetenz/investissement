@@ -419,8 +419,28 @@ export const payInstallment = async (
   return updated;
 };
 
-export const closeLoan = async (id: string, actor: PublicUser): Promise<Loan> =>
-  move(id, "CLOSED", actor, { closedAt: new Date().toISOString() }, "CLOSE_LOAN");
+/**
+ * Closes a loan, but only once its schedule is actually settled.
+ *
+ * `move` checked the status transition and nothing else, so an ACTIVE loan
+ * could be closed with instalments still unpaid. `getBalance` only counts debt
+ * from ACTIVE loans, so closing made the outstanding principal vanish from the
+ * balance: the client appeared free while still owing the money.
+ *
+ * `payInstallment` closes the loan correctly when the last instalment is paid;
+ * this function exists for the administration, and it has to hold the same
+ * condition rather than trusting the status.
+ */
+export const closeLoan = async (id: string, actor: PublicUser): Promise<Loan> => {
+  const loan = api.loans.find(id);
+  if (!loan) throw new ApiError("loanNotFound", 404);
+
+  if (loan.schedule.some((entry) => entry.status !== "PAID")) {
+    throw new ApiError("loanNotSettled", 409);
+  }
+
+  return move(id, "CLOSED", actor, { closedAt: new Date().toISOString() }, "CLOSE_LOAN");
+};
 
 export const getLoan = async (id: string): Promise<Loan> => {
   await wait(150);

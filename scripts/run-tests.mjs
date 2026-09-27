@@ -11,7 +11,7 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -55,9 +55,24 @@ register("./resolver.mjs", import.meta.url);
 `,
 );
 
+// Each test file is passed by name rather than the `tests/` directory. Node
+// resolves a directory import to its `index` module, and a test directory has
+// none, so `--test tests/` aborted before running anything — with
+// ERR_UNSUPPORTED_DIR_IMPORT, which reads like a broken build rather than a
+// broken argument.
+const testFiles = readdirSync(join(outDir, "tests"))
+  .filter((name) => name.endsWith(".test.js"))
+  .sort()
+  .map((name) => join("tests", name));
+
+if (testFiles.length === 0) {
+  console.error("No compiled test file found.");
+  process.exit(1);
+}
+
 const run = spawnSync(
   process.execPath,
-  ["--import", "./hooks/register.mjs", "--test", "tests/"],
+  ["--import", "./hooks/register.mjs", "--test", ...testFiles],
   { cwd: outDir, stdio: "inherit" },
 );
 

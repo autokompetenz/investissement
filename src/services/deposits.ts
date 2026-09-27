@@ -117,6 +117,26 @@ export const declareDepositProof = async (
 };
 
 /**
+ * Which status a deposit may take next, and from where.
+ *
+ * The same table already existed for withdrawals and for loans; deposits had
+ * only ad-hoc guards, and they missed the case that mattered — a REJECTED
+ * deposit was still confirmable, so money could be credited on a file the
+ * administration had already turned down.
+ *
+ * A deposit is created PENDING, or straight UNDER_REVIEW when the client
+ * supplies a proof; `declareDepositProof` moves it to UNDER_REVIEW. Nothing
+ * else writes a status.
+ */
+const ALLOWED_TRANSITIONS: Record<Deposit["status"], Deposit["status"][]> = {
+  PENDING: ["UNDER_REVIEW", "CONFIRMED", "REJECTED", "CANCELLED"],
+  UNDER_REVIEW: ["CONFIRMED", "REJECTED", "CANCELLED"],
+  CONFIRMED: [],
+  REJECTED: [],
+  CANCELLED: [],
+};
+
+/**
  * §11 — the administration confirms the deposit. This is the only path that
  * credits the account: the ledger row is written here, never on the client side.
  */
@@ -130,26 +150,30 @@ export const confirmDeposit = async (
   const now = new Date().toISOString();
   const deposit = api.deposits.find(depositId);
   if (!deposit) throw new ApiError("depositNotFound", 404);
-  if (deposit.status === "CONFIRMED") {
-    throw new ApiError("depositAlreadyConfirmed", 409);
-  }
-  if (deposit.status === "CANCELLED") {
-    throw new ApiError("depositClosed", 409);
+  // One table, one decision: CONFIRMED, REJECTED and CANCELLED are all closed
+  // files, and none of them may be confirmed after the fact. A rejected deposit
+  // could be, because only CONFIRMED and CANCELLED were checked.
+  if (!ALLOWED_TRANSITIONS[deposit.status].includes("CONFIRMED")) {
+    throw new ApiError(
+      deposit.status === "CONFIRMED" ? "depositAlreadyConfirmed" : "depositClosed",
+      409,
+    );
   }
 
-  // The ledger row is written once, guarded by the status above.
-  appendTransaction({
-    userId: deposit.userId,
-    type: "DEPOSIT",
-    amount: deposit.amount,
-    currency: deposit.currency,
-    status: "CONFIRMED",
-    reference: deposit.reference,
-    description: note?.trim() || "Deposit confirmed by the administration",
-    paymentMethod: deposit.method,
-    transactionHash: deposit.proof,
-  });
+  /*
+    The status change happens BEFORE the ledger row, and the row is guarded by
+    the reference.
 
+    The order was the opposite: the row was written first, then the deposit was
+    updated. If the update failed — storage quota exhausted, tab closed — the
+    row was already in the ledger and the deposit was still PENDING. A second
+    confirmation then passed the status guard and wrote a SECOND DEPOSIT row,
+    crediting the client twice.
+
+    Changing the status first means a failure leaves the deposit unconfirmed and
+    the ledger untouched, so the operation can simply be retried. The reference
+    guard then makes the write idempotent, whatever happens above.
+  */
   const updated = api.deposits.update(depositId, (current) => ({
     ...current,
     status: "CONFIRMED",
@@ -157,6 +181,20 @@ export const confirmDeposit = async (
     confirmedAt: now,
     reviewNote: note?.trim() || undefined,
   }));
+
+  if (!api.transactions.findByReference(updated.reference)) {
+    appendTransaction({
+      userId: updated.userId,
+      type: "DEPOSIT",
+      amount: updated.amount,
+      currency: updated.currency,
+      status: "CONFIRMED",
+      reference: updated.reference,
+      description: note?.trim() || "Deposit confirmed by the administration",
+      paymentMethod: updated.method,
+      transactionHash: updated.proof,
+    });
+  }
 
   api.audit.push({
     id: `AUD-${Date.now()}`,
@@ -189,8 +227,11 @@ export const rejectDeposit = async (
 
   const now = new Date().toISOString();
   const updated = api.deposits.update(depositId, (deposit) => {
-    if (deposit.status === "CONFIRMED") {
-      throw new ApiError("depositAlreadyConfirmed", 409);
+    if (!ALLOWED_TRANSITIONS[deposit.status].includes("REJECTED")) {
+      throw new ApiError(
+        deposit.status === "CONFIRMED" ? "depositAlreadyConfirmed" : "depositClosed",
+        409,
+      );
     }
     return {
       ...deposit,
@@ -230,8 +271,11 @@ export const cancelDeposit = async (
 
   const updated = api.deposits.update(depositId, (deposit) => {
     if (deposit.userId !== actor.id) throw new ApiError("forbidden", 403);
-    if (deposit.status === "CONFIRMED") {
-      throw new ApiError("depositAlreadyConfirmed", 409);
+    if (!ALLOWED_TRANSITIONS[deposit.status].includes("CANCELLED")) {
+      throw new ApiError(
+        deposit.status === "CONFIRMED" ? "depositAlreadyConfirmed" : "depositClosed",
+        409,
+      );
     }
     return { ...deposit, status: "CANCELLED" };
   });

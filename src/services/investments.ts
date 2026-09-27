@@ -1,4 +1,5 @@
 import { ApiError, api, wait } from "@/services/api";
+import { appendTransaction, notify } from "@/services/ledger";
 import type {
   AuditAction,
   Investment,
@@ -9,6 +10,7 @@ import type {
   InvestmentTopup,
   PublicUser,
 } from "@/types";
+import { ROUTES } from "@/utils/routes";
 
 /**
  * Investments (specification §6, §7 and §8, phase 3).
@@ -44,6 +46,13 @@ const addDays = (days: number) => {
   date.setDate(date.getDate() + days);
   return date.toISOString();
 };
+
+/**
+ * Two decimals, the currency's actual precision. A sum of amounts read from
+ * the store accumulates binary floating point error — 0.1 + 0.2 — and the
+ * figure shown to a client must be the one their bank will show.
+ */
+const round2 = (value: number) => Math.round(value * 100) / 100;
 
 /* -------------------------------------------------------------------------- */
 /*                                  Products                                  */
@@ -354,6 +363,64 @@ export const verifyPayment = async (
     actor,
     target: updated,
     details: updated.reference,
+  });
+
+  /*
+    §15 — the money leaves the available balance at the moment it is
+    verified, and this row is the only record of it.
+
+    It was missing entirely: the position turned ACTIVE, the platform held the
+    money, and `available` never moved, so the client could invest and then
+    withdraw by bank transfer the very same amount. `INVESTMENT` and
+    `INVESTMENT_TOPUP` are declared outflows in `ledger.ts`, and the seed data
+    already contains rows of both types — the write was expected and existed
+    nowhere.
+
+    §7 — a top-up is added to its parent position here and only here. This is
+    the single place `topupTotal` is ever incremented; before, it stayed at
+    zero, so the invested total under-stated every position and `maximumAmount`
+    could be exceeded by chaining top-ups (the ceiling was recomputed against a
+    frozen sum).
+
+    The write is guarded by `reference`, which is unique per operation: if the
+    status patch above ever runs twice, the balance is not credited twice. This
+    is the same guard the deposit flow needs and does not yet have.
+  */
+  // The amount lives under a different key on each target: `initialAmount` on
+  // an investment, `amount` on a top-up. Resolving it once here keeps the two
+  // shapes from leaking into the ledger call below.
+  const topup = isInvestmentTarget(target) ? null : (updated as InvestmentTopup);
+  const montant = topup ? topup.amount : (updated as Investment).initialAmount;
+
+  if (!api.transactions.findByReference(updated.reference)) {
+    appendTransaction({
+      userId: updated.userId,
+      type: topup ? "INVESTMENT_TOPUP" : "INVESTMENT",
+      amount: montant,
+      currency: updated.currency,
+      status: "COMPLETED",
+      reference: updated.reference,
+      description: topup
+        ? `Investment top-up verified: ${updated.reference}`
+        : `Investment verified: ${updated.reference}`,
+    });
+  }
+
+  if (topup) {
+    api.investments.update(topup.investmentId, (investment) => ({
+      ...investment,
+      topupTotal: round2(investment.topupTotal + topup.amount),
+    }));
+  }
+
+  notify({
+    userId: updated.userId,
+    type: "INVESTMENT_ACTIVATED",
+    title: topup ? "Top-up activated" : "Investment activated",
+    message: topup
+      ? `Your top-up ${updated.reference} has been added to your position.`
+      : `Your investment ${updated.reference} is now active.`,
+    link: ROUTES.myInvestments,
   });
 
   return updated;

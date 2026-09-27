@@ -122,10 +122,33 @@ export const removeKey = (key: string): void => {
   }
 };
 
-/** Strips the credential before anything reaches a component. */
+/**
+ * Strips everything a component must never receive before it leaves the
+ * service.
+ *
+ * `passwordHash` obviously, but also the TOTP secret and the recovery codes.
+ * `PublicUser` only omits the first one, so spreading the user was enough to
+ * carry the other two into React state, into the DOM and into React DevTools —
+ * where a secret stays readable to any extension, and after which the second
+ * factor is no longer a second factor.
+ *
+ * `security.ts` already had the correct version for its own read model, which
+ * is how the omission survived: two sanitising functions, one of them wrong.
+ * There is now one, and it is the strict one. The only place allowed to return
+ * a secret is the enrolment flow, and it returns a dedicated type that is
+ * never stored in global state.
+ */
 export const toPublicUser = (user: User): PublicUser => {
   const publicUser: Partial<User> = { ...user };
   delete publicUser.passwordHash;
+  if (publicUser.twoFactor) {
+    publicUser.twoFactor = {
+      enabled: publicUser.twoFactor.enabled,
+      recoveryCodes: [],
+      enrolledAt: publicUser.twoFactor.enrolledAt,
+      lastVerifiedAt: publicUser.twoFactor.lastVerifiedAt,
+    };
+  }
   return publicUser as PublicUser;
 };
 
