@@ -30,3 +30,5 @@ tokens.txt
 vercel-token.txt
 tokens*.txt
 .vercel
+
+# Vercel : le cache de build conservait une sortie ou api/ n etait pas ramasse.
