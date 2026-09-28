@@ -24,8 +24,8 @@
  * every stored hash.
  */
 
-import { isRlsRefusal, newAccountId, sql } from "./_sql.js";
-import { fail, json, originAllowed, readJson } from "./_http.js";
+import { isRlsRefusal, newAccountId, sql } from "./_sql.ts";
+import { fail, json, originAllowed, readJson } from "./_http.ts";
 
 interface RegisterBody {
   email?: string;
