@@ -1,7 +1,6 @@
-// Une fonction minimale, pour distinguer un probleme de packaging d'un
-// probleme dans le code de register.
 export default async function handler() {
-  return new Response(JSON.stringify({ ok: true, neon: true }), {
-    headers: { "content-type": "application/json" },
-  });
+  // Aucune importation. Une constante, une chaine. Si ceci expire aussi, le
+  // probleme n'est ni le code ni les dependances : c'est le demarrage de la
+  // fonction sur cette plateforme.
+  return new Response("ok", { status: 200 });
 }
