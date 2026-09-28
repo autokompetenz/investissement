@@ -20,5 +20,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["tests", "src", "functions"]
+  "include": ["tests", "src", "api"]
 }

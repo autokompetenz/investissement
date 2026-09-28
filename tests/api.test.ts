@@ -15,9 +15,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import register from "../functions/api/register.mts";
-import adminAccounts from "../functions/api/admin-accounts.mts";
-import { sql } from "../functions/api/_sql.mts";
+import register from "../api/register";
+import adminAccounts from "../api/admin-accounts";
+import { sql } from "../api/_sql";
 import { marqueDuJour } from "./nettoyer-base.ts";
 
 const APP_URL = process.env.APP_URL ?? "http://localhost:5173";
