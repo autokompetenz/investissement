@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "buildCommand": "tsc -b && vite build",
-  "functions": {
-    "api/*.ts": {
-      "runtime": "nodejs22.x",
-      "includeFiles": "dist/**"
-    }
-  }
+  "buildCommand": "tsc -b && vite build"
 }

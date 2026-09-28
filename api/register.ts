@@ -24,10 +24,8 @@
  * every stored hash.
  */
 
-import type { VercelRequest, VercelResponse } from "./_types";
-
-import { isRlsRefusal, newAccountId, sql } from "./_sql";
-import { fail, ok, originAllowed, readJson } from "./_http";
+import { isRlsRefusal, newAccountId, sql } from "./_sql.ts";
+import { fail, json, originAllowed, readJson } from "./_http.ts";
 
 interface RegisterBody {
   email?: string;
@@ -49,7 +47,6 @@ interface RegisterBody {
   documentTypes?: string[];
 }
 
-/** §20 — a password is hashed before it is stored, and never travels. */
 const MIN_PASSWORD = 8;
 const MAX_PASSWORD = 200;
 
@@ -95,12 +92,11 @@ const telephoneValide = (v: string): boolean => /^\+[1-9]\d{7,14}$/.test(v);
  * which stored the password in clear text inside the field named
  * `passwordHash`.
  *
- * 20 000 iterations, about 400 ms on a small instance. The count is a
- * compromise: a real hash would be tuned to the latency budget of the
- * function, and 100 000 SHA-256 rounds costs over two seconds here, which
- * approaches the timeout of the platform this runs on. The iteration count is
- * stored in the hash, so raising it later re-hashes nothing and invalidates
- * nothing.
+ * 20 000 iterations, about 400 ms. The count is a compromise: a real hash
+ * would be tuned to the latency budget of the function, and 100 000 SHA-256
+ * rounds costs over two seconds, which approaches the timeout of the platform
+ * this runs on. The iteration count is stored in the hash, so raising it later
+ * re-hashes nothing and invalidates nothing.
  *
  * `PASSWORD_PEPPER` is required: without it this is a plain hash, and every
  * leaked table becomes a dictionary attack away from a full set of credentials.
@@ -129,18 +125,18 @@ const hacher = async (motDePasse: string): Promise<string> => {
   return `sha256$${ITERATIONS}$${hex}`;
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") return fail(res, 405, "methodNotAllowed");
-  if (!originAllowed(req)) return fail(res, 403, "originNotAllowed");
+export default async function handler(request: Request): Promise<Response> {
+  if (request.method !== "POST") return fail("methodNotAllowed", 405);
+  if (!originAllowed(request)) return fail("originNotAllowed", 403);
 
-  const corps = readJson<RegisterBody>(req, res);
-  if (!corps) return;
+  const corps = await readJson<RegisterBody>(request);
+  if (!corps) return fail("invalidBody", 415);
 
   // Every field is validated here, not in the wizard. The wizard is a
-  // convenience; this function is the rule. The current `register()` in
-  // `src/services/auth.ts` revalidates nothing and casts `documentTypes`
-  // without checking it, which would let an unknown document type through and
-  // make it invisible to the KYC screen afterwards.
+  // convenience; this function is the rule. The `register()` in
+  // `src/services/auth.ts` revalidates nothing and casts `documentTypes` without
+  // checking it, which would let an unknown document type through and make it
+  // invisible to the KYC screen afterwards.
   const email = texte(corps.email, 254).toLowerCase();
   const password = typeof corps.password === "string" ? corps.password : "";
   const firstName = texte(corps.firstName, 100);
@@ -159,19 +155,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     ? [...new Set(corps.documentTypes.map((d) => texte(d, 40)))]
     : [];
 
-  if (!emailValide(email)) return fail(res, 422, "invalidEmail");
+  if (!emailValide(email)) return fail("invalidEmail", 422);
   if (password.length < MIN_PASSWORD || password.length > MAX_PASSWORD) {
-    return fail(res, 422, "passwordTooShort");
+    return fail("passwordTooShort", 422);
   }
-  if (!firstName || !lastName) return fail(res, 422, "nameRequired");
-  if (!telephoneValide(phone)) return fail(res, 422, "invalidPhone");
-  if (!dateValide(dateOfBirth)) return fail(res, 422, "invalidDateOfBirth");
-  if (!nationality) return fail(res, 422, "nationalityRequired");
-  if (!line1 || !city || !postalCode || !country) {
-    return fail(res, 422, "addressRequired");
-  }
+  if (!firstName || !lastName) return fail("nameRequired", 422);
+  if (!telephoneValide(phone)) return fail("invalidPhone", 422);
+  if (!dateValide(dateOfBirth)) return fail("invalidDateOfBirth", 422);
+  if (!nationality) return fail("nationalityRequired", 422);
+  if (!line1 || !city || !postalCode || !country) return fail("addressRequired", 422);
   if (documents.length === 0 || documents.some((d) => !DOCUMENTS.includes(d as never))) {
-    return fail(res, 422, "invalidDocuments");
+    return fail("invalidDocuments", 422);
   }
 
   const id = newAccountId();
@@ -183,8 +177,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `users_self_register` is declared `FOR ALL`, not `FOR INSERT`, and a policy
     covering every command also applies to the implicit read PostgreSQL performs
     on a new row. With no session that read is refused — `can_see()` sees no
-    role and returns false — so the insert fails with a row-level security
-    error before the `WITH CHECK` clause is even reached.
+    role and returns false — so the insert fails with a row-level security error
+    before the `WITH CHECK` clause is even reached.
 
     The values posted here cannot be used to gain anything: the policy
     constrains `role = 'CLIENT'` and `status = 'PENDING'`, so a caller sending
@@ -192,10 +186,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   */
   const session = { userId: id, role: "CLIENT" as const };
 
-  // The primary key is checked alongside the email, and a collision on either
-  // is a 409. The two are not the same failure, so they are named apart: a
-  // duplicate id means the caller replayed a request, a duplicate email means
-  // the address is taken.
+  /*
+    The primary key is checked alongside the email, and a collision on either is
+    a 409. The two are not the same failure, so they are named apart: a
+    duplicate id means the caller replayed a request, a duplicate email means
+    the address is taken.
+  */
   const conflit = (erreur: unknown): string | null => {
     if (!(erreur instanceof Error)) return null;
     const contrainte = /constraint "([^"]+)"/.exec(erreur.message)?.[1] ?? "";
@@ -209,10 +205,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     The KYC documents are not written here.
 
     A document row with a status and no file is a promise the administration
-    would have to keep checking, and the wizard only collects a list of
-    accepted document types. The file arrives afterwards, through the upload
-    endpoint, once the client has something to send. Writing an empty row per
-    declared type makes the KYC screen show documents that do not exist.
+    would have to keep checking, and the wizard only collects a list of accepted
+    document types. The file arrives afterwards, through the upload endpoint.
   */
 
   try {
@@ -226,8 +220,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // A duplicate address is a legitimate answer, not a failure: it says the
     // account exists, which is the only thing the registration form may learn.
     const doublon = conflit(erreur);
-    if (doublon) return fail(res, 409, doublon);
-    if (isRlsRefusal(erreur)) return fail(res, 403, "registrationRefused");
+    if (doublon) return fail(doublon as "emailAlreadyUsed", 409);
+    if (isRlsRefusal(erreur)) return fail("registrationRefused", 403);
     throw erreur;
   }
 
@@ -259,21 +253,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       The profile insert is in a separate transaction, so a failure here would
       leave an account with no profile. Rather than let that stand — the client
       would exist and be unable to do anything with it — the account is removed
-      and the failure reported as a conflict.
+      and the failure reported.
 
       Both statements are single and independent, so this is a compensating
       delete rather than a rollback. The real fix is one function in Postgres
-      taking both inserts in a single transaction; the note in `db/README.md`
-      records it as the remaining work.
+      taking both inserts in a single transaction; `db/README.md` records it as
+      the remaining work.
     */
     await sql("DELETE FROM users WHERE id = $1", [id], { actor: session }).catch(() => {
-      /* the account stays, and the audit below is the trace */
+      /* the account stays, and the audit is the trace */
     });
-    if (isRlsRefusal(erreur)) return fail(res, 403, "registrationRefused");
+    if (isRlsRefusal(erreur)) return fail("registrationRefused", 403);
     throw erreur;
   }
 
-  return ok(res, {
+  return json({
     id,
     email,
     role: "CLIENT" as const,

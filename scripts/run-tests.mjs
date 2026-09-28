@@ -68,6 +68,23 @@ register("./resolver.mjs", import.meta.url);
 // none, so `--test tests/` aborted before running anything — with
 // ERR_UNSUPPORTED_DIR_IMPORT, which reads like a broken build rather than a
 // broken argument.
+// `.env` is loaded by hand. The API tests are the only ones that need a real
+// DATABASE_URL, and Node 20 does not read an `.env` file on its own. Values are
+// only read, never written, and the file is never versioned.
+const envPath = join(root, ".env");
+if (existsSync(envPath)) {
+  for (const ligne of readFileSync(envPath, "utf-8").split("\n")) {
+    const correspondance = /^([A-Z_][A-Z0-9_]*)=(.*)$/.exec(ligne.trim());
+    if (!correspondance) continue;
+    const [, nom, brut] = correspondance;
+    // The quotes are stripped: `.env` values are often quoted, and a value that
+    // keeps its quotes is not the value the application compares against — an
+    // origin, for one, would never match.
+    const valeur = brut.replace(/^["']|["']$/g, "");
+    if (process.env[nom] === undefined) process.env[nom] = valeur;
+  }
+}
+
 const testFiles = readdirSync(join(outDir, "tests"))
   .filter((name) => name.endsWith(".test.js"))
   .sort()
@@ -88,6 +105,7 @@ if (existsSync(nettoyer) && process.env.DATABASE_URL) {
   const prep = spawnSync(process.execPath, ["--import", "./hooks/register.mjs", nettoyer], {
     cwd: outDir,
     stdio: "inherit",
+    env: { ...process.env },
   });
   if (prep.status !== 0) {
     console.error("Database cleanup failed; the API tests would not be repeatable.");
@@ -95,24 +113,14 @@ if (existsSync(nettoyer) && process.env.DATABASE_URL) {
   }
 }
 
-// `.env` is loaded by hand. The API tests are the only ones that need a real
-// DATABASE_URL, and Node 20 does not read an `.env` file on its own. Values are
-// only read, never written, and the file is never versioned.
-const envPath = join(root, ".env");
-if (existsSync(envPath)) {
-  for (const ligne of readFileSync(envPath, "utf-8").split("\n")) {
-    const correspondance = /^([A-Z_][A-Z0-9_]*)=(.*)$/.exec(ligne.trim());
-    if (!correspondance) continue;
-    const [, nom, brut] = correspondance;
-    const valeur = brut.replace(/^["']|["']$/g, "");
-    if (process.env[nom] === undefined) process.env[nom] = valeur;
-  }
-}
-
 const run = spawnSync(
   process.execPath,
   ["--import", "./hooks/register.mjs", "--test", ...testFiles],
-  { cwd: outDir, stdio: "inherit" },
+  // The environment the tests run under. `spawnSync` inherits `process.env` by
+  // default, but a variable assigned above in this file is only visible to the
+  // child if the object is passed explicitly — which is the whole point of
+  // loading `.env` here.
+  { cwd: outDir, stdio: "inherit", env: { ...process.env } },
 );
 
 process.exit(run.status ?? 1);
