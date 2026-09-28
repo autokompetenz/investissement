@@ -20,5 +20,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["tests", "src", "api", "server.ts"]
+  "include": ["tests", "src", "api"]
 }

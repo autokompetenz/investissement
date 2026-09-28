@@ -22,6 +22,7 @@
 
 import { isRlsRefusal, sql } from "./_sql.js";
 import { fail, json, originAllowed, query } from "./_http.js";
+import { commeFonction } from "./_node.js";
 
 interface AccountRow {
   id: string;
@@ -57,7 +58,7 @@ const egal = async (a: string, b: string): Promise<boolean> => {
 const STATUTS = ["PENDING", "VERIFIED", "REJECTED", "SUSPENDED"];
 const ROLES = ["CLIENT", "ADMIN", "SUPER_ADMIN"];
 
-export default async function handler(request: Request): Promise<Response> {
+export const gestionnaire = async (request: Request): Promise<Response> => {
   if (request.method !== "GET") return fail("methodNotAllowed", 405);
   if (!originAllowed(request)) return fail("originNotAllowed", 403);
 
@@ -128,3 +129,6 @@ export default async function handler(request: Request): Promise<Response> {
     throw erreur;
   }
 }
+
+/** The entry point the runtime calls. See `_node.ts`. */
+export default commeFonction(gestionnaire);

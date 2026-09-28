@@ -7,6 +7,11 @@
  * test that stopped at the handler's own validation would prove nothing about
  * the write.
  *
+ * The tested export is the handler, not the entry point. `_node.ts` translates
+ * it to the `(request, response)` pair the platform calls, and that translation
+ * is a separate concern — tested by the fact that the platform answers at all,
+ * not by calling it here.
+ *
  * The handlers are compiled to `.js` next to this file, so they are imported the
  * way the services are. `DATABASE_URL` and `ADMIN_TOKEN` come from `.env`,
  * loaded by the runner.
@@ -15,8 +20,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import register from "../api/register";
-import adminAccounts from "../api/admin-accounts";
+import { gestionnaire as register } from "../api/register";
+import { gestionnaire as adminAccounts } from "../api/admin-accounts";
 import { sql } from "../api/_sql";
 import { marqueDuJour } from "./nettoyer-base.ts";
 

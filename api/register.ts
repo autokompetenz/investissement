@@ -26,6 +26,7 @@
 
 import { isRlsRefusal, newAccountId, sql } from "./_sql.js";
 import { fail, json, originAllowed, readJson } from "./_http.js";
+import { commeFonction } from "./_node.js";
 
 interface RegisterBody {
   email?: string;
@@ -125,7 +126,7 @@ const hacher = async (motDePasse: string): Promise<string> => {
   return `sha256$${ITERATIONS}$${hex}`;
 };
 
-export default async function handler(request: Request): Promise<Response> {
+export const gestionnaire = async (request: Request): Promise<Response> => {
   if (request.method !== "POST") return fail("methodNotAllowed", 405);
   if (!originAllowed(request)) return fail("originNotAllowed", 403);
 
@@ -274,3 +275,6 @@ export default async function handler(request: Request): Promise<Response> {
     status: "PENDING" as const,
   });
 }
+
+/** The entry point the runtime calls. See `_node.ts`. */
+export default commeFonction(gestionnaire);
