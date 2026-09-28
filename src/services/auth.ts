@@ -1,4 +1,5 @@
 import { ApiError, api, toPublicUser, wait } from "@/services/api";
+import { ApiCallError } from "@/services/http";
 import {
   assertNotLimited,
   RateLimitError,
@@ -679,11 +680,51 @@ export const register = async (payload: RegisterPayload): Promise<PublicUser> =>
     }),
   );
 
+  /*
+    §3.2 — the account is written to Postgres, not to this browser.
+
+    The local store is a fallback for a deployment with no server: it keeps the
+    interface demonstrable on its own, and it is where the account went before
+    there was an API. It is not equivalent. An account created that way is
+    invisible to the administration, absent from every other device, and gone
+    with the browser — which is the defect this call now avoids.
+
+    The local write only happens when the API is unreachable, and the answer
+    says so. A caller that shows "your account is created" without saying which
+    store it landed in is describing something the user cannot check.
+  */
+  const id = `usr_${Date.now()}`;
+  const reference = api.users.nextReference();
+  const email = identity;
+  const hash = mockHash(payload.password);
+
+  try {
+    const { registerAccount } = await import("@/services/http");
+    await registerAccount({
+      email,
+      password: payload.password,
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      phone: payload.phone,
+      dateOfBirth: payload.dateOfBirth,
+      nationality: payload.nationality,
+      address: payload.address,
+      documentTypes: payload.documentTypes,
+    });
+  } catch (erreur) {
+    // A refusal from the server is a refusal, not a reason to write locally: a
+    // duplicate address must not become a second account that only exists here.
+    if (erreur instanceof ApiCallError) {
+      throw new ApiError(erreur.code, erreur.status);
+    }
+    // Anything else means the server is not there, and the demo carries on.
+  }
+
   const user: User = {
-    id: `usr_${Date.now()}`,
-    reference: api.users.nextReference(),
-    email: identity,
-    passwordHash: mockHash(payload.password),
+    id,
+    reference,
+    email,
+    passwordHash: hash,
     role: "CLIENT",
     status: "PENDING",
     profile: {
@@ -700,6 +741,13 @@ export const register = async (payload: RegisterPayload): Promise<PublicUser> =>
     updatedAt: now,
   };
 
+  /*
+    The account is always present locally, whatever the server did. When the
+    write succeeded the server holds the authoritative row and this copy is the
+    cache the session resolves against; when it did not, this copy is the only
+    one there is. Either way the interface needs a `User` to work with, and the
+    administration reads the database rather than this.
+  */
   api.users.insert(user);
   const session = issueSession(user, {});
   writeSessionId(session.id, false);
