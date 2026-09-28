@@ -20,8 +20,8 @@
  * by the caller.
  */
 
-import { isRlsRefusal, sql } from "./_sql.ts";
-import { fail, json, originAllowed, query } from "./_http.ts";
+import { isRlsRefusal, sql } from "./_sql.js";
+import { fail, json, originAllowed, query } from "./_http.js";
 
 interface AccountRow {
   id: string;
