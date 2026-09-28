@@ -77,7 +77,7 @@ export const newAccountId = (): string => crypto.randomUUID();
  * transaction the driver commits. Nothing here rewrites the caller's SQL, so
  * nothing here can change what it means.
  */
-export const sql = async <T>(
+export const sql = async <T,>(
   query: string,
   params: unknown[] = [],
   options: SqlOptions = {},

@@ -73,7 +73,7 @@ export const originAllowed = (request: Request): boolean => {
 };
 
 /** Reads and checks a JSON body, returning null when it is unusable. */
-export const readJson = async <T>(request: Request): Promise<T | null> => {
+export const readJson = async <T,>(request: Request): Promise<T | null> => {
   const type = request.headers.get("content-type") ?? "";
   if (!type.includes("application/json")) return null;
 
