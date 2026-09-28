@@ -1,11 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "api/*.ts": {
-      "runtime": "nodejs22.x"
-    }
-  },
+  "framework": "vite",
   "buildCommand": "tsc -b && vite build",
   "outputDirectory": "dist",
-  "framework": "vite"
+  "functions": {
+    "api/*.ts": {
+      "runtime": "@vercel/node@5.2.16"
+    }
+  }
 }
