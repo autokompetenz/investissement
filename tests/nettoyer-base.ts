@@ -16,7 +16,7 @@
  * cannot make the next run fail or make it read someone else's data.
  */
 
-import { sql } from "../api/_sql.mts";
+import { sql } from "../functions/api/_sql.mts";
 
 const SUPER = { userId: "00000000-0000-0000-0000-000000000000", role: "SUPER_ADMIN" } as const;
 
