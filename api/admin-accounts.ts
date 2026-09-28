@@ -23,10 +23,10 @@
 
 import { timingSafeEqual } from "node:crypto";
 
-import type { VercelRequest, VercelResponse } from "./_types.ts";
+import type { VercelRequest, VercelResponse } from "./_types";
 
-import { isRlsRefusal, sql } from "./_sql.ts";
-import { fail, ok, originAllowed } from "./_http.ts";
+import { isRlsRefusal, sql } from "./_sql";
+import { fail, ok, originAllowed } from "./_http";
 
 export interface AccountRow {
   id: string;

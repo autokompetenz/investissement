@@ -24,10 +24,10 @@
  * every stored hash.
  */
 
-import type { VercelRequest, VercelResponse } from "./_types.ts";
+import type { VercelRequest, VercelResponse } from "./_types";
 
-import { isRlsRefusal, newAccountId, sql } from "./_sql.ts";
-import { fail, ok, originAllowed, readJson } from "./_http.ts";
+import { isRlsRefusal, newAccountId, sql } from "./_sql";
+import { fail, ok, originAllowed, readJson } from "./_http";
 
 interface RegisterBody {
   email?: string;

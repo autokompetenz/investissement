@@ -42,6 +42,14 @@ writeFileSync(
   if (specifier.startsWith("@/")) {
     return next(new URL("../src/" + specifier.slice(2) + ".js", import.meta.url).href, context);
   }
+  // The API handlers import each other without an extension, which TypeScript
+  // accepts and the Vercel preset bundles. Node, running the compiled output,
+  // does not complete a file name, so the extension is added back here. It is
+  // the one place that knows, rather than every import carrying it for the
+  // bundler's benefit.
+  if (/^\\.\\.?\\/[A-Za-z0-9_./-]+$/.test(specifier) && !/\\.[cm]?js$/.test(specifier)) {
+    return next(specifier + ".js", context);
+  }
   return next(specifier, context);
 }
 `,

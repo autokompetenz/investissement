@@ -6,7 +6,7 @@
  * no business seeing any of it.
  */
 
-import type { VercelRequest, VercelResponse } from "./_types.ts";
+import type { VercelRequest, VercelResponse } from "./_types";
 
 export interface ApiErrorBody {
   error: string;

@@ -15,9 +15,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import register from "../api/register.ts";
-import adminAccounts from "../api/admin-accounts.ts";
-import { sql } from "../api/_sql.ts";
+import register from "../api/register";
+import adminAccounts from "../api/admin-accounts";
+import { sql } from "../api/_sql";
 import { marqueDuJour } from "./nettoyer-base.js";
 
 /** A response shaped like Vercel's, recording what was written. */
