@@ -22,8 +22,8 @@
  * by the database before a socket is ever opened.
  */
 
-import { sendMail } from "./_smtp.ts";
-import { sql } from "./_sql.ts";
+import { sendMail } from "./_smtp.js";
+import { sql } from "./_sql.js";
 
 /** How many messages one pass sends. A queue is a queue, not a firehose. */
 const LOT = 10;

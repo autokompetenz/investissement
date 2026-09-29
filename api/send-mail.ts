@@ -14,9 +14,9 @@
  * client, and reading the queue means reading their addresses.
  */
 
-import { etatFile, traiterFile } from "./_outbox.ts";
-import { commeFonction } from "./_node.ts";
-import { fail, json, originAllowed } from "./_http.ts";
+import { etatFile, traiterFile } from "./_outbox.js";
+import { commeFonction } from "./_node.js";
+import { fail, json, originAllowed } from "./_http.js";
 
 const autorise = (request: Request): boolean => {
   const attendu = process.env.ADMIN_TOKEN;

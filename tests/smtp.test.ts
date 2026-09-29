@@ -14,7 +14,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { lireReponse } from "../api/_smtp.ts";
+import { lireReponse } from "../api/_smtp.js";
 
 /** Recorded, verbatim: the host's name, then eight capabilities. */
 const EHLO =
