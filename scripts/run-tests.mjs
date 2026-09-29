@@ -77,10 +77,31 @@ if (existsSync(envPath)) {
     const correspondance = /^([A-Z_][A-Z0-9_]*)=(.*)$/.exec(ligne.trim());
     if (!correspondance) continue;
     const [, nom, brut] = correspondance;
+
+    /*
+      A trailing comment is stripped before the quotes are. `SMTP_SECURE` is
+      written `"true"   # 465 uses TLS directly` — a reader that only removes
+      the quotes hands the application `true"   # 465 uses TLS directly`, and
+      the value that reaches the transport is neither what the file says nor
+      what the person who wrote it meant. Only a `#` preceded by a space, and
+      outside a quoted value, starts a comment: a password may legitimately
+      hold one, and there is no way to tell without the quotes.
+    */
+    let dansGuillemets = false;
+    let coupe = brut.length;
+    for (let i = 0; i < brut.length; i += 1) {
+      const c = brut[i];
+      if (c === '"' || c === "'") dansGuillemets = !dansGuillemets;
+      else if (c === "#" && !dansGuillemets && i > 0 && /[ \t]/.test(brut[i - 1])) {
+        coupe = i;
+        break;
+      }
+    }
+
     // The quotes are stripped: `.env` values are often quoted, and a value that
     // keeps its quotes is not the value the application compares against — an
     // origin, for one, would never match.
-    const valeur = brut.replace(/^["']|["']$/g, "");
+    const valeur = brut.slice(0, coupe).trim().replace(/^["']|["']$/g, "");
     if (process.env[nom] === undefined) process.env[nom] = valeur;
   }
 }
