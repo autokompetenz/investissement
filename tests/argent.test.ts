@@ -57,7 +57,7 @@ Object.defineProperty(globalThis, "navigator", {
 });
 
 const { api, toPublicUser } = await import("../src/services/api.ts");
-const { getBalance } = await import("../src/services/ledger.ts");
+const { getBalance, appendTransaction } = await import("../src/services/ledger.ts");
 const { register } = await import("../src/services/auth.ts");
 const { confirmDeposit, createDeposit, rejectDeposit, cancelDeposit } = await import(
   "../src/services/deposits.ts"
@@ -73,6 +73,7 @@ const {
 const { requestLoan, approveLoan, disburseLoan, payInstallment, closeLoan, buildSchedule } =
   await import("../src/services/loans.ts");
 const { assignIban } = await import("../src/services/bankAccounts.ts");
+const { createWithdrawal } = await import("../src/services/withdrawals.ts");
 const { setUserStatus } = await import("../src/services/users.ts");
 
 import type { KycDocumentType, PublicUser } from "../src/types/index.ts";
@@ -398,6 +399,119 @@ test("C5 — un prêt ne peut pas être clôturé avec des échéances impayées
 
   assert.equal((await getBalance(user.id)).loanOutstanding, 0, "un prêt remboursé garde une dette");
   assert.equal(api.loans.find(pret.id)!.status, "CLOSED");
+});
+
+/** A client who has borrowed and still owes the whole amount. */
+async function emprunteur(montant: number, email: string) {
+  const { user, depotId } = await clientAvecDepot(montant, email);
+  await confirmDeposit(depotId, admin, "test");
+
+  const demande = await requestLoan(
+    { userId: user.id, amount: 10_000, durationMonths: 12, purpose: "Test" },
+    user,
+  );
+  await approveLoan(
+    demande.id,
+    { amount: 10_000, durationMonths: 12, annualRate: 5, conditions: ["Revenu vérifié"] },
+    admin,
+  );
+  await disburseLoan(demande.id, admin, "VIR-LOAN-1");
+
+  return { user, pret: api.loans.find(demande.id)! };
+}
+
+test("M4 — l'argent emprunté reste utilisable", async () => {
+  /*
+    `pending` is documented as "money blocked by an operation waiting for a
+    decision". An outstanding loan is not that: the money left the lender, not
+    the client, and the client is owed it to spend. It was folded in with a
+    `Math.max` against the pending figures anyway, which froze the account of
+    every single borrower — `available` grew by the loan, `pending` grew by the
+    same amount, and the difference never moved off zero.
+  */
+  const { user, pret } = await emprunteur(50_000, "emprunteur-m4@invest.ma");
+  assert.equal(pret.status, "ACTIVE");
+
+  const balance = await getBalance(user.id);
+  assert.equal(balance.loanOutstanding, 10_000, "la dette n'est plus suivie");
+  assert.equal(balance.available, 60_000, "le versement n'est pas entré au disponible");
+  assert.equal(
+    balance.pending,
+    0,
+    "un prêt actif bloque le disponible : l'emprunteur ne peut plus rien faire",
+  );
+  assert.equal(
+    balance.available - balance.pending,
+    60_000,
+    "l'argent emprunté est compté comme indisponible",
+  );
+});
+
+test("M4 — un emprunteur peut retirer ce qu'il a emprunté", async () => {
+  // The symptom a client actually reports: the account is frozen. A withdrawal
+  // of the whole balance is refused, and no figure on any screen explains why.
+  const { user } = await emprunteur(50_000, "retrait-m4@invest.ma");
+
+  const demande = await createWithdrawal(
+    { userId: user.id, amount: 60_000, method: "BANK_TRANSFER", destination: "IBAN" },
+    user,
+  );
+
+  assert.equal(demande.status, "PENDING");
+});
+
+test("M4 — un retrait en attente bloque bien le disponible", async () => {
+  // The other half: `pending` must not have been emptied to hide the freeze.
+  const { user } = await emprunteur(50_000, "attente-m4@invest.ma");
+
+  const demande = await createWithdrawal(
+    { userId: user.id, amount: 20_000, method: "BANK_TRANSFER", destination: "IBAN" },
+    user,
+  );
+  assert.equal(demande.status, "PENDING");
+
+  const balance = await getBalance(user.id);
+  assert.equal(balance.pending, 20_000, "un retrait en attente ne bloque plus rien");
+  assert.equal(balance.available - balance.pending, 40_000);
+
+  // A second withdrawal may not spend the same money twice.
+  await assert.rejects(
+    () =>
+      createWithdrawal(
+        { userId: user.id, amount: 45_000, method: "BANK_TRANSFER", destination: "IBAN" },
+        user,
+      ),
+    "deux retraits en attente reserving le même argent",
+  );
+});
+
+test("M4 — une écriture en attente d'une opération sortante est bloquée", async () => {
+  /*
+    The figure was computed from `settled`, which by definition holds only rows
+    whose status is COMPLETED or CONFIRMED — and then filtered for a PENDING
+    status. The two sets cannot overlap, so the sum was always zero: dead code
+    that read like a guard. Whether a service ever writes such a row is a
+    separate question; the formula has to be right when one does.
+  */
+  const user = await clientAvecSolde(50_000, "ecriture-m4@invest.ma");
+
+  appendTransaction({
+    userId: user.id,
+    type: "CARD_PAYMENT",
+    amount: 1_500,
+    currency: "MAD",
+    status: "PROCESSING",
+    reference: `CARD-M4-${user.id}`,
+    description: "Paiement carte en cours",
+  });
+
+  const balance = await getBalance(user.id);
+  assert.equal(
+    balance.pending,
+    1_500,
+    "une écriture sortante en attente ne bloque pas le disponible",
+  );
+  assert.equal(balance.available, 50_000, "une écriture en attente doit rester à part");
 });
 
 test("un échéancier s'additionne exactement", () => {

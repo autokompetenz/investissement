@@ -79,9 +79,40 @@ export const getBalance = async (userId: string): Promise<Balance> => {
     .filter((item) => item.status !== "PAID")
     .reduce((sum, item) => sum + item.principal, 0);
 
-  // Money reserved by an operation the administration has not decided yet.
-  const pendingOutflow = settled
-    .filter((transaction) => PENDING_STATUSES.includes(transaction.status))
+  /*
+    §9 — what is blocked is money an operation has already claimed and will
+    take once it is decided. Two things qualify, and they are disjoint.
+
+    `pendingOutflow` is a ledger row of an outgoing type whose status is not
+    yet settled. It was computed from `settled`, which by definition holds only
+    rows whose status IS settled, and then filtered for a pending one. The two
+    sets cannot overlap, so the sum was always zero — a guard that was never
+    running, written to look as though it was.
+
+    `pendingWithdrawals` is a withdrawal that has not been paid yet. A
+    withdrawal writes its ledger row only when it completes, so while one is
+    waiting there is no row and no double counting: the two figures describe
+    different records and add up.
+
+    The outstanding principal of a loan is NOT here, and its absence was the
+    point. `Balance.pending` is documented as "money blocked by an operation
+    waiting for a decision". A loan is money that came IN — `LOAN` is
+    deliberately not in `OUTFLOW` for that reason — and what comes back is an
+    instalment on a schedule, tracked per month and reported on its own field.
+    Folding it in with a `Math.max` froze the account of every borrower: the
+    loan raised `available` by its own amount and `pending` by the same amount,
+    so the difference never moved off zero, and one investment was enough to
+    push it negative for good.
+
+    The `Math.max` was a second error, independent of that one: these figures
+    are disjoint, so taking the largest of them silently under-reserves
+    whenever two of them are non-zero.
+  */
+  const pendingOutflow = transactions
+    .filter(
+      (transaction) =>
+        PENDING_STATUSES.includes(transaction.status) && OUTFLOW.includes(transaction.type),
+    )
     .reduce((sum, transaction) => sum + transaction.amount, 0);
 
   const pendingWithdrawals = api.withdrawals
@@ -92,11 +123,7 @@ export const getBalance = async (userId: string): Promise<Balance> => {
     .reduce((sum, withdrawal) => sum + withdrawal.amount, 0);
 
   const currency = settled[0]?.currency ?? "MAD";
-
-  // §9 — an active loan means the client is already borrowing. Blocking the
-  // same amount twice would freeze the account, so the reserved figure is the
-  // largest of the two, not their sum.
-  const pending = Math.max(pendingOutflow, pendingWithdrawals, loanOutstanding);
+  const pending = pendingOutflow + pendingWithdrawals;
 
   return {
     userId,

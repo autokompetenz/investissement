@@ -156,6 +156,45 @@ export const toPublicUser = (user: User): PublicUser => {
 /*                              Repositories                                  */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The sequence number at the end of a reference, or zero when there is none.
+ *
+ * `DEP-2026-0001` is the first deposit of 2026: the year is a prefix, not part
+ * of the count. Reading every digit turned it into 20260001, so the next
+ * reference came out as `DEP-2026-20260002` — four more digits per deposit,
+ * until the number passed `Number.MAX_SAFE_INTEGER`, lost its precision, and
+ * `String()` wrote it in exponent notation: `DEP-2026-2.0262e+23`.
+ *
+ * From that point on every deposit of that series carried the very same
+ * reference, and the guard that makes a confirmation idempotent —
+ * `findByReference` — began matching a row that was not there. Deposits were
+ * confirmed and never credited, with no error anywhere: the ledger write was
+ * skipped by a check that a string had silently satisfied.
+ *
+ * A reference is not a label. It is the key the money is written under, and
+ * the one property it must have is that two operations never share it.
+ *
+ * Only the canonical shape is read. A reference already corrupted is ignored
+ * rather than half-parsed, so a value this function can no longer understand
+ * cannot drag the counter along with it.
+ */
+export const sequenceDe = (reference: string | undefined): number => {
+  if (!reference) return 0;
+
+  /*
+    The sequence is capped at six digits on purpose. `DEP-20260002` — the shape
+    the old counter produced — is eight digits once the year has been folded in,
+    and reading it back as 20260002 would send the counter straight to where
+    the corruption began, for every reference already in a store. A deposit
+    would then be handed a number a previous one already had.
+  */
+  const trouve = /^(?:[A-Z]+-\d{4}-|[A-Z]+-)(\d{1,6})$/.exec(reference);
+  if (!trouve) return 0;
+
+  const valeur = Number(trouve[1]);
+  return Number.isSafeInteger(valeur) ? valeur : 0;
+};
+
 const usersRepo = {
   all: (): User[] => readJson<User[]>(STORAGE_KEYS.users, buildSeedUsers()),
   save: (users: User[]): void => writeJson(STORAGE_KEYS.users, users),
@@ -183,7 +222,7 @@ const usersRepo = {
   nextReference: (): string => {
     const highest = usersRepo
       .all()
-      .map((user) => Number(user.reference.replace(/\D/g, "")))
+      .map(user => sequenceDe(user.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `USER-${String(highest + 1).padStart(6, "0")}`;
@@ -247,7 +286,7 @@ const depositsRepo = {
   nextReference: (): string => {
     const highest = depositsRepo
       .all()
-      .map((deposit) => Number(deposit.reference.replace(/\D/g, "")))
+      .map(deposit => sequenceDe(deposit.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `DEP-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -287,7 +326,7 @@ const withdrawalsRepo = {
   nextReference: (): string => {
     const highest = withdrawalsRepo
       .all()
-      .map((withdrawal) => Number(withdrawal.reference.replace(/\D/g, "")))
+      .map(withdrawal => sequenceDe(withdrawal.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `WDR-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -439,7 +478,7 @@ const loansRepo = {
   nextReference: (): string => {
     const highest = loansRepo
       .all()
-      .map((loan) => Number(loan.reference.replace(/\D/g, "")))
+      .map(loan => sequenceDe(loan.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `LOA-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -500,7 +539,7 @@ const cardRequestsRepo = {
   nextReference: (): string => {
     const highest = cardRequestsRepo
       .all()
-      .map((request) => Number(request.reference.replace(/\D/g, "")))
+      .map(request => sequenceDe(request.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `CRD-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -530,7 +569,7 @@ const cardsRepo = {
   nextReference: (): string => {
     const highest = cardsRepo
       .all()
-      .map((card) => Number(card.reference.replace(/\D/g, "")))
+      .map(card => sequenceDe(card.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `CRD-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -597,7 +636,7 @@ const investmentsRepo = {
   nextReference: (): string => {
     const highest = investmentsRepo
       .all()
-      .map((investment) => Number(investment.reference.replace(/\D/g, "")))
+      .map(investment => sequenceDe(investment.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `INV-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
@@ -638,7 +677,7 @@ const topupsRepo = {
   nextReference: (): string => {
     const highest = topupsRepo
       .all()
-      .map((topup) => Number(topup.reference.replace(/\D/g, "")))
+      .map(topup => sequenceDe(topup.reference))
       .filter((value) => !Number.isNaN(value))
       .reduce((max, value) => Math.max(max, value), 0);
     return `TOP-${new Date().getFullYear()}-${String(highest + 1).padStart(4, "0")}`;
