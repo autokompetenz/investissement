@@ -1,6 +1,6 @@
 import { ApiError, api, toPublicUser, wait } from "@/services/api";
 import { getUserPositions } from "@/services/investments";
-import { getBalance } from "@/services/ledger";
+import { estReglee, getBalance } from "@/services/ledger";
 import type { ClientOverview, PublicUser } from "@/types";
 
 /**
@@ -26,10 +26,18 @@ export const getClientOverview = async (userId: string): Promise<ClientOverview>
   ]);
   const transactions = api.transactions.byUser(userId);
 
+  /*
+    The settled status depends on the type: a deposit is CONFIRMED, a
+    withdrawal COMPLETED. The filter asked for `COMPLETED` whatever the type,
+    so the deposits — every one of them — fell through and the client was shown
+    a total of zero, next to a balance that said otherwise.
+
+    The rule now comes from the ledger, which is the only place that knows it.
+    Two answers to "has this money moved", in two files, is how the two drift
+    apart — and the one that drifts is the one nobody looks at.
+  */
   const confirmed = (types: string[]) =>
-    transactions.filter(
-      (transaction) => types.includes(transaction.type) && transaction.status === "COMPLETED",
-    );
+    transactions.filter((transaction) => types.includes(transaction.type) && estReglee(transaction));
 
   const deposits = sumBy(
     confirmed(["DEPOSIT"]).map((transaction) => transaction.amount),

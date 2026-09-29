@@ -42,7 +42,18 @@ const OUTFLOW: TransactionType[] = [
   "FEE",
 ];
 
-const isSettled = (transaction: Transaction) =>
+/**
+ * Whether a row represents money that has actually moved.
+ *
+ * Exported because there is exactly one answer to that question, and the
+ * dashboard had a second one. It filtered every type on `COMPLETED`, while a
+ * deposit is written `CONFIRMED` — a table that is right in one file and wrong
+ * in the next is worse than no table, because both look authoritative.
+ *
+ * A client who had deposited 250 000 MAD was shown a total of zero, with no
+ * sign of a fault anywhere.
+ */
+export const estReglee = (transaction: Transaction): boolean =>
   SETTLED[transaction.type].includes(transaction.status);
 
 /**
@@ -53,7 +64,7 @@ export const getBalance = async (userId: string): Promise<Balance> => {
   await wait(150);
 
   const transactions = api.transactions.byUser(userId);
-  const settled = transactions.filter(isSettled);
+  const settled = transactions.filter(estReglee);
 
   const inflow = settled
     .filter((transaction) => !OUTFLOW.includes(transaction.type))

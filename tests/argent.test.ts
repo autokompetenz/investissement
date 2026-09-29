@@ -73,7 +73,14 @@ const {
 const { requestLoan, approveLoan, disburseLoan, payInstallment, closeLoan, buildSchedule } =
   await import("../src/services/loans.ts");
 const { assignIban } = await import("../src/services/bankAccounts.ts");
-const { createWithdrawal } = await import("../src/services/withdrawals.ts");
+const {
+  createWithdrawal,
+  reviewWithdrawal,
+  approveWithdrawal,
+  processWithdrawal,
+  completeWithdrawal,
+} = await import("../src/services/withdrawals.ts");
+const { getClientOverview } = await import("../src/services/dashboard.ts");
 const { setUserStatus } = await import("../src/services/users.ts");
 
 import type { KycDocumentType, PublicUser } from "../src/types/index.ts";
@@ -512,6 +519,59 @@ test("M4 — une écriture en attente d'une opération sortante est bloquée", a
     "une écriture sortante en attente ne bloque pas le disponible",
   );
   assert.equal(balance.available, 50_000, "une écriture en attente doit rester à part");
+});
+
+test("M2 — le tableau de bord compte les dépôts", async () => {
+  /*
+    The dashboard filtered every transaction type on `COMPLETED`. A deposit is
+    written `CONFIRMED`, so not one of them passed: a client who had deposited
+    50 000 MAD was shown a total of zero, next to a balance that said 50 000.
+
+    Nothing was broken on screen and nothing threw. The figure was simply
+    always the sum of an empty list, which is a number, and a number is
+    displayed like any other.
+  */
+  const user = await clientAvecSolde(50_000, "tableau-m2@invest.ma");
+  const overview = await getClientOverview(user.id);
+
+  assert.equal(
+    overview.totalDeposits,
+    50_000,
+    "le tableau de bord affiche 0 MAD pour un dépôt confirmé",
+  );
+  assert.equal(overview.availableBalance, 50_000, "le solde affiché, lui, est juste");
+});
+
+test("M2 — le tableau de bord suit aussi les retraits", async () => {
+  // The other half: the fix must not have replaced a wrong rule by no rule.
+  const user = await clientAvecSolde(50_000, "retrait-m2@invest.ma");
+
+  const demande = await createWithdrawal(
+    { userId: user.id, amount: 12_000, method: "BANK_TRANSFER", destination: "IBAN" },
+    user,
+  );
+  await reviewWithdrawal(demande.id, admin);
+  await approveWithdrawal(demande.id, admin);
+  await processWithdrawal(demande.id, admin);
+  await completeWithdrawal(demande.id, "VIR-WDR-M2", admin);
+
+  const overview = await getClientOverview(user.id);
+  assert.equal(overview.totalWithdrawals, 12_000, "le retrait terminé n'est pas compté");
+  assert.equal(overview.availableBalance, 38_000);
+  assert.equal(overview.totalDeposits, 50_000);
+});
+
+test("M2 — un dépôt qui n'est pas réglé ne compte pas", async () => {
+  // The point of the filter: a declared operation is not money that moved. A
+  // rule wide enough to count a confirmed deposit must still be narrow enough
+  // not to count a declared one.
+  const { user, depotId } = await clientAvecDepot(30_000, "attente-m2@invest.ma");
+  const before = await getClientOverview(user.id);
+  assert.equal(before.totalDeposits, 0, "un dépôt en revue compte comme encaissé");
+
+  await confirmDeposit(depotId, admin, "test");
+  const after = await getClientOverview(user.id);
+  assert.equal(after.totalDeposits, 30_000, "un dépôt confirmé ne compte pas après coup");
 });
 
 test("un échéancier s'additionne exactement", () => {
