@@ -35,7 +35,16 @@ export type ErrorCode =
   | "invalidDateOfBirth"
   | "nationalityRequired"
   | "addressRequired"
-  | "invalidDocuments";
+  | "invalidDocuments"
+  // §11 — deposits. A refusal here is a statement about a file the
+  // administration has already decided on, so the codes name *which* decision:
+  // "already confirmed" and "turned down" send the caller to different places,
+  // and collapsing them into one "cannot confirm" hides the reason.
+  | "depositNotFound"
+  | "depositAlreadyConfirmed"
+  | "depositClosed"
+  | "invalidDepositId"
+  | "reasonRequired";
 
 export const json = (corps: unknown, status = 200): Response =>
   new Response(JSON.stringify(corps), {

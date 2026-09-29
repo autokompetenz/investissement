@@ -14,38 +14,17 @@
  * client, and reading the queue means reading their addresses.
  */
 
+import { estAdministration } from "./_admin.js";
 import { etatFile, traiterFile } from "./_outbox.js";
 import { commeFonction } from "./_node.js";
 import { fail, json, originAllowed } from "./_http.js";
-
-const autorise = (request: Request): boolean => {
-  const attendu = process.env.ADMIN_TOKEN;
-  if (!attendu) return false;
-
-  const authorization = request.headers.get("authorization") ?? "";
-  const fourni = authorization.replace(/^Bearer\s+/i, "");
-  if (!fourni) return false;
-
-  // Both sides are hashed before being compared, so a difference in length
-  // cannot be measured by how long the comparison takes.
-  const encodeur = new TextEncoder();
-  const a = encodeur.encode(fourni);
-  const b = encodeur.encode(attendu);
-  const longueur = Math.max(a.length, b.length, 32);
-
-  let ecart = a.length ^ b.length;
-  for (let i = 0; i < longueur; i += 1) {
-    ecart |= (a[i % a.length] ?? 0) ^ (b[i % b.length] ?? 0);
-  }
-  return ecart === 0;
-};
 
 export const gestionnaire = async (request: Request): Promise<Response> => {
   if (request.method !== "GET" && request.method !== "POST") {
     return fail("methodNotAllowed", 405);
   }
   if (!originAllowed(request)) return fail("originNotAllowed", 403);
-  if (!autorise(request)) return fail("unauthorized", 401);
+  if (!(await estAdministration(request))) return fail("unauthorized", 401);
 
   if (request.method === "GET") {
     return json({ queue: await etatFile() });

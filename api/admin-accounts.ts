@@ -20,6 +20,7 @@
  * by the caller.
  */
 
+import { estAdministration } from "./_admin.js";
 import { isRlsRefusal, sql } from "./_sql.js";
 import { fail, json, originAllowed, query } from "./_http.js";
 import { commeFonction } from "./_node.js";
@@ -36,25 +37,6 @@ interface AccountRow {
   last_name: string;
 }
 
-/**
- * Constant-time, so the length of a wrong token leaks nothing, and the length
- * check is done on values of equal size only.
- */
-const egal = async (a: string, b: string): Promise<boolean> => {
-  const encodeur = new TextEncoder();
-  const ba = encodeur.encode(a);
-  const bb = encodeur.encode(b);
-
-  // Compare a fixed length, padded, so the loop count carries no information
-  // about the expected value.
-  const longueur = Math.max(ba.length, bb.length, 32);
-  let ecart = ba.length ^ bb.length;
-  for (let i = 0; i < longueur; i += 1) {
-    ecart |= (ba[i % ba.length] ?? 0) ^ (bb[i % bb.length] ?? 0);
-  }
-  return ecart === 0;
-};
-
 const STATUTS = ["PENDING", "VERIFIED", "REJECTED", "SUSPENDED"];
 const ROLES = ["CLIENT", "ADMIN", "SUPER_ADMIN"];
 
@@ -62,17 +44,7 @@ export const gestionnaire = async (request: Request): Promise<Response> => {
   if (request.method !== "GET") return fail("methodNotAllowed", 405);
   if (!originAllowed(request)) return fail("originNotAllowed", 403);
 
-  const attendu = process.env.ADMIN_TOKEN;
-  if (!attendu) {
-    throw new Error(
-      "ADMIN_TOKEN is not set. Without it this endpoint is open to anyone who " +
-        "guesses the URL, and it reads every client account.",
-    );
-  }
-
-  const authorization = request.headers.get("authorization") ?? "";
-  const fourni = authorization.replace(/^Bearer\s+/i, "");
-  if (!fourni || !(await egal(fourni, attendu))) return fail("unauthorized", 401);
+  if (!(await estAdministration(request))) return fail("unauthorized", 401);
 
   /*
     Filters come from the query string, and each one is a bound parameter. The
